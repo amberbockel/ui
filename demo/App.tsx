@@ -184,9 +184,9 @@ function Showcase() {
         logo={<div className="scale-75 origin-left"><CustomLogo /></div>}
         description="Design leadership shaping how intelligent systems meet human judgment."
         copyright="© 2026 Amber Heinbockel"
-        currentSite="amberbockel/ui"
+        currentSite="amberbockel/ui - with major thanks and credit to"
         sites={[
-          { name: 'amberbockel/ui', href: 'https://amberbockel.github.io/ui/' },
+          { name: 'amberbockel/ui - with major thanks and credit to', href: 'https://amberbockel.github.io/ui/' },
           { name: 'n3wth/skills', href: 'https://skills.n3wth.com' },
           { name: 'n3wth/ui', href: 'https://ui.n3wth.com' },
           { name: 'n3wth/garden', href: 'https://garden.n3wth.com' },
