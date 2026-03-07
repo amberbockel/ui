@@ -78,7 +78,7 @@ export function DocsLayout() {
       <div className="sketch-top-gradient"></div>
       <Nav
         logo={<CustomLogo />}
-        logoHref="/"
+        logoHref={import.meta.env.BASE_URL || '/'}
         items={[
           { label: 'Components', href: import.meta.env.BASE_URL || '/' },
           { label: 'Docs', href: `${import.meta.env.BASE_URL || '/'}docs/getting-started`, isActive: true },
