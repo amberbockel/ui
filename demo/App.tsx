@@ -86,11 +86,11 @@ function Showcase() {
       {/* Nav */}
       <Nav
         logo={<CustomLogo />}
-        logoHref="/"
+        logoHref={import.meta.env.BASE_URL || '/'}
         items={[
-          { label: 'Components', href: '/', isActive: true },
-          { label: 'Docs', href: '/docs/getting-started' },
-          { label: 'GitHub', href: 'https://github.com/n3wth/ui', external: true },
+          { label: 'Components', href: import.meta.env.BASE_URL || '/', isActive: true },
+          { label: 'Docs', href: `${import.meta.env.BASE_URL || '/'}docs/getting-started` },
+          { label: 'GitHub', href: 'https://github.com/amberbockel/ui', external: true },
         ]}
         theme={theme}
         onThemeToggle={toggleTheme}
@@ -106,7 +106,7 @@ function Showcase() {
           description={<>Atomic design system for AmberBockel sites.<br />Clean, fun, delightful.</>}
           ctas={[
             { label: 'Browse Components', href: '#atoms' },
-            { label: 'View Source', href: 'https://github.com/n3wth/ui', variant: 'secondary' },
+            { label: 'View Source', href: 'https://github.com/amberbockel/ui', variant: 'secondary' },
           ]}
         />
       </div>
@@ -183,6 +183,14 @@ function Showcase() {
       <Footer
         logo={<div className="scale-75 origin-left"><CustomLogo /></div>}
         description="Design leadership shaping how intelligent systems meet human judgment."
+        copyright="© 2026 Amber Heinbockel"
+        currentSite="amberbockel/ui"
+        sites={[
+          { name: 'amberbockel/ui', href: 'https://amberbockel.github.io/ui/' },
+          { name: 'n3wth/skills', href: 'https://skills.n3wth.com' },
+          { name: 'n3wth/ui', href: 'https://ui.n3wth.com' },
+          { name: 'n3wth/garden', href: 'https://garden.n3wth.com' },
+        ]}
         sections={[
           {
             title: 'Documentation',
@@ -195,9 +203,9 @@ function Showcase() {
           {
             title: 'Resources',
             links: [
-              { label: 'GitHub', href: 'https://github.com/n3wth/ui' },
-              { label: 'npm', href: 'https://www.npmjs.com/package/@n3wth/ui' },
+              { label: 'GitHub', href: 'https://github.com/amberbockel/ui' },
               { label: 'amberbockel.com', href: 'https://amberbockel.com' },
+              { label: 'Original n3wth/ui', href: 'https://ui.n3wth.com' },
             ],
           },
           {

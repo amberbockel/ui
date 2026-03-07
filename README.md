@@ -3,7 +3,7 @@
 Atomic design system for n3wth projects. Flat, minimal, iOS-inspired.  
 No shadows, no glows—just clean glassmorphism and precision typography.
 
-**[Live Demo](https://ui.newth.ai)** / **[npm package](https://www.npmjs.com/package/@n3wth/ui)** / **[Registry](https://github.com/n3wth/ui/blob/main/registry.json)**
+**[Live Demo](https://amberbockel.github.io/ui/)** / **[npm package](https://www.npmjs.com/package/@n3wth/ui)** / **[Registry](https://github.com/amberbockel/ui/blob/main/registry.json)**
 
 ---
 
@@ -80,7 +80,7 @@ Built on **Tailwind CSS 4**.
 
 ```bash
 # Clone and install
-git clone https://github.com/n3wth/ui
+git clone https://github.com/amberbockel/ui
 npm install
 
 # Run the showcase/demo

@@ -77,9 +77,9 @@ export function DocsLayout() {
         logo={<CustomLogo />}
         logoHref="/"
         items={[
-          { label: 'Components', href: '/' },
-          { label: 'Docs', href: '/docs/getting-started', isActive: true },
-          { label: 'GitHub', href: 'https://github.com/n3wth/ui', external: true },
+          { label: 'Components', href: import.meta.env.BASE_URL || '/' },
+          { label: 'Docs', href: `${import.meta.env.BASE_URL || '/'}docs/getting-started`, isActive: true },
+          { label: 'GitHub', href: 'https://github.com/amberbockel/ui', external: true },
         ]}
         theme={theme}
         onThemeToggle={toggleTheme}
@@ -158,6 +158,14 @@ export function DocsLayout() {
       <Footer
         logo={<div className="scale-75 origin-left"><CustomLogo /></div>}
         description="Design leadership shaping how intelligent systems meet human judgment."
+        copyright="© 2026 Amber Heinbockel"
+        currentSite="amberbockel/ui"
+        sites={[
+          { name: 'amberbockel/ui', href: 'https://amberbockel.github.io/ui/' },
+          { name: 'n3wth/skills', href: 'https://skills.n3wth.com' },
+          { name: 'n3wth/ui', href: 'https://ui.n3wth.com' },
+          { name: 'n3wth/garden', href: 'https://garden.n3wth.com' },
+        ]}
         sections={[
           {
             title: 'Documentation',
@@ -166,14 +174,12 @@ export function DocsLayout() {
           {
             title: 'Resources',
             links: [
-              { label: 'GitHub', href: 'https://github.com/n3wth/ui' },
-              { label: 'npm', href: 'https://www.npmjs.com/package/@n3wth/ui' },
+              { label: 'GitHub', href: 'https://github.com/amberbockel/ui' },
               { label: 'amberbockel.com', href: 'https://amberbockel.com' },
+              { label: 'Original n3wth/ui', href: 'https://ui.n3wth.com' },
             ],
           },
         ]}
-        theme={theme}
-        onThemeToggle={toggleTheme}
       />
     </div>
   )

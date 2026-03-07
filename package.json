@@ -23,6 +23,8 @@
     "dev": "vite build --watch",
     "demo": "vite --config vite.demo.config.ts",
     "demo:build": "vite build --config vite.demo.config.ts",
+    "predeploy": "npm run demo:build -- --base=/ui/",
+    "deploy": "gh-pages -d dist-demo",
     "build": "tsc && vite build && node -e \"const fs=require('fs');const css=fs.readFileSync('src/styles.css','utf8').replace(/@import 'tailwindcss';\\n\\n/,'');fs.writeFileSync('dist/styles.css',css)\"",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -68,6 +70,7 @@
     "eslint": "^10.0.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
+    "gh-pages": "^6.3.0",
     "globals": "^17.3.0",
     "gsap": "^3.14.2",
     "jsdom": "^28.0.0",
@@ -94,6 +97,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/n3wth/ui"
+    "url": "https://github.com/amberbockel/ui"
   }
 }
