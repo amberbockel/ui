@@ -211,7 +211,7 @@ function Showcase() {
           {
             title: 'Legal',
             links: [
-              { label: 'Privacy', href: 'https://amberbockel.com/privacy' },
+              { label: 'Privacy', href: `${import.meta.env.BASE_URL || '/'}docs/privacy` },
               { label: 'MIT License', href: 'https://opensource.org/licenses/MIT' },
             ],
           },

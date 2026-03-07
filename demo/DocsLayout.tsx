@@ -29,6 +29,7 @@ const docModules = import.meta.glob<{ default: ComponentType }>([
   '../docs/components.md',
   '../docs/hooks.md',
   '../docs/css-utilities.md',
+  '../docs/privacy.md',
 ], { eager: true })
 
 export interface DocPage {
@@ -54,7 +55,7 @@ export const docPages: DocPage[] = Object.entries(docModules)
     }
   })
   .sort((a, b) => {
-    const order = ['getting-started', 'building-with-ai', 'theming', 'components', 'hooks', 'css-utilities']
+    const order = ['getting-started', 'building-with-ai', 'theming', 'components', 'hooks', 'css-utilities', 'privacy']
     return order.indexOf(a.slug) - order.indexOf(b.slug)
   })
 
@@ -173,11 +174,10 @@ export function DocsLayout() {
             links: docPages.map((p) => ({ label: p.title, href: `/docs/${p.slug}` })),
           },
           {
-            title: 'Resources',
+            title: 'Legal',
             links: [
-              { label: 'GitHub', href: 'https://github.com/amberbockel/ui' },
-              { label: 'amberbockel.com', href: 'https://amberbockel.com' },
-              { label: 'Original n3wth/ui', href: 'https://ui.n3wth.com' },
+              { label: 'Privacy', href: `${import.meta.env.BASE_URL || '/'}docs/privacy` },
+              { label: 'MIT License', href: 'https://opensource.org/licenses/MIT' },
             ],
           },
         ]}
