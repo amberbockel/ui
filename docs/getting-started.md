@@ -8,15 +8,17 @@
 
 ## Install
 
+Since this repository is custom-built and hosted on GitHub, install it directly from the URL:
+
 ```bash
-npm install amberbockel/ui
+npm install github:amberbockel/ui
 ```
 
 ## Setup
 
-### 1. Import styles
+### 1. Import Styles
 
-Add the global stylesheet to your app entry point:
+Add the global stylesheet to your React app entry point:
 
 ```tsx
 import 'amberbockel/ui/styles'
@@ -84,6 +86,8 @@ You no longer need to manually copy any `.woff2` files.
 
 ## Quick example: full page
 
+To re-create Amber's signature look, apply the dark background classes and insert the mesh gradient background utility classes immediately inside your root container:
+
 ```tsx
 import { Nav, Hero, Section, SectionHeader, Footer, useTheme } from 'amberbockel/ui'
 import 'amberbockel/ui/styles'
@@ -92,12 +96,16 @@ function App() {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-white)]">
+    <div className="min-h-screen relative bg-[var(--color-bg)] text-[var(--color-white)]">
+      {/* ⚠️ Crucial for the Amber Bockel aesthetic: */}
+      <div className="mesh-gradient"></div>
+      <div className="sketch-top-gradient"></div>
+
       <Nav
         logo="My App"
         items={[
           { label: 'Features', href: '#features' },
-          { label: 'GitHub', href: 'https://github.com', external: true },
+          { label: 'GitHub', href: 'https://github.com/amberbockel/ui', external: true },
         ]}
         theme={theme}
         onThemeToggle={toggleTheme}
@@ -116,9 +124,8 @@ function App() {
       </Section>
 
       <Footer
-        logo="My App"
-        description="Built with amberbockel/ui"
-        copyright="2026 My App"
+        copyright="© 2026 Amber Heinbockel"
+        sites={[{ name: 'amberbockel/ui', href: 'https://github.com/amberbockel/ui' }]}
       />
     </div>
   )

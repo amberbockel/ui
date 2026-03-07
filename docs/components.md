@@ -13,16 +13,15 @@ import { Button, Card, Nav, useTheme } from 'amberbockel/ui'
 Interactive button with variants, responsive sizing, and loading state.
 
 ```tsx
-<Button variant="primary" size="lg">Submit</Button>
-<Button variant="glass" isLoading>Saving...</Button>
+<Button variant="primary" size="lg">Call to Action (Solid Green)</Button>
+<Button variant="glass">Glass Button (Transparent/Sleek)</Button>
 <Button variant="ghost" leftIcon={<Icon name="plus" />}>Add item</Button>
-<Button asChild><a href="/page">Link button</a></Button>
-<Button size={{ base: 'sm', md: 'md', lg: 'lg' }}>Responsive</Button>
+<Button variant="secondary" isLoading>Saving...</Button>
 ```
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `variant` | `'primary' \| 'secondary' \| 'ghost' \| 'glass'` | `'primary'` | Visual style |
+| `variant` | `'primary' \| 'secondary' \| 'ghost' \| 'glass'` | `'glass'` | Visual style |
 | `size` | `'sm' \| 'md' \| 'lg' \| { base?, md?, lg? }` | `'md'` | Size or responsive object |
 | `isLoading` | `boolean` | `false` | Show spinner, disable button |
 | `leftIcon` | `ReactNode` | - | Icon before label |
@@ -155,7 +154,7 @@ Loading placeholder with shimmer animation.
 Syntax-highlighted code display with copy button.
 
 ```tsx
-<CodeBlock code="npm install amberbockel/ui" language="bash" />
+<CodeBlock code="npm install github:amberbockel/ui" language="bash" />
 ```
 
 ### AnimatedText
@@ -187,19 +186,19 @@ Compound card component with sub-components.
 ```tsx
 <Card variant="glass" padding="lg">
   <CardHeader>
-    <CardTitle>Title</CardTitle>
-    <CardDescription>Subtitle text</CardDescription>
+    <CardTitle>Glass Card</CardTitle>
+    <CardDescription>The signature Amber Bockel aesthetic.</CardDescription>
   </CardHeader>
-  <CardContent>Body content here</CardContent>
+  <CardContent>Frosted glass background with minimal borders.</CardContent>
   <CardFooter>
-    <Button>Action</Button>
+    <Button variant="primary">Confirm</Button>
   </CardFooter>
 </Card>
 ```
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `variant` | `'default' \| 'glass' \| 'interactive'` | `'default'` | Card style |
+| `variant` | `'default' \| 'glass' \| 'interactive'` | `'glass'` | Card style |
 | `padding` | `'none' \| 'sm' \| 'md' \| 'lg'` | `'md'` | Internal padding |
 
 **Sub-components:** `CardHeader`, `CardTitle` (accepts `as` prop for heading level), `CardDescription`, `CardContent`, `CardFooter`

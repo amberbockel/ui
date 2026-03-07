@@ -54,7 +54,7 @@ All components reference these variables. Override them in your CSS to customize
 
 | Variable | Dark | Light | Usage |
 |---|---|---|---|
-| `--color-sage` | `#30d158` | `#248a3d` | Success, positive |
+| `--color-sage` | `#71d45c` | `#248a3d` | Success, primary brand |
 | `--color-coral` | `#ff6961` | `#d70015` | Error, destructive |
 | `--color-mint` | `#64d2ff` | `#0071e3` | Info, links |
 | `--color-gold` | `#ffd60a` | `#b25000` | Warning, attention |
@@ -80,9 +80,9 @@ All components reference these variables. Override them in your CSS to customize
 
 | Variable | Value |
 |---|---|
-| `--font-display` | Mona Sans (variable, 200-900) |
-| `--font-sans` | Geist Sans (400, 500, 600) |
-| `--font-mono` | Geist Mono (400, 500) |
+| `--font-display` | Prata (Google Font) |
+| `--font-sans` | DM Sans (Google Font) |
+| `--font-mono` | Geist Mono |
 
 ## Custom theme example
 
@@ -94,7 +94,7 @@ Override variables in your CSS to apply a custom palette:
   --color-bg: #0f172a;
   --color-white: #e2e8f0;
   --color-accent: #3b82f6;
-  --color-sage: #22c55e;
+  --color-sage: #71d45c;
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.06);
 }

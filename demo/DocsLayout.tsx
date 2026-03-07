@@ -24,6 +24,7 @@ const CustomLogo = () => (
 
 const docModules = import.meta.glob<{ default: ComponentType }>([
   '../docs/getting-started.md',
+  '../docs/building-with-ai.md',
   '../docs/theming.md',
   '../docs/components.md',
   '../docs/hooks.md',
@@ -53,7 +54,7 @@ export const docPages: DocPage[] = Object.entries(docModules)
     }
   })
   .sort((a, b) => {
-    const order = ['getting-started', 'theming', 'components', 'hooks', 'css-utilities']
+    const order = ['getting-started', 'building-with-ai', 'theming', 'components', 'hooks', 'css-utilities']
     return order.indexOf(a.slug) - order.indexOf(b.slug)
   })
 
