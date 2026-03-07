@@ -24,8 +24,8 @@ const DEFAULT_SITES: FooterSite[] = [
 ]
 
 const DEFAULT_LEGAL: FooterLink[] = [
-  { label: 'Terms', href: '/terms' },
-  { label: 'Privacy', href: '/privacy' },
+  { label: 'Terms', href: `${import.meta.env.BASE_URL || '/'}docs/terms` },
+  { label: 'Privacy', href: `${import.meta.env.BASE_URL || '/'}docs/privacy` },
 ]
 
 export interface FooterProps extends HTMLAttributes<HTMLElement> {

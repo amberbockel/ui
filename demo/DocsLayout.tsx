@@ -30,6 +30,7 @@ const docModules = import.meta.glob<{ default: ComponentType }>([
   '../docs/hooks.md',
   '../docs/css-utilities.md',
   '../docs/privacy.md',
+  '../docs/terms.md',
 ], { eager: true })
 
 export interface DocPage {
@@ -55,7 +56,7 @@ export const docPages: DocPage[] = Object.entries(docModules)
     }
   })
   .sort((a, b) => {
-    const order = ['getting-started', 'building-with-ai', 'theming', 'components', 'hooks', 'css-utilities', 'privacy']
+    const order = ['getting-started', 'building-with-ai', 'theming', 'components', 'hooks', 'css-utilities', 'terms', 'privacy']
     return order.indexOf(a.slug) - order.indexOf(b.slug)
   })
 
