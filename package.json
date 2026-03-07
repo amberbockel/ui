@@ -1,0 +1,99 @@
+{
+  "name": "@n3wth/ui",
+  "version": "0.1.0",
+  "description": "Atomic design system for Newth sites - flat, minimal, iOS-inspired",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": "./dist/styles.css",
+    "./tailwind": "./tailwind.preset.js"
+  },
+  "files": [
+    "dist",
+    "tailwind.preset.js",
+    "public"
+  ],
+  "scripts": {
+    "dev": "vite build --watch",
+    "demo": "vite --config vite.demo.config.ts",
+    "demo:build": "vite build --config vite.demo.config.ts",
+    "build": "tsc && vite build && node -e \"const fs=require('fs');const css=fs.readFileSync('src/styles.css','utf8').replace(/@import 'tailwindcss';\\n\\n/,'');fs.writeFileSync('dist/styles.css',css)\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src",
+    "size": "size-limit",
+    "prepublishOnly": "npm run build",
+    "release:patch": "npm version patch -m 'chore: bump version to %s' && npm run registry:build && git add . && git commit -m 'chore: update registry' && git push && git push --tags && gh release create v$(node -p \"require('./package.json').version\") --generate-notes",
+    "registry:build": "npx shadcn@latest build",
+    "release:minor": "npm version minor -m 'chore: bump version to %s' && git push && git push --tags && gh release create v$(node -p \"require('./package.json').version\") --generate-notes",
+    "release:major": "npm version major -m 'chore: bump version to %s' && git push && git push --tags && gh release create v$(node -p \"require('./package.json').version\") --generate-notes"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "iconoir-react": "^7.11.0",
+    "posthog-js": "^1.352.0",
+    "tailwind-merge": "^3.4.0"
+  },
+  "peerDependencies": {
+    "gsap": "^3.12.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "gsap": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@mdx-js/rollup": "^3.1.1",
+    "@size-limit/file": "^12.0.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/mdx": "^2.0.13",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.55.0",
+    "@typescript-eslint/parser": "^8.55.0",
+    "@vitejs/plugin-react": "^5.1.4",
+    "eslint": "^10.0.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^17.3.0",
+    "gsap": "^3.14.2",
+    "jsdom": "^28.0.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router": "^7.13.0",
+    "rehype-highlight": "^7.0.2",
+    "remark-gfm": "^4.0.1",
+    "size-limit": "^12.0.0",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.55.0",
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^4.0.18",
+    "vitest-axe": "^0.1.0"
+  },
+  "keywords": [
+    "design-system",
+    "react",
+    "tailwind",
+    "atomic-design"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/n3wth/ui"
+  }
+}
