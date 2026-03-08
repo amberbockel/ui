@@ -165,9 +165,6 @@ export function DocsLayout() {
         currentSite="amberbockel/ui - with major thanks and credit to"
         sites={[
           { name: 'amberbockel/ui - with major thanks and credit to', href: 'https://amberbockel.github.io/ui/' },
-          { name: 'n3wth/skills', href: 'https://skills.n3wth.com' },
-          { name: 'n3wth/ui', href: 'https://ui.n3wth.com' },
-          { name: 'n3wth/garden', href: 'https://garden.n3wth.com' },
         ]}
         sections={[
           {

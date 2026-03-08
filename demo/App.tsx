@@ -179,7 +179,6 @@ function Showcase() {
         </div>
       </div>
 
-      {/* Footer */}
       <Footer
         logo={<div className="scale-75 origin-left"><CustomLogo /></div>}
         description="Design leadership shaping how intelligent systems meet human judgment."
@@ -187,9 +186,6 @@ function Showcase() {
         currentSite="amberbockel/ui - with major thanks and credit to"
         sites={[
           { name: 'amberbockel/ui - with major thanks and credit to', href: 'https://amberbockel.github.io/ui/' },
-          { name: 'n3wth/skills', href: 'https://skills.n3wth.com' },
-          { name: 'n3wth/ui', href: 'https://ui.n3wth.com' },
-          { name: 'n3wth/garden', href: 'https://garden.n3wth.com' },
         ]}
         sections={[
           {
@@ -205,7 +201,6 @@ function Showcase() {
             links: [
               { label: 'GitHub', href: 'https://github.com/amberbockel/ui' },
               { label: 'amberbockel.com', href: 'https://amberbockel.com' },
-              { label: 'Original n3wth/ui', href: 'https://ui.n3wth.com' },
             ],
           },
           {
