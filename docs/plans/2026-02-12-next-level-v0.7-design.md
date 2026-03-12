@@ -1,4 +1,4 @@
-# @n3wth/ui v0.7 Design: Next Level
+# amberbockel-ui v0.7 Design: Next Level
 
 ## Tracks
 

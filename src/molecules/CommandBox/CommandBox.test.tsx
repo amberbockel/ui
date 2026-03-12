@@ -16,8 +16,8 @@ describe('CommandBox', () => {
   })
 
   it('renders the command text', () => {
-    render(<CommandBox command="npm install @n3wth/ui" />)
-    expect(screen.getByText('npm install @n3wth/ui')).toBeInTheDocument()
+    render(<CommandBox command="npm install amberbockel-ui" />)
+    expect(screen.getByText('npm install amberbockel-ui')).toBeInTheDocument()
   })
 
   it('renders copy button by default', () => {
@@ -32,7 +32,7 @@ describe('CommandBox', () => {
 
   it('transitions to copied state on click', async () => {
     const user = userEvent.setup()
-    render(<CommandBox command="npm install @n3wth/ui" />)
+    render(<CommandBox command="npm install amberbockel-ui" />)
     await user.click(screen.getByRole('button', { name: 'Copy to clipboard' }))
     // Verifies the clipboard copy was attempted and succeeded (shows Copied state)
     expect(screen.getByRole('button', { name: 'Copied!' })).toBeInTheDocument()
