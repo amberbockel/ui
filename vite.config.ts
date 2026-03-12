@@ -39,7 +39,7 @@ export default defineConfig({
         // Ensure proper ESM output
         format: 'es',
         // Add banner for proper module resolution
-        banner: '/* @n3wth/ui - Atomic design system */',
+        banner: '/* amberbockel-ui - Atomic design system */',
       },
       // Ensure external modules aren't bundled
       treeshake: {
