@@ -2,7 +2,7 @@
 
 ## Overview
 
-Flat, minimal design system for n3wth projects. Built on Tailwind CSS 4 with iOS-inspired aesthetics.
+Flat, minimal design system for amberbockel projects. Built on Tailwind CSS 4 with iOS-inspired aesthetics.
 
 ## Installation
 
@@ -18,18 +18,18 @@ import 'amberbockel-ui/styles'
 
 ### Nav
 
-Fixed navigation bar with hide-on-scroll behavior. Used across n3wth, skills, and ui sites.
+Fixed navigation bar with hide-on-scroll behavior.
 
 ```tsx
 import { Nav } from 'amberbockel-ui'
 
 <Nav
-  logo="n3wth"
+  logo="amberbockel"
   logoHref="/"
   items={[
     { label: 'Work', href: '#work' },
     { label: 'About', href: '#about' },
-    { label: 'GitHub', href: 'https://github.com/n3wth', external: true },
+    { label: 'GitHub', href: 'https://github.com/amberbockel', external: true },
   ]}
   fixed           // Position fixed at top
   hideOnScroll    // Hide on scroll down, show on scroll up
@@ -144,29 +144,21 @@ Publishing is automated via GitHub Actions. Do NOT use `npm publish` locally.
 1. Bump version: `npm version patch` (or minor/major)
 2. Push: `git push && git push --tags`
 3. Create release: `gh release create v$(node -p "require('./package.json').version") --generate-notes`
-4. The `.github/workflows/publish.yml` triggers on release creation and publishes to both npm and GitHub Packages
+4. The `.github/workflows/publish.yml` triggers on release creation and publishes `amberbockel-ui` to npm AND deploys the demo to GitHub Pages
 
 Shortcut: `npm run release:patch` does all steps at once.
 
-### Demo Site (Vercel)
+### Demo Site (GitHub Pages)
 
-The demo site at https://ui.newth.ai deploys automatically from the `main` branch via Vercel.
+The demo site at https://amberbockel.github.io/ui/ deploys automatically via GitHub Actions on every release.
 
-- **Project:** Linked to `n3wth/ui` GitHub repo
-- **Build:** Standard Vite build (`npm run build`)
-- **Auto-deploy:** Every push to `main` triggers a new deployment
-- **Preview:** PRs get preview deployments automatically
+- **Repo:** `amberbockel/ui`
+- **Build:** `npm run demo:build` (Vite, base path `/ui/`)
+- **Auto-deploy:** Every GitHub Release triggers a new deployment via `publish.yml`
+- **Branch:** Pages are served from the `gh-pages` branch
 
-### Downstream Consumers
-
-After publishing a new version, update consumers:
-- `newthai` (portfolio site) - `npm install amberbockel-ui@latest`
-- `r3` (website) - `npm install amberbockel-ui@latest` in `website/`
+> **One-time setup required:** Add `NPM_TOKEN` secret in GitHub repo Settings → Secrets → Actions, and enable GitHub Pages from the `gh-pages` branch in repo Settings → Pages.
 
 ## Version History
 
-- **v0.5.3** - Dependency updates
-- **v0.5.2** - Consistent width alignment (Nav, Footer, content all use max-w-6xl px-6 md:px-12)
-- **v0.5.0** - Nav hideOnScroll, alignment fixes, solid background
-- **v0.4.x** - Initial Nav component, NavLink variants
-- **v0.3.x** - Hero, Section, Footer organisms
+- **v0.1.0** - Initial amberbockel-ui release (forked from n3wth/ui)

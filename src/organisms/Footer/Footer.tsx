@@ -17,19 +17,17 @@ export interface FooterSite {
 }
 
 const DEFAULT_SITES: FooterSite[] = [
-  { name: 'n3wth', href: 'https://n3wth.com' },
-  { name: 'n3wth/skills', href: 'https://skills.n3wth.com' },
-  { name: 'n3wth/ui', href: 'https://ui.n3wth.com' },
-  { name: 'n3wth/garden', href: 'https://garden.n3wth.com' },
+  { name: 'amberbockel', href: 'https://amberbockel.github.io' },
+  { name: 'amberbockel/ui', href: 'https://amberbockel.github.io/ui' },
 ]
 
 const DEFAULT_LEGAL: FooterLink[] = [
-  { label: 'Terms', href: `${import.meta.env.BASE_URL || '/'}docs/terms` },
-  { label: 'Privacy', href: `${import.meta.env.BASE_URL || '/'}docs/privacy` },
+  { label: 'Terms', href: '/docs/terms' },
+  { label: 'Privacy', href: '/docs/privacy' },
 ]
 
 export interface FooterProps extends HTMLAttributes<HTMLElement> {
-  /** Site ecosystem links. Defaults to n3wth ecosystem. */
+  /** Site ecosystem links. Defaults to amberbockel ecosystem. */
   sites?: FooterSite[]
   /** Name of the current site to highlight (renders as text instead of link). */
   currentSite?: string
@@ -67,7 +65,7 @@ export function Footer({
   ...props
 }: FooterProps) {
   const year = new Date().getFullYear()
-  const resolvedCopyright = copyright ?? `\u00A9 ${year} Oliver Newth`
+  const resolvedCopyright = copyright ?? `\u00A9 ${year} Amber Bockel`
   const resolvedLegal = legalLinks ?? bottomLinks ?? DEFAULT_LEGAL
   const hasSections = sections.length > 0
 
