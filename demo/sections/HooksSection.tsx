@@ -26,7 +26,7 @@ export function HooksSection() {
             <Badge variant={theme === 'dark' ? 'default' : 'lavender'}>{theme}</Badge>
           </div>
         </div>
-        <CodeSnippet className="mt-4" code={`import { useTheme } from '@n3wth/ui'
+        <CodeSnippet className="mt-4" code={`import { useTheme } from 'amberbockel-ui'
 
 function ThemeSwitch() {
   const { theme, setTheme, toggleTheme } = useTheme()
@@ -51,7 +51,7 @@ function ThemeSwitch() {
             Current breakpoint: <strong className="text-[var(--color-white)]">{breakpoint}</strong>
           </p>
         </div>
-        <CodeSnippet className="mt-4" code={`import { useIsMobile, useBreakpoint, useMediaQuery } from '@n3wth/ui'
+        <CodeSnippet className="mt-4" code={`import { useIsMobile, useBreakpoint, useMediaQuery } from 'amberbockel-ui'
 
 function ResponsiveLayout() {
   const isMobile = useIsMobile()      // < 768px
@@ -79,7 +79,7 @@ function ResponsiveLayout() {
             </Badge>
           </div>
         </div>
-        <CodeSnippet className="mt-4" code={`import { useReducedMotion } from '@n3wth/ui'
+        <CodeSnippet className="mt-4" code={`import { useReducedMotion } from 'amberbockel-ui'
 
 function AnimatedCard() {
   const prefersReducedMotion = useReducedMotion()
@@ -110,7 +110,7 @@ function AnimatedCard() {
             </Button>
           </div>
         </div>
-        <CodeSnippet className="mt-4" code={`import { useCountUp } from '@n3wth/ui'
+        <CodeSnippet className="mt-4" code={`import { useCountUp } from 'amberbockel-ui'
 
 function StatsCounter() {
   const { value, ref } = useCountUp({
@@ -130,7 +130,7 @@ function StatsCounter() {
             Register keyboard shortcuts with modifier keys. Handles platform differences (Cmd vs Ctrl) automatically.
           </p>
         </div>
-        <CodeSnippet className="mt-4" code={`import { useKeyboardShortcuts, getModifierKey } from '@n3wth/ui'
+        <CodeSnippet className="mt-4" code={`import { useKeyboardShortcuts, getModifierKey } from 'amberbockel-ui'
 
 function SearchDialog() {
   const [open, setOpen] = useState(false)
@@ -173,7 +173,7 @@ function SearchDialog() {
             <p className="text-xs text-[var(--color-grey-400)]">Attention-grabbing pulse animation for CTAs</p>
           </div>
         </div>
-        <CodeSnippet className="mt-4" code={`import { useScrollReveal, useStaggerList } from '@n3wth/ui'
+        <CodeSnippet className="mt-4" code={`import { useScrollReveal, useStaggerList } from 'amberbockel-ui'
 
 function FeatureGrid({ items }) {
   const revealRef = useScrollReveal({ threshold: 0.2 })

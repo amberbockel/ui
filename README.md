@@ -3,7 +3,7 @@
 Atomic design system for n3wth projects. Flat, minimal, iOS-inspired.  
 No shadows, no glows—just clean glassmorphism and precision typography.
 
-**[Live Demo](https://amberbockel.github.io/ui/)** / **[npm package](https://www.npmjs.com/package/@n3wth/ui)** / **[Registry](https://github.com/amberbockel/ui/blob/main/registry.json)**
+**[Live Demo](https://amberbockel.github.io/ui/)** / **[npm package](https://www.npmjs.com/package/amberbockel-ui)** / **[Registry](https://github.com/amberbockel/ui/blob/main/registry.json)**
 
 ---
 
@@ -20,14 +20,14 @@ This library is optimized for AI-driven development (**v0**, **Cursor**, **Googl
 ## 📦 Install
 
 ```bash
-npm install @n3wth/ui
+npm install amberbockel-ui
 ```
 
 ### Quick Start
 
 ```tsx
-import { Button, Card, Hero, Section } from '@n3wth/ui'
-import '@n3wth/ui/styles'
+import { Button, Card, Hero, Section } from 'amberbockel-ui'
+import 'amberbockel-ui/styles'
 
 export default function App() {
   return (

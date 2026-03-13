@@ -1,4 +1,4 @@
-# @n3wth/ui - Claude Code Instructions
+# amberbockel-ui - Claude Code Instructions
 
 ## Overview
 
@@ -7,11 +7,11 @@ Flat, minimal design system for n3wth projects. Built on Tailwind CSS 4 with iOS
 ## Installation
 
 ```bash
-npm install @n3wth/ui
+npm install amberbockel-ui
 ```
 
 ```tsx
-import '@n3wth/ui/styles'
+import 'amberbockel-ui/styles'
 ```
 
 ## Key Components
@@ -21,7 +21,7 @@ import '@n3wth/ui/styles'
 Fixed navigation bar with hide-on-scroll behavior. Used across n3wth, skills, and ui sites.
 
 ```tsx
-import { Nav } from '@n3wth/ui'
+import { Nav } from 'amberbockel-ui'
 
 <Nav
   logo="n3wth"
@@ -53,14 +53,14 @@ import { Nav } from '@n3wth/ui'
 
 ### Tailwind v4 Integration
 
-When using @n3wth/ui components, add the `@source` directive to scan component classes:
+When using amberbockel-ui components, add the `@source` directive to scan component classes:
 
 ```css
 @import 'tailwindcss';
-@import '@n3wth/ui/styles';
+@import 'amberbockel-ui/styles';
 
-/* Required: scan @n3wth/ui for Tailwind classes */
-@source "../node_modules/@n3wth/ui/dist";
+/* Required: scan amberbockel-ui for Tailwind classes */
+@source "../node_modules/amberbockel-ui/dist";
 ```
 
 ### CSS Custom Properties
@@ -76,7 +76,7 @@ Components use CSS variables for theming. Define these in your `:root`:
 }
 ```
 
-The `@n3wth/ui/styles` import provides default values.
+The `amberbockel-ui/styles` import provides default values.
 
 ## Component Patterns
 
@@ -97,7 +97,7 @@ All sections should use consistent container styling:
 ### Theme Toggle
 
 ```tsx
-import { Nav, useTheme } from '@n3wth/ui'
+import { Nav, useTheme } from 'amberbockel-ui'
 
 function App() {
   const { theme, toggleTheme } = useTheme()
@@ -127,10 +127,10 @@ src/
 ## Common Issues
 
 ### Nav items not visible
-Add `@source` directive to scan @n3wth/ui classes (see Tailwind v4 Integration above).
+Add `@source` directive to scan amberbockel-ui classes (see Tailwind v4 Integration above).
 
 ### Colors showing as black
-Ensure `:root` CSS custom properties are defined, or import `@n3wth/ui/styles`.
+Ensure `:root` CSS custom properties are defined, or import `amberbockel-ui/styles`.
 
 ### Misaligned content
 Use matching container constraints: `max-w-6xl mx-auto px-6 md:px-12`
@@ -160,8 +160,8 @@ The demo site at https://ui.newth.ai deploys automatically from the `main` branc
 ### Downstream Consumers
 
 After publishing a new version, update consumers:
-- `newthai` (portfolio site) - `npm install @n3wth/ui@latest`
-- `r3` (website) - `npm install @n3wth/ui@latest` in `website/`
+- `newthai` (portfolio site) - `npm install amberbockel-ui@latest`
+- `r3` (website) - `npm install amberbockel-ui@latest` in `website/`
 
 ## Version History
 

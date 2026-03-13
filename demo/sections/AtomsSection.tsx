@@ -260,8 +260,8 @@ export function AtomsSection() {
       {/* CodeBlock */}
       <DemoBlock title="CodeBlock">
         <div className="space-y-4">
-          <CodeSnippet showLineNumbers code={`import { Nav, Hero, Button, useTheme } from '@n3wth/ui'
-import '@n3wth/ui/styles'
+          <CodeSnippet showLineNumbers code={`import { Nav, Hero, Button, useTheme } from 'amberbockel-ui'
+import 'amberbockel-ui/styles'
 
 function App() {
   const { theme, toggleTheme } = useTheme()
@@ -281,7 +281,7 @@ function App() {
   )
 }`} />
           <CodeSnippet code={`// Quick start
-npm install @n3wth/ui`} />
+npm install amberbockel-ui`} />
         </div>
       </DemoBlock>
     </DemoSection>
