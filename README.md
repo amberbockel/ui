@@ -1,9 +1,9 @@
-# n3wth/ui 🛠️
+# amberbockel-ui 🛠️
 
-Atomic design system for n3wth projects. Flat, minimal, iOS-inspired.  
+Atomic design system for amberbockel projects. Flat, minimal, iOS-inspired.
 No shadows, no glows—just clean glassmorphism and precision typography.
 
-**[Live Demo](https://amberbockel.github.io/ui/)** / **[npm package](https://www.npmjs.com/package/@n3wth/ui)** / **[Registry](https://github.com/amberbockel/ui/blob/main/registry.json)**
+**[Live Demo](https://amberbockel.github.io/ui/)** / **[npm package](https://www.npmjs.com/package/amberbockel-ui)** / **[Registry](https://github.com/amberbockel/ui/blob/main/registry.json)**
 
 ---
 
@@ -20,14 +20,14 @@ This library is optimized for AI-driven development (**v0**, **Cursor**, **Googl
 ## 📦 Install
 
 ```bash
-npm install @n3wth/ui
+npm install amberbockel-ui
 ```
 
 ### Quick Start
 
 ```tsx
-import { Button, Card, Hero, Section } from '@n3wth/ui'
-import '@n3wth/ui/styles'
+import { Button, Card, Hero, Section } from 'amberbockel-ui'
+import 'amberbockel-ui/styles'
 
 export default function App() {
   return (
@@ -95,14 +95,21 @@ npm run registry:build
 
 ### Releasing
 
-We use a semantic patch/minor/major flow that automatically updates AI registry artifacts:
+Publishing is automated via GitHub Actions. When you're ready to ship:
 
 ```bash
+# Bump version, push tag, and create a GitHub Release to trigger CI
 npm run release:patch
 ```
+
+The `publish.yml` workflow will automatically:
+1. Build and publish `amberbockel-ui` to npm
+2. Build the demo site and deploy it to GitHub Pages at https://amberbockel.github.io/ui/
+
+> **One-time setup:** Add your npm token as `NPM_TOKEN` in GitHub repo Settings → Secrets → Actions.
 
 ---
 
 ## 📜 License
 
-MIT © [Oliver Newth](https://newth.ai)
+MIT © [Amber Bockel](https://amberbockel.github.io)

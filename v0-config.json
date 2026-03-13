@@ -26,6 +26,6 @@
   "basePath": "src",
   "componentsPath": "components",
   "utilsPath": "utils/cn",
-  "npmPackage": "@n3wth/ui",
-  "importAlias": "@n3wth/ui"
+  "npmPackage": "amberbockel-ui",
+  "importAlias": "amberbockel-ui"
 }

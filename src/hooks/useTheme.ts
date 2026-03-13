@@ -19,7 +19,7 @@ export interface UseThemeReturn {
 export function useTheme(options: UseThemeOptions = {}): UseThemeReturn {
   const {
     defaultTheme = 'light',
-    storageKey = 'n3wth-theme',
+    storageKey = 'amberbockel-theme',
     attribute = 'data-theme',
   } = options
 

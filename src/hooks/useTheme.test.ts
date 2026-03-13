@@ -63,7 +63,7 @@ describe('useTheme', () => {
   it('persists theme to localStorage', () => {
     const { result } = renderHook(() => useTheme())
     act(() => result.current.setTheme('light'))
-    expect(storageMock.setItem).toHaveBeenCalledWith('n3wth-theme', 'light')
+    expect(storageMock.setItem).toHaveBeenCalledWith('amberbockel-theme', 'light')
   })
 
   it('reads theme from localStorage', () => {

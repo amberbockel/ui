@@ -1,4 +1,4 @@
-# v0 Integration Instructions for @n3wth/ui
+# v0 Integration Instructions for amberbockel-ui
 
 This design system is atomic, minimal, and iOS-inspired. When generating UI with v0, please follow these guidelines:
 
@@ -9,7 +9,7 @@ This design system is atomic, minimal, and iOS-inspired. When generating UI with
 - **Colors**: Use the semantic variables defined in the theme (e.g., `text-white`, `bg-bg`, `text-accent`).
 
 ## Component Usage
-- **Atoms**: Use `Button`, `Badge`, `Input`, and `Icon` from `@n3wth/ui`.
+- **Atoms**: Use `Button`, `Badge`, `Input`, and `Icon` from `amberbockel-ui`.
 - **Molecules**: Use `Card`, `CommandBox`, and `ThemeToggle`.
 - **Organisms**: Use `Nav`, `Hero`, and `Section` to structure pages.
 
@@ -19,17 +19,17 @@ This design system is atomic, minimal, and iOS-inspired. When generating UI with
 - For interactive cards, use the `glass-card` class or `Card` molecule.
 
 ## Utilities
-- Use the `cn` utility from `@n3wth/ui/utils` for class merging.
+- Use the `cn` utility from `amberbockel-ui/utils` for class merging.
 - Prefer fluid typography classes like `text-fluid-xl`.
 
 ## Examples
 To import a component:
 \`\`\`tsx
-import { Button, Card, Section } from "@n3wth/ui";
+import { Button, Card, Section } from "amberbockel-ui";
 \`\`\`
 
 To apply the design system's styles:
 Make sure to import the CSS in your root file:
 \`\`\`tsx
-import "@n3wth/ui/styles";
+import "amberbockel-ui/styles";
 \`\`\`

@@ -355,9 +355,9 @@ toast.${toastVariant === 'default' ? '' : toastVariant + '('}{ title: 'Done!', d
       {/* CommandBox */}
       <DemoBlock title="CommandBox">
         <div className="max-w-md">
-          <CommandBox command="npm install @n3wth/ui" />
+          <CommandBox command="npm install amberbockel-ui" />
         </div>
-        <CodeSnippet className="mt-4" code={`<CommandBox command="npm install @n3wth/ui" />`} />
+        <CodeSnippet className="mt-4" code={`<CommandBox command="npm install amberbockel-ui" />`} />
       </DemoBlock>
 
       {/* ThemeToggle */}

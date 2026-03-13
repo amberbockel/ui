@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface TestimonialBlockProps {
   quote: string;
   author: string;

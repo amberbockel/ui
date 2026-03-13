@@ -1,4 +1,4 @@
-# Contributing to n3wth/ui
+# Contributing to amberbockel-ui
 
 This repository is optimized for AI-driven development. If you are an AI assistant (Gemini, Claude, or v0) being asked to use this library, please follow these guidelines:
 
