@@ -1,6 +1,0 @@
-node_modules
-dist
-dist-demo
-*.local
-.DS_Store
-.vercel
