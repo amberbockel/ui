@@ -159,25 +159,46 @@ export function DocsLayout() {
       </div>
 
       <Footer
-        logo={<div className="scale-75 origin-left"><CustomLogo /></div>}
+        logo={
+          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
+            <div className="scale-75 origin-left"><CustomLogo /></div>
+          </a>
+        }
         description="Design leadership shaping how intelligent systems meet human judgment."
-        copyright="© 2026 Amber Heinbockel"
-        currentSite="amberbockel/ui - with major thanks and credit to"
+        copyright="© 2026 Amber Bockel"
+        currentSite="with major thanks and credit to"
         sites={[
-          { name: 'amberbockel/ui - with major thanks and credit to', href: 'https://amberbockel.github.io/ui/' },
+          { name: 'with major thanks and credit to', href: '#' },
+          { name: 'ui.n3wth.com', href: 'https://ui.n3wth.com/' },
         ]}
         sections={[
           {
-            title: 'Documentation',
-            links: docPages.map((p) => ({ label: p.title, href: `/docs/${p.slug}` })),
+            title: 'Navigate',
+            links: [
+              { label: 'Documentation', href: `${import.meta.env.BASE_URL || '/'}docs/getting-started` },
+              { label: 'Components', href: `${import.meta.env.BASE_URL || '/'}docs/components` },
+              { label: 'Hooks', href: `${import.meta.env.BASE_URL || '/'}docs/hooks` },
+            ],
+          },
+          {
+            title: 'Resources',
+            links: [
+              { label: 'amberbockel.com', href: 'https://amberbockel.com' },
+              { label: 'GitHub', href: 'https://github.com/amberbockel/ui' },
+            ],
           },
           {
             title: 'Legal',
             links: [
               { label: 'Privacy', href: `${import.meta.env.BASE_URL || '/'}docs/privacy` },
+              { label: 'Terms', href: `${import.meta.env.BASE_URL || '/'}docs/terms` },
               { label: 'MIT License', href: 'https://opensource.org/licenses/MIT' },
             ],
           },
+        ]}
+        legalLinks={[
+          { label: 'Privacy', href: `${import.meta.env.BASE_URL || '/'}docs/privacy` },
+          { label: 'Terms', href: `${import.meta.env.BASE_URL || '/'}docs/terms` },
         ]}
       />
     </div>
