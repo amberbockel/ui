@@ -65,6 +65,9 @@ export type { LabelProps } from './atoms/Label'
 export { Textarea } from './atoms/Textarea'
 export type { TextareaProps } from './atoms/Textarea'
 
+export { Logo } from './atoms/Logo'
+export type { LogoProps } from './atoms/Logo'
+
 // Molecules
 export {
   Card,

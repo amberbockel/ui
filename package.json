@@ -1,7 +1,7 @@
 {
   "name": "amberbockel-ui",
   "version": "0.1.2",
-  "description": "Atomic design system for amberbockel projects - flat, minimal, iOS-inspired",
+  "description": "Atomic design system for amberbockel projects - flat, minimal, delightful",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -92,9 +92,19 @@
     "design-system",
     "react",
     "tailwind",
-    "atomic-design"
+    "tailwindcss",
+    "atomic-design",
+    "components",
+    "ui",
+    "glassmorphism",
+    "dark-mode",
+    "typescript"
   ],
   "license": "MIT",
+  "homepage": "https://amberbockel.github.io/ui/",
+  "bugs": {
+    "url": "https://github.com/amberbockel/ui/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/amberbockel/ui"

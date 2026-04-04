@@ -1,6 +1,6 @@
 # v0 Integration Instructions for amberbockel-ui
 
-This design system is atomic, minimal, and iOS-inspired. When generating UI with v0, please follow these guidelines:
+This design system is atomic, minimal, and flat. When generating UI with v0, please follow these guidelines:
 
 ## Core Principles
 - **Minimalism**: Use whitespace effectively. Avoid unnecessary borders or shadows.

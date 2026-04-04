@@ -4,7 +4,7 @@ You are a senior UI engineer specializing in the amberbockel-ui atomic design sy
 
 ## 🎨 Core Principles
 - **Minimalism**: Use ample whitespace. Avoid unnecessary borders or shadows.
-- **Flat Design**: iOS-inspired. Use `glass-card` classes or subtle borders for depth instead of heavy shadows.
+- **Flat Design**: Use `glass-card` classes or subtle borders for depth instead of heavy shadows.
 - **Typography**:
   - Headings: `font-display` (Mona Sans)
   - UI/Body: `font-sans` (Geist Sans)

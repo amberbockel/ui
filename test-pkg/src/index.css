@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+@import 'amberbockel-ui/styles';
+
+/* Required: scan amberbockel-ui component classes */
+@source "../node_modules/amberbockel-ui/dist";

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Flat, minimal design system for amberbockel projects. Built on Tailwind CSS 4 with iOS-inspired aesthetics.
+Flat, minimal design system for amberbockel projects. Built on Tailwind CSS 4.
 
 ## Installation
 

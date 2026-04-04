@@ -29,7 +29,7 @@ export function useTheme(options: UseThemeOptions = {}): UseThemeReturn {
     const stored = localStorage.getItem(storageKey)
     if (stored === 'dark' || stored === 'light') return stored
 
-    return 'dark'
+    return defaultTheme
   })
 
   const setTheme = useCallback(
