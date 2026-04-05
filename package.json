@@ -31,10 +31,10 @@
     "lint": "eslint src",
     "size": "size-limit",
     "prepublishOnly": "npm run build",
-    "release:patch": "npm version patch -m 'chore: bump version to %s' && npm run registry:build && git add . && git commit -m 'chore: update registry' && git push && git push --tags && gh release create v$(node -p \"require('./package.json').version\") --generate-notes",
+    "release:patch": "npm version patch -m 'chore: bump version to %s' && npm run registry:build && git add . && (git diff --staged --quiet || git commit -m 'chore: update registry') && git push && git push --tags && gh release create v$(node -p \"require('./package.json').version\") --generate-notes",
     "registry:build": "npx shadcn@latest build",
-    "release:minor": "npm version minor -m 'chore: bump version to %s' && git push && git push --tags && gh release create v$(node -p \"require('./package.json').version\") --generate-notes",
-    "release:major": "npm version major -m 'chore: bump version to %s' && git push && git push --tags && gh release create v$(node -p \"require('./package.json').version\") --generate-notes"
+    "release:minor": "npm version minor -m 'chore: bump version to %s' && npm run registry:build && git add . && (git diff --staged --quiet || git commit -m 'chore: update registry') && git push && git push --tags && gh release create v$(node -p \"require('./package.json').version\") --generate-notes",
+    "release:major": "npm version major -m 'chore: bump version to %s' && npm run registry:build && git add . && (git diff --staged --quiet || git commit -m 'chore: update registry') && git push && git push --tags && gh release create v$(node -p \"require('./package.json').version\") --generate-notes"
   },
   "dependencies": {
     "clsx": "^2.1.1",
