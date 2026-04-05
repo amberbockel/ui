@@ -70,7 +70,7 @@ function Showcase() {
 
       {/* Nav */}
       <Nav
-        logo={<CustomLogo />}
+        logo={<Logo />}
         logoHref={import.meta.env.BASE_URL || '/'}
         items={[
           { label: 'Components', href: import.meta.env.BASE_URL || '/', isActive: true },
@@ -167,7 +167,7 @@ function Showcase() {
       <Footer
         logo={
           <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
-            <div className="scale-75 origin-left"><CustomLogo /></div>
+            <div className="scale-75 origin-left"><Logo /></div>
           </a>
         }
         description="Design leadership shaping how intelligent systems meet human judgment."
