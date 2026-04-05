@@ -3,7 +3,7 @@
 All components are organized using atomic design: atoms (primitives), molecules (compound), and organisms (layouts).
 
 ```tsx
-import { Button, Card, Nav, useTheme } from 'amberbockel/ui'
+import { Button, Card, Nav, useTheme } from 'amberbockel-ui'
 ```
 
 ## Atoms
@@ -43,6 +43,33 @@ Semantic label pill.
 | `variant` | `'default' \| 'sage' \| 'coral' \| 'mint' \| 'gold' \| 'outline'` | `'default'` | Color variant |
 | `size` | `'sm' \| 'md'` | `'md'` | Text size |
 
+### Logo
+
+The official amberbockel SVG wordmark. Stacks "amber" (geometric sans) above "bockel" (italic script). Fill colour uses `--color-white` so it automatically adapts to light and dark themes.
+
+```tsx
+import { Logo } from 'amberbockel-ui'
+
+<Logo />           // default — medium size
+<Logo size="sm" /> // small
+<Logo size="lg" /> // large
+```
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Controls height; width scales proportionally |
+| `className` | `string` | - | Additional classes (e.g. to override fill colour) |
+
+Use `<Logo />` instead of a text string in `Nav` and `Footer` — text logos will not reproduce the brand wordmark:
+
+```tsx
+// ✓ correct — renders the SVG wordmark
+<Nav logo={<Logo />} ... />
+
+// ✗ wrong — renders plain text in DM Sans
+<Nav logo="amberbockel" ... />
+```
+
 ### Input
 
 Text input with icon and error support.
@@ -75,7 +102,46 @@ Renders icons from the iconoir-react library.
 | `name` | `IconName` | required | Icon identifier |
 | `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| number` | `'md'` | Icon size |
 
-**Available icons:** `arrow-right`, `arrow-left`, `arrow-up`, `arrow-down`, `chevron-right`, `chevron-left`, `chevron-down`, `chevron-up`, `check`, `x`, `copy`, `search`, `menu`, `sun`, `moon`, `external`, `github`, `terminal`, `code`, `sparkles`, `plus`, `minus`, `settings`, `user`, `heart`, `star`, `mail`, `calendar`, `clock`, `bell`, `home`, `folder`, `file`, `trash`, `edit`, `eye`, `eye-off`, `lock`, `unlock`, `link`, `external-link`, `download`, `upload`, `refresh`, `filter`, `sort`, `grid`, `list`, `more-horizontal`, `more-vertical`, `info`, `warning`, `success`, `error`
+**Common UI patterns:**
+
+| Action | Icon name | Example |
+|---|---|---|
+| Confirm / success | `check` | form submit, copy confirmation |
+| Dismiss / close | `x` | modal close, toast dismiss |
+| Copy to clipboard | `copy` | code block copy button |
+| Search | `search` | input left icon, command palette |
+| Open menu | `menu` | mobile hamburger trigger |
+| Light mode | `sun` | theme toggle (current: light) |
+| Dark mode | `moon` | theme toggle (current: dark) |
+| Open external link | `external` | nav items with `external: true` |
+| GitHub | `github` | repo links, footer socials |
+| Terminal / CLI | `terminal` | code-related sections |
+| Code | `code` | syntax, snippets |
+| Add / new | `plus` | create actions |
+| Remove | `minus` | delete actions |
+| Settings | `settings` | user preferences |
+| User / profile | `user` | avatar fallback, account nav |
+| Lock (secured) | `lock` | auth, protected routes |
+| Unlock | `unlock` | unlocked/public state |
+| Navigate right | `arrow-right` | CTAs, list item links |
+| Navigate left | `arrow-left` | back button |
+| Expand down | `chevron-down` | accordion, select |
+| Info | `info` | tooltip trigger, info badge |
+| Warning | `warning` | alert, status indicator |
+| Download | `download` | file download actions |
+| Refresh | `refresh` | reload, retry |
+| Filter | `filter` | list/table filter |
+| Grid view | `grid` | layout toggle |
+| List view | `list` | layout toggle |
+| Overflow menu | `more-horizontal` | action menu trigger |
+| Starred | `star` | favourites |
+| Notifications | `bell` | notification indicator |
+| Trash / delete | `trash` | destructive action |
+| Edit | `edit` | inline edit trigger |
+| Hide | `eye-off` | password field toggle |
+| Show | `eye` | password field toggle |
+
+**All available names:** `arrow-right`, `arrow-left`, `arrow-up`, `arrow-down`, `chevron-right`, `chevron-left`, `chevron-down`, `chevron-up`, `check`, `x`, `copy`, `search`, `menu`, `sun`, `moon`, `external`, `github`, `terminal`, `code`, `sparkles`, `plus`, `minus`, `settings`, `user`, `heart`, `star`, `mail`, `calendar`, `clock`, `bell`, `home`, `folder`, `file`, `trash`, `edit`, `eye`, `eye-off`, `lock`, `unlock`, `link`, `external-link`, `download`, `upload`, `refresh`, `filter`, `sort`, `grid`, `list`, `more-horizontal`, `more-vertical`, `info`, `warning`, `success`, `error`
 
 ### Switch
 
@@ -154,7 +220,7 @@ Loading placeholder with shimmer animation.
 Syntax-highlighted code display with copy button.
 
 ```tsx
-<CodeBlock code="npm install github:amberbockel/ui" language="bash" />
+<CodeBlock code="npm install amberbockel-ui" language="bash" />
 ```
 
 ### AnimatedText

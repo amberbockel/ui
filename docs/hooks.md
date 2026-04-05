@@ -5,7 +5,7 @@
 Manages dark/light mode with localStorage persistence and system preference detection.
 
 ```tsx
-import { useTheme } from 'amberbockel/ui'
+import { useTheme } from 'amberbockel-ui'
 
 function App() {
   const { theme, toggleTheme, setTheme, isDark, isLight } = useTheme()
@@ -41,7 +41,7 @@ function App() {
 Responds to CSS media queries. SSR-safe (returns `false` or custom default on server).
 
 ```tsx
-import { useMediaQuery, useIsMobile, useBreakpoint } from 'amberbockel/ui'
+import { useMediaQuery, useIsMobile, useBreakpoint } from 'amberbockel-ui'
 
 function Component() {
   const isWide = useMediaQuery('(min-width: 1200px)')
@@ -66,7 +66,7 @@ function Component() {
 **Breakpoints constant:**
 
 ```tsx
-import { BREAKPOINTS } from 'amberbockel/ui'
+import { BREAKPOINTS } from 'amberbockel-ui'
 // { sm: 640, md: 768, lg: 1024, xl: 1280, '2xl': 1536 }
 ```
 
@@ -75,7 +75,7 @@ import { BREAKPOINTS } from 'amberbockel/ui'
 Registers global keyboard shortcuts with modifier key support.
 
 ```tsx
-import { useKeyboardShortcuts, getModifierKey, formatShortcut } from 'amberbockel/ui'
+import { useKeyboardShortcuts, getModifierKey, formatShortcut } from 'amberbockel-ui'
 
 function App() {
   useKeyboardShortcuts([
@@ -100,7 +100,7 @@ function App() {
 Detects the user's motion preference.
 
 ```tsx
-import { useReducedMotion, useMotionConfig, usePrefersHighContrast } from 'amberbockel/ui'
+import { useReducedMotion, useMotionConfig, usePrefersHighContrast } from 'amberbockel-ui'
 
 function Component() {
   const prefersReduced = useReducedMotion()
@@ -114,7 +114,7 @@ function Component() {
 Toast notification system. Requires `ToastProvider` at the app root.
 
 ```tsx
-import { ToastProvider, useToast } from 'amberbockel/ui'
+import { ToastProvider, useToast } from 'amberbockel-ui'
 
 // Root
 <ToastProvider maxToasts={5} position="top-right">
@@ -162,7 +162,7 @@ These hooks require `gsap` as a peer dependency. All respect `prefers-reduced-mo
 Scroll-triggered entrance animations.
 
 ```tsx
-import { useScrollReveal } from 'amberbockel/ui'
+import { useScrollReveal } from 'amberbockel-ui'
 
 function Component() {
   const ref = useScrollReveal({
@@ -195,7 +195,7 @@ function Component() {
 Animate a number from 0 to a target value.
 
 ```tsx
-import { useCountUp } from 'amberbockel/ui'
+import { useCountUp } from 'amberbockel-ui'
 
 function Stat() {
   const { ref, value } = useCountUp({ end: 1234, duration: 2 })
@@ -208,7 +208,7 @@ function Stat() {
 Staggered entrance animation for list items.
 
 ```tsx
-import { useStaggerList } from 'amberbockel/ui'
+import { useStaggerList } from 'amberbockel-ui'
 
 function List() {
   const ref = useStaggerList({ stagger: 0.05, duration: 0.4 })

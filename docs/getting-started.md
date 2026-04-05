@@ -8,104 +8,104 @@
 
 ## Install
 
-Since this repository is custom-built and hosted on GitHub, install it directly from the URL:
+```bash
+npm install amberbockel-ui
+```
+
+**Peer dependencies** — React is required; GSAP is optional:
 
 ```bash
-npm install github:amberbockel/ui
+npm install react react-dom
+npm install gsap  # optional, needed for AnimatedText and scroll animations
 ```
 
 ## Setup
 
-### 1. Import Styles
+### 1. Import styles
 
-Add the global stylesheet to your React app entry point:
-
-```tsx
-import 'amberbockel/ui/styles'
-```
-
-This provides:
-- Font faces (Prata, DM Sans)
-- CSS custom properties for theming
-- Glass utility classes
-- Animation keyframes
-- Reduced motion and high contrast support
-
-### 2. Configure Tailwind CSS 4
-
-Add the `@source` directive so Tailwind scans the library's class names:
+In your root CSS file:
 
 ```css
 @import 'tailwindcss';
-@import 'amberbockel/ui/styles';
+@import 'amberbockel-ui/styles';
 
-/* Required: scan amberbockel/ui for Tailwind classes */
-@source "../node_modules/amberbockel/ui/dist";
+/* Required: lets Tailwind scan component class names */
+@source "../node_modules/amberbockel-ui/dist";
 ```
 
-Without this directive, component styles that use Tailwind classes won't be included in your CSS output.
+This provides:
+- Font imports (Prata + DM Sans from Google Fonts)
+- CSS custom properties for dark and light theming
+- Glass utility classes (`.glass-card`, `.glass-pill`, `.glass-nav`)
+- Background gradient classes (`.mesh-gradient`, `.sketch-top-gradient`)
+- Animation keyframes and reduced-motion support
+
+### 2. Wrap your app
+
+```tsx
+// main.tsx
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import { App } from './App'
+
+// Default to light mode on first visit
+if (!localStorage.getItem('amberbockel-theme')) {
+  localStorage.setItem('amberbockel-theme', 'light')
+}
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode><App /></StrictMode>
+)
+```
 
 ### 3. Use components
 
 ```tsx
-import { Button, Card, CardHeader, CardTitle, CardContent } from 'amberbockel/ui'
-import 'amberbockel/ui/styles'
+import { Button, Card, Hero, Section, Logo, useTheme } from 'amberbockel-ui'
 
-export default function App() {
+export function App() {
+  const { theme, toggleTheme } = useTheme({ defaultTheme: 'light' })
+
   return (
-    <Card variant="glass">
-      <CardHeader>
-        <CardTitle>Hello</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Button variant="primary">Click me</Button>
-      </CardContent>
-    </Card>
+    <div data-theme={theme}>
+      <Card>
+        <Hero title="Hello" description="Flat, minimal design system." />
+        <Button variant="primary">Get started</Button>
+      </Card>
+    </div>
   )
 }
 ```
 
-## Optional: GSAP animations
+## The signature look
 
-Some hooks (`useScrollReveal`, `useCountUp`, `useStaggerList`, `usePageTransition`, `useTextReveal`, `useButtonPulse`) and the `AnimatedText` component require GSAP as a peer dependency:
-
-```bash
-npm install gsap
-```
-
-GSAP is optional. All other components and hooks work without it.
-
-## Fonts
-
-The stylesheet automatically imports the required typography from Google Fonts:
-
-- `Prata` (display/headings)
-- `DM Sans` (body/UI and code)
-
-You no longer need to manually copy any `.woff2` files.
-
-## Quick example: full page
-
-To re-create Amber's signature look, apply the dark background classes and insert the mesh gradient background utility classes immediately inside your root container:
+To reproduce the amberbockel aesthetic — iridescent gradient hero, glass cards, Prata headlines — apply these three things to your root wrapper:
 
 ```tsx
-import { Nav, Hero, Section, SectionHeader, Footer, useTheme } from 'amberbockel/ui'
-import 'amberbockel/ui/styles'
+import { Nav, Hero, Section, Footer, Logo, useTheme } from 'amberbockel-ui'
 
 function App() {
-  const { theme, toggleTheme } = useTheme()
+  const { theme, toggleTheme } = useTheme({ defaultTheme: 'light' })
 
   return (
-    <div className="min-h-screen relative bg-[var(--color-bg)] text-[var(--color-white)]">
-      {/* ⚠️ Crucial for the Amber Bockel aesthetic: */}
-      <div className="mesh-gradient"></div>
-      <div className="sketch-top-gradient"></div>
+    <div
+      data-theme={theme}
+      style={{ minHeight: '100vh', background: 'var(--color-bg)', color: 'var(--color-white)', position: 'relative' }}
+    >
+      {/* 1. Full-screen ambient colour orbs (fixed, behind everything) */}
+      <div className="mesh-gradient" />
 
+      {/* 2. Iridescent top-of-page wash (light: lavender/peach; dark: magenta/indigo) */}
+      <div className="sketch-top-gradient" />
+
+      {/* 3. Nav with the exported Logo wordmark */}
       <Nav
-        logo="My App"
+        logo={<Logo />}
+        logoHref="/"
         items={[
-          { label: 'Features', href: '#features' },
-          { label: 'GitHub', href: 'https://github.com/amberbockel/ui', external: true },
+          { label: 'Work', href: '#work' },
+          { label: 'GitHub', href: 'https://github.com/amberbockel', external: true },
         ]}
         theme={theme}
         onThemeToggle={toggleTheme}
@@ -113,28 +113,48 @@ function App() {
         hideOnScroll
       />
 
-      <Hero
-        title="Build fast"
-        description="A flat, minimal design system."
-        ctas={[{ label: 'Get Started', href: '#features' }]}
-      />
-
-      <Section id="features">
-        <SectionHeader title="Features" description="Everything you need." />
+      <Section id="hero">
+        <Hero
+          badge="v0.1.2"
+          title="Your headline here."
+          description="Supporting copy goes here."
+          ctas={[
+            { label: 'Get Started', href: '#work', variant: 'primary' },
+            { label: 'GitHub', href: 'https://github.com/amberbockel', variant: 'secondary' },
+          ]}
+          size="large"
+        />
       </Section>
 
       <Footer
-        copyright="© 2026 Amber Heinbockel"
-        sites={[{ name: 'amberbockel/ui', href: 'https://github.com/amberbockel/ui' }]}
+        logo={<Logo size="sm" />}
+        copyright="© 2026 Your Name"
+        sections={[
+          { title: 'Links', links: [{ label: 'GitHub', href: 'https://github.com/amberbockel' }] },
+        ]}
       />
     </div>
   )
 }
 ```
 
+## Typography notes
+
+**Prata** is the display font (`font-display`). It ships as a **single weight — 400 regular only**. There is no bold or semibold variant. Applying `font-weight: 600+` causes the browser to synthesize a fake bold, which produces chunky, uneven strokes. Keep all Prata headings at weight 400.
+
+**DM Sans** (`font-sans`) is the variable body font and handles all weights (300–800) cleanly.
+
+```css
+/* ✓ correct */
+h1 { font-family: var(--font-display); font-weight: 400; }
+
+/* ✗ avoid — synthesized bold looks wrong with Prata */
+h1 { font-family: var(--font-display); font-weight: 600; }
+```
+
 ## Container alignment
 
-All sections use consistent container constraints. Match these across your layout:
+All sections use consistent container constraints. Match these across your layout to stay aligned with Nav and Footer:
 
 ```tsx
 <div className="mx-auto max-w-6xl px-6 md:px-12">
@@ -143,3 +163,11 @@ All sections use consistent container constraints. Match these across your layou
 ```
 
 The `Nav`, `Footer`, and `Section` components handle this internally.
+
+## TypeScript
+
+The library ships full TypeScript types. No `@types` package needed.
+
+```tsx
+import type { LogoProps, HeroProps, NavItem } from 'amberbockel-ui'
+```

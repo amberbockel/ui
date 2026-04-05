@@ -28,8 +28,8 @@ CORE PRINCIPLES:
   - Heading sizes should be slightly reduced, keeping styling refined.
 
 TECHNICAL REQUIREMENTS:
-- Imports: Import components exclusively from `amberbockel/ui` (e.g., `import { Button, Hero } from 'amberbockel/ui'`).
-- Setup: Ensure `import 'amberbockel/ui/styles'` is present in `App.tsx` or `main.tsx`.
+- Imports: Import components exclusively from `amberbockel-ui` (e.g., `import { Button, Hero } from 'amberbockel-ui'`).
+- Setup: Ensure `import 'amberbockel-ui/styles'` is present in `App.tsx` or `main.tsx`.
 - Dark Mode by Default: The design system is optimized for sleek, dark neon aesthetics.
 
 COMPONENT USAGE:
@@ -48,7 +48,7 @@ If you use [v0 by Vercel](https://v0.dev) to generate React components, you can 
    `https://github.com/amberbockel/ui/blob/main/registry.json`
 
 When you prompt v0, you can now say:  
-*"Create a pricing page using the amberbockel/ui design system"*
+*"Create a pricing page using the amberbockel-ui design system"*
 
 ---
 
@@ -57,8 +57,8 @@ When you prompt v0, you can now say:
 If you aren't using an AI, constructing an elegant layout is still just playing with Lego blocks. Here is the perfect boilerplate to start any page:
 
 ```tsx
-import { Nav, Hero, Section, Footer } from 'amberbockel/ui'
-import 'amberbockel/ui/styles'
+import { Nav, Hero, Section, Footer } from 'amberbockel-ui'
+import 'amberbockel-ui/styles'
 
 export default function MyPage() {
   return (
