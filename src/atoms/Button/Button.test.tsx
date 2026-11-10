@@ -15,7 +15,7 @@ describe('Button', () => {
 
   it('applies variant classes', () => {
     const { rerender } = render(<Button variant="primary">Btn</Button>)
-    expect(screen.getByRole('button')).toHaveClass('bg-[var(--color-white)]')
+    expect(screen.getByRole('button')).toHaveClass('bg-[var(--color-success)]')
 
     rerender(<Button variant="ghost">Btn</Button>)
     expect(screen.getByRole('button')).toHaveClass('bg-transparent')
