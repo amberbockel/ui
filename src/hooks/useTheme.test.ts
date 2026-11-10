@@ -35,29 +35,31 @@ describe('useTheme', () => {
     })
   })
 
-  it('returns dark theme by default', () => {
+  it('returns light theme by default', () => {
     const { result } = renderHook(() => useTheme())
-    expect(result.current.theme).toBe('dark')
-    expect(result.current.isDark).toBe(true)
-    expect(result.current.isLight).toBe(false)
+    expect(result.current.theme).toBe('light')
+    expect(result.current.isLight).toBe(true)
+    expect(result.current.isDark).toBe(false)
   })
 
   it('respects defaultTheme option', () => {
-    const { result } = renderHook(() => useTheme({ defaultTheme: 'light' }))
-    expect(result.current.theme).toBe('light')
+    const { result } = renderHook(() => useTheme({ defaultTheme: 'dark' }))
+    expect(result.current.theme).toBe('dark')
   })
 
   it('toggles theme', () => {
     const { result } = renderHook(() => useTheme())
     act(() => result.current.toggleTheme())
+    expect(result.current.theme).toBe('dark')
+    expect(result.current.isDark).toBe(true)
+    act(() => result.current.toggleTheme())
     expect(result.current.theme).toBe('light')
-    expect(result.current.isLight).toBe(true)
   })
 
   it('sets theme directly', () => {
     const { result } = renderHook(() => useTheme())
-    act(() => result.current.setTheme('light'))
-    expect(result.current.theme).toBe('light')
+    act(() => result.current.setTheme('dark'))
+    expect(result.current.theme).toBe('dark')
   })
 
   it('persists theme to localStorage', () => {
@@ -67,16 +69,16 @@ describe('useTheme', () => {
   })
 
   it('reads theme from localStorage', () => {
-    storageMock.getItem.mockReturnValueOnce('light')
+    storageMock.getItem.mockReturnValueOnce('dark')
     const { result } = renderHook(() => useTheme())
-    expect(result.current.theme).toBe('light')
+    expect(result.current.theme).toBe('dark')
   })
 
   it('sets data-theme attribute on document', () => {
     const { result } = renderHook(() => useTheme())
-    expect(document.documentElement.getAttribute('data-theme')).toBe('dark')
-    act(() => result.current.setTheme('light'))
     expect(document.documentElement.getAttribute('data-theme')).toBe('light')
+    act(() => result.current.setTheme('dark'))
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark')
   })
 
   it('uses custom storageKey', () => {
