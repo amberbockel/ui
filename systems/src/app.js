@@ -270,7 +270,7 @@
     if (site.id === 'sunrise') root.style.removeProperty('--wash'); else set('--wash', c.heroBg);
     set('--f-display', site.fonts.display); set('--f-body', site.fonts.body);
     set('--f-bls', sh.bodyLs || 'normal'); set('--f-dw', sh.displayWeight); set('--f-dls', sh.displayLs); set('--f-dlh', sh.displayLh); set('--f-ds', sh.displayScale);
-    set('--label-case', sh.labelCase || 'none'); set('--label-ls', sh.labelLs || 'inherit'); root.style.colorScheme = site.darkFirst ? 'dark' : ''; set('--r-btn', sh.rBtn); set('--r-card', sh.rCard); set('--r-ctl', sh.rCtl);
+    set('--label-case', sh.labelCase || 'none'); set('--label-ls', sh.labelLs || 'inherit'); root.style.colorScheme = site.darkFirst ? 'dark' : ''; set('--btn-shadow', c.btnShadow || 'none'); set('--r-btn', sh.rBtn); set('--r-card', sh.rCard); set('--r-ctl', sh.rCtl);
     root.setAttribute('data-site', site.id);
     try { localStorage.setItem('os-theme', site.id); } catch (e) {}
     $('#site-switch').innerHTML = '<span class="switch__label">Theme</span>' + THEMES.map((t) => `<button data-site="${t.id}" aria-pressed="${t.id === site.id}"><i style="background:${t[mode()].accent}"></i>${esc(t.name)}</button>`).join('');
