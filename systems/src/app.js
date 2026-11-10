@@ -32,32 +32,12 @@
   let uid = 0;
   const frame = (i, inner) => `<svg viewBox="0 0 300 300" role="img" aria-hidden="true"><rect width="300" height="300" fill="var(--ds-art${i + 1})"/>${inner}</svg>`;
   const ART = {
-    drink(i) {
-      const c = [['#ff7fa8', '#fff4f7', '#ff3d77'], ['#ffab5e', '#fff3df', '#ff7a3d'], ['#9d7bff', '#f6eeff', '#6f43ee']][i];
-      const id = 'g' + ++uid;
-      return frame(i, `<ellipse cx="150" cy="248" rx="62" ry="9" fill="#00000018"/>
-        <clipPath id="${id}"><path d="M98 92h104l-13 146q-39 12-78 0Z"/></clipPath>
-        <g clip-path="url(#${id})"><rect x="90" y="92" width="120" height="160" fill="${c[1]}"/>
-        <path d="M90 168q20-16 40 0t40 0 40 0v90H90Z" fill="${c[0]}"/>
-        <path d="M90 108q30 12 60 0t60 0V92H90Z" fill="#ffffff"/></g>
-        <path d="M98 92h104l-13 146q-39 12-78 0Z" fill="none" stroke="#ffffffcc" stroke-width="5"/>
-        <path d="M168 60 150 200" stroke="${c[2]}" stroke-width="7" stroke-linecap="round"/>
-        <circle cx="122" cy="88" r="13" fill="${c[2]}"/><path d="M122 76q4-12 14-14" stroke="#3f7a3a" stroke-width="3" fill="none" stroke-linecap="round"/>`);
-    },
-    ceramic(i) {
-      const slab = '<path d="M40 232 96 206h128l40 30-30 26H70Z" fill="#8f8c86"/><path d="M40 232h224l-30 30H70Z" fill="#77746e"/>';
-      const piece = [
-        '<path d="M132 78h36v22q30 30 30 66 0 38-30 48h-36q-30-10-30-48 0-36 30-66Z" fill="#a85f3c"/><path d="M132 78h36v10h-36Z" fill="#8a4a2c"/>',
-        '<path d="M70 150h160q-4 58-52 64h-56q-48-6-52-64Z" fill="#70724a"/><ellipse cx="150" cy="150" rx="80" ry="13" fill="#8b8d62"/>',
-        '<path d="M102 136h84v44q0 34-42 34t-42-34Z" fill="#bca98b"/><ellipse cx="144" cy="136" rx="42" ry="9" fill="#d2c2a6"/><path d="M186 150q28 0 28 20t-30 20" fill="none" stroke="#bca98b" stroke-width="10"/>',
-      ][i];
-      return frame(i, slab + piece);
-    },
-    object(i) {
+    shape(i) {
+      const ink = '#1b1517', pop = 'var(--ds-accent)';
       const o = [
-        '<ellipse cx="150" cy="244" rx="52" ry="9" fill="#0b0f0c"/><path d="M150 244V140" stroke="#0b0f0c" stroke-width="8"/><path d="M104 150 124 86h52l20 64Z" fill="#0b0f0c"/><path d="M110 150h80l-6 10h-68Z" fill="#f6e7b8"/>',
-        '<ellipse cx="150" cy="246" rx="58" ry="8" fill="#00000022"/><rect x="100" y="110" width="92" height="132" rx="12" fill="#ffffff"/><rect x="100" y="110" width="92" height="14" rx="7" fill="#0b0f0c"/><path d="M192 140q34 0 34 34t-34 34" fill="none" stroke="#ffffff" stroke-width="12"/>',
-        '<g transform="rotate(-8 150 150)"><rect x="92" y="64" width="116" height="172" rx="6" fill="#0b0f0c"/><rect x="178" y="64" width="10" height="172" fill="#c9d1c3"/><rect x="108" y="88" width="50" height="18" rx="3" fill="#c9d1c3"/></g>',
+        `<circle cx="118" cy="150" r="64" fill="${ink}"/><rect x="150" y="96" width="92" height="92" fill="${pop}"/><circle cx="196" cy="208" r="26" fill="#ffffff"/>`,
+        `<path d="M78 236V150a72 72 0 0 1 144 0v86Z" fill="${ink}"/><path d="M118 236v-80a32 32 0 0 1 64 0v80Z" fill="${pop}"/><rect x="60" y="236" width="180" height="10" fill="${ink}"/>`,
+        `<path d="M150 56l22 60 62-18-38 52 38 52-62-18-22 60-22-60-62 18 38-52-38-52 62 18Z" fill="${ink}"/><circle cx="150" cy="150" r="30" fill="${pop}"/>`,
       ][i];
       return frame(i, o);
     },
@@ -86,63 +66,54 @@
 
   /* ---------- storefront demo, same markup for every theme ---------- */
   function demo(t) {
-    const c = t.content, p = c.products;
-    const stock = [[42, 'Shelf A'], [128, 'Shelf B'], [9, 'Back room']];
+    const c = t.content, initials = c.quote.author.split(' ').map((w) => w[0]).join('');
     return `
     <div class="ds-nav">
       <span class="ds-nav__brand">${esc(c.brand)}</span>
-      <div class="ds-nav__links"><a class="ds-navlink" aria-current="page">Shop</a><a class="ds-navlink">New in</a><a class="ds-navlink">Journal</a><a class="ds-navlink">Help</a></div>
-      <div class="ds-nav__tools"><button class="ds-iconbtn" aria-label="Search">${ic('search')}</button><button class="ds-iconbtn" aria-label="Account">${ic('user')}</button><button class="ds-iconbtn" aria-label="Bag">${ic('bag')}</button><button class="ds-btn ds-btn--primary ds-btn--sm">Sign in</button></div>
+      <div class="ds-nav__links">${c.nav.map((x, i) => `<a class="ds-navlink"${i === 0 ? ' aria-current="page"' : ''}>${esc(x)}</a>`).join('')}</div>
+      <div class="ds-nav__tools"><button class="ds-iconbtn" data-toggle-mode aria-label="Switch between light and dark">${ic(mode() === 'dark' ? 'sun' : 'moon')}</button><button class="ds-btn ds-btn--primary ds-btn--sm">Book a session</button></div>
     </div>
-    <div class="ds-hero"><h2 class="ds-display">${esc(c.hero[0])}<br>${esc(c.hero[1])}</h2><p>${esc(c.sub)}</p></div>
+    <div class="ds-hero"><span class="ds-badge ds-badge--outline">${esc(c.badge)}</span><h2 class="ds-display">${esc(c.hero[0])}<br>${esc(c.hero[1])}</h2><p>${esc(c.sub)}</p>
+      <div class="sys__row"><button class="ds-btn ds-btn--primary">Book a session</button><button class="ds-btn ds-btn--secondary">Read articles</button></div></div>
     <div class="demo-body">
-      <div class="prod-grid">${p.map((x, i) => `
+      <section class="stack">
+        <p class="sec-label">How I work</p>
+        <div class="stats">${c.stats.map(([n, l]) => `<div class="ds-card ds-stat"><b>${esc(n)}</b><span>${esc(l)}</span></div>`).join('')}</div>
+      </section>
+      <div class="prod-grid">${c.cards.map((x, i) => `
         <article class="prod"><div class="prod__img">${art(t, i)}</div>
           <div class="prod__body">${badge(x.tag, i)}<h3 class="ds-card__title">${esc(x.name)}</h3><p>${esc(x.desc)}</p>
-            <div class="prod__buy"><input class="ds-input ds-input--sm" id="qty-${i}" type="number" min="1" value="1" aria-label="Quantity of ${esc(x.name)}"><button class="ds-btn ds-btn--secondary ds-btn--sm">Add to bag</button></div>
+            <div class="prod__buy"><button class="ds-btn ds-btn--secondary ds-btn--sm">${esc(x.cta)}${ic('arrow')}</button></div>
           </div></article>`).join('')}
       </div>
       <div class="two">
-        <section class="ds-card stack">
-          <h3 class="ds-card__title">Checkout</h3>
-          <div class="ds-field"><label class="ds-label" for="co-email">Email</label><input class="ds-input" id="co-email" type="email" placeholder="you@example.com"></div>
-          <div class="stack" style="gap:10px"><span class="ds-label">Delivery</span>
-            <label class="opt"><input class="ds-check" type="radio" name="ship" id="ship-1" checked><span>Standard<small>3 to 5 working days</small></span><b>$6.00</b></label>
-            <label class="opt"><input class="ds-check" type="radio" name="ship" id="ship-2"><span>Next day<small>Order before 2 pm</small></span><b>$14.00</b></label>
-          </div>
-          <div class="ds-field"><label class="ds-label" for="co-card">Card number</label><input class="ds-input" id="co-card" inputmode="numeric" placeholder="1234 1234 1234 1234"></div>
-          <label class="opt"><input class="ds-check" type="checkbox" id="co-save" checked><span>Save these details<small>Faster checkout next time.</small></span></label>
-          <button class="ds-btn ds-btn--primary ds-btn--block">${ic('lock')}Pay $${(38 + 6).toFixed(2)}</button>
+        <section class="ds-card quote">
+          <span class="quote__mark ds-display" aria-hidden="true">“</span>
+          <p class="quote__text ds-display">${esc(c.quote.text)}</p>
+          <div class="quote__by"><span class="quote__avatar">${esc(initials)}</span><span><b>${esc(c.quote.author)}</b><small>${esc(c.quote.role)}</small></span></div>
         </section>
         <section class="ds-card stack">
-          <h3 class="ds-card__title">${esc(c.brand)} assistant</h3>
-          <div class="chat">
-            <div class="bub bub--me">When does my order arrive?</div>
-            <div class="bub bub--bot">Order 2207, the ${esc(p[0].name)} and the ${esc(p[2].name)}, left the studio this morning. It is due tomorrow before 6 pm.</div>
-            <div class="bub bub--me">Can I change the address?</div>
-            <div class="bub bub--bot">Yes, until the courier scans it at the depot tonight. Want me to open the address form?</div>
-            <div class="chips"><button class="ds-btn ds-btn--secondary ds-btn--sm">Change address</button><button class="ds-btn ds-btn--secondary ds-btn--sm">Track parcel</button><button class="ds-btn ds-btn--secondary ds-btn--sm">Start a return</button></div>
-          </div>
-          <div class="ds-cmd" style="font-family:inherit;margin-top:auto"><span class="ds-muted">Ask about an order</span><button class="ds-btn ds-btn--primary ds-btn--sm" aria-label="Send">${ic('up')}</button></div>
+          <h3 class="ds-card__title">Mentorship</h3>
+          <div><div class="ds-tabs" role="tablist">${c.tabs.map(([x], i) => `<button class="ds-tab" role="tab" aria-selected="${i === 0}" data-tab="${i}">${esc(x)}</button>`).join('')}</div></div>
+          <p id="tab-out" class="ds-muted" style="margin:0;min-height:3em">${esc(c.tabs[0][1])}</p>
+          <div class="ds-field"><label class="ds-label" for="goal">What are you working on?</label><input class="ds-input" id="goal" placeholder="Enter your mentoring goals..."></div>
+          <div class="sys__row"><button class="ds-btn ds-btn--primary" id="toast-btn">Request a session</button><span id="toast-out"></span></div>
         </section>
       </div>
       <div class="two two--rev">
         <section class="ds-card stack">
-          <div class="row-between"><h3 class="ds-card__title">Inventory</h3><button class="ds-btn ds-btn--primary ds-btn--sm">${ic('plus')}Add item</button></div>
-          <div class="ds-alert">${ic('alert')}1 item is running low</div>
-          <div class="scroll-x"><table class="ds-table"><thead><tr><th>Item</th><th>In stock</th><th>Location</th><th>Tag</th></tr></thead><tbody>
-            ${p.map((x, i) => `<tr><td><div class="item"><span class="thumb">${art(t, i)}</span><span>${esc(x.name)}<small>${esc(x.spec)}</small></span></div></td><td class="num">${stock[i][0]}</td><td>${stock[i][1]}</td><td>${badge(x.tag, i)}</td></tr>`).join('')}
-          </tbody></table></div>
+          <h3 class="ds-card__title">Use it</h3>
+          <div class="ds-cmd"><code>npm install amberbockel-ui</code><button class="ds-btn ds-btn--ghost ds-btn--sm" id="cmd-copy" aria-label="Copy">${ic('copy')}</button></div>
+          ${t.external ? code("import { Button } from 'amberbockel-ui'\nimport 'amberbockel-ui/styles'") : code(`@import 'amberbockel-ui/themes/${t.id}.css';\n@import 'amberbockel-ui/themes/components.css';`)}
+          <div class="ds-alert">${ic('alert')}${t.external ? 'Released as a React package.' : 'Preview theme. CSS only for now.'}</div>
         </section>
         <section class="ds-card stack">
-          <h3 class="ds-card__title">This week</h3>
-          <div class="row-between"><div class="ds-stat"><b>$4,180</b><span>Revenue</span></div><div class="ds-stat"><b>+12%</b><span>Orders</span></div></div>
-          <div class="act"><span>Order 2207<small>Paid, 1:59 pm</small></span><b>+$44</b></div>
-          <div class="act"><span>Order 2206<small>Refunded, 12:40 pm</small></span><b>−$19</b></div>
-          <div class="act"><span>Order 2205<small>Paid, 10:30 am</small></span><b>+$86</b></div>
+          <h3 class="ds-card__title">Topics</h3>
+          ${c.topics.map(([a, b]) => `<div class="act"><span>${esc(a)}<small>${esc(b)}</small></span></div>`).join('')}
         </section>
       </div>
-    </div>`;
+    </div>
+    <div class="ds-footer"><span>${esc(c.brand)}</span><span>Work · Mentorship · Writing · About</span></div>`;
   }
 
   /* ---------- views ---------- */
@@ -226,33 +197,33 @@
 
         <section class="doc__sec" id="sec-atoms"><header><h2 class="ds-display">Atoms</h2><p>The smallest pieces. Nothing here knows about layout.</p></header>
           ${spec('Button', `<button class="ds-btn ds-btn--primary">Primary</button><button class="ds-btn ds-btn--secondary">Secondary</button><button class="ds-btn ds-btn--ghost">Ghost</button><button class="ds-btn ds-btn--primary ds-btn--sm">Small</button><button class="ds-btn ds-btn--primary ds-btn--lg">Large${ic('arrow')}</button>`, '<button class="ds-btn ds-btn--primary">Primary</button>\n<button class="ds-btn ds-btn--secondary ds-btn--sm">Small secondary</button>')}
-          ${spec('Badge', `<span class="ds-badge">Default</span>${badge(c.products[0].tag, 0)}${badge(c.products[1].tag, 1)}${badge(c.products[2].tag, 2)}<span class="ds-badge ds-badge--outline">Outline</span>`, '<span class="ds-badge ds-badge--1">New</span>')}
+          ${spec('Badge', `<span class="ds-badge">Default</span>${badge(c.cards[0].tag, 0)}${badge(c.cards[1].tag, 1)}${badge(c.cards[2].tag, 2)}<span class="ds-badge ds-badge--outline">Outline</span>`, '<span class="ds-badge ds-badge--1">New</span>')}
           ${spec('Input', `<div class="ds-field" style="flex:1 1 240px"><label class="ds-label" for="doc-in">Email</label><input class="ds-input" id="doc-in" placeholder="you@example.com"></div><label class="opt"><input class="ds-check" type="checkbox" id="doc-ck" checked><span>Remember me</span></label>`, '<div class="ds-field">\n  <label class="ds-label" for="email">Email</label>\n  <input class="ds-input" id="email">\n</div>')}
           ${spec('Icon', `<div class="ds-icons">${['search', 'user', 'bag', 'heart', 'star', 'arrow', 'plus', 'check', 'lock', 'moon'].map((n) => `<span title="${n}">${ic(n)}</span>`).join('')}</div>`)}
           ${spec('CodeBlock', '', '<pre class="ds-code"><code>npm run build</code></pre>', 'spec__demo--plain')}
         </section>
 
         <section class="doc__sec" id="sec-molecules"><header><h2 class="ds-display">Molecules</h2><p>Atoms composed into something with one clear job.</p></header>
-          ${spec('Card', `<div class="ds-card stack" style="background:var(--ds-bg);max-width:340px"><h4 class="ds-card__title">${esc(c.products[0].name)}</h4><span class="ds-muted">${esc(c.products[0].desc)}</span><div><button class="ds-btn ds-btn--secondary ds-btn--sm">Add to bag</button></div></div>`, '<div class="ds-card">\n  <h4 class="ds-card__title">Title</h4>\n  …\n</div>')}
-          ${spec('Stat', `<div class="ds-stat"><b>$4,180</b><span>Revenue</span></div><div class="ds-stat" style="margin-left:24px"><b>+12%</b><span>Orders</span></div>`, '<div class="ds-stat"><b>$4,180</b><span>Revenue</span></div>')}
-          ${spec('Tabs', `<div class="stack"><div class="ds-tabs" role="tablist">${['Overview', 'Details', 'Care'].map((x, i) => `<button class="ds-tab" role="tab" aria-selected="${i === 0}" data-tab="${i}">${x}</button>`).join('')}</div><span id="tab-out" class="ds-muted">${esc(c.products[0].desc)}</span></div>`, '<div class="ds-tabs" role="tablist">\n  <button class="ds-tab" role="tab" aria-selected="true">Overview</button>\n</div>')}
-          ${spec('Toast', `<button class="ds-btn ds-btn--secondary" id="toast-btn">Show toast</button><span id="toast-out"></span>`, '<div class="ds-toast" role="status">Added to bag</div>')}
-          ${spec('NavLink', `<a class="ds-navlink" aria-current="page">Shop</a><a class="ds-navlink">Journal</a><a class="ds-navlink">Help</a>`, '<a class="ds-navlink" aria-current="page" href="/shop">Shop</a>')}
+          ${spec('Card', `<div class="ds-card stack" style="background:var(--ds-bg);max-width:340px"><h4 class="ds-card__title">${esc(c.cards[0].name)}</h4><span class="ds-muted">${esc(c.cards[0].desc)}</span><div><button class="ds-btn ds-btn--secondary ds-btn--sm">${esc(c.cards[0].cta)}</button></div></div>`, '<div class="ds-card">\n  <h4 class="ds-card__title">Title</h4>\n  …\n</div>')}
+          ${spec('Stat', `<div class="ds-stat"><b>${esc(c.stats[0][0])}</b><span>${esc(c.stats[0][1])}</span></div><div class="ds-stat" style="margin-left:24px"><b>${esc(c.stats[1][0])}</b><span>${esc(c.stats[1][1])}</span></div>`, '<div class="ds-stat"><b>20+</b><span>Design Leadership</span></div>')}
+          ${spec('Tabs', `<div class="stack"><div class="ds-tabs" role="tablist">${c.tabs.map(([x], i) => `<button class="ds-tab" role="tab" aria-selected="${i === 0}" data-tab="${i}">${x}</button>`).join('')}</div><span id="tab-out" class="ds-muted">${esc(c.tabs[0][1])}</span></div>`, '<div class="ds-tabs" role="tablist">\n  <button class="ds-tab" role="tab" aria-selected="true">Overview</button>\n</div>')}
+          ${spec('Toast', `<button class="ds-btn ds-btn--secondary" id="toast-btn">Show toast</button><span id="toast-out"></span>`, '<div class="ds-toast" role="status">Request sent</div>')}
+          ${spec('NavLink', `<a class="ds-navlink" aria-current="page">Work</a><a class="ds-navlink">Mentorship</a><a class="ds-navlink">Writing</a>`, '<a class="ds-navlink" aria-current="page" href="/work">Work</a>')}
           ${spec('CommandBox', `<div class="ds-cmd" style="flex:1"><code>@import "amberbockel-ui/themes/${t.id}.css";</code><button class="ds-btn ds-btn--ghost ds-btn--sm" id="cmd-copy" aria-label="Copy">${ic('copy')}</button></div>`, '<div class="ds-cmd"><code>…</code><button class="ds-btn ds-btn--ghost ds-btn--sm">Copy</button></div>')}
           ${spec('ThemeToggle', `<button class="ds-btn ds-btn--secondary" data-toggle-mode>${ic(m === 'dark' ? 'sun' : 'moon')}Current: ${m}</button>`, 'toggleTheme() // flips data-theme on <html>')}
         </section>
 
         <section class="doc__sec" id="sec-organisms"><header><h2 class="ds-display">Organisms</h2><p>Page-level structure. These four are enough to stand up a landing page.</p></header>
-          ${spec('Nav', `<div class="ds-nav"><span class="ds-nav__brand">${esc(c.brand)}</span><div class="ds-nav__links"><a class="ds-navlink" aria-current="page">Shop</a><a class="ds-navlink">Journal</a></div><div class="ds-nav__tools"><button class="ds-btn ds-btn--primary ds-btn--sm">Sign in</button></div></div>`, '<div class="ds-nav">\n  <span class="ds-nav__brand">Brand</span>\n  <div class="ds-nav__links">…</div>\n  <div class="ds-nav__tools">…</div>\n</div>', 'spec__demo--frame')}
-          ${spec('Hero', `<div class="ds-hero"><h2 class="ds-display">${esc(c.hero[0])}<br>${esc(c.hero[1])}</h2><p>${esc(c.sub)}</p><div class="sys__row"><button class="ds-btn ds-btn--primary">Shop now</button><button class="ds-btn ds-btn--secondary">Our story</button></div></div>`, '<div class="ds-hero">\n  <h2 class="ds-display">Headline</h2>\n  <p>Supporting line.</p>\n</div>', 'spec__demo--frame')}
-          ${spec('Section', `<div class="stack" style="width:100%"><h4 class="ds-card__title">New this week</h4><span class="ds-muted">A titled wrapper with consistent padding. Everything on this page sits in one.</span></div>`)}
-          ${spec('Footer', `<div class="ds-footer"><span>${esc(c.brand)}</span><span>Shipping · Returns · Contact</span></div>`, '<footer class="ds-footer">…</footer>', 'spec__demo--frame')}
+          ${spec('Nav', `<div class="ds-nav"><span class="ds-nav__brand">${esc(c.brand)}</span><div class="ds-nav__links"><a class="ds-navlink" aria-current="page">Work</a><a class="ds-navlink">Mentorship</a></div><div class="ds-nav__tools"><button class="ds-btn ds-btn--primary ds-btn--sm">Book a session</button></div></div>`, '<div class="ds-nav">\n  <span class="ds-nav__brand">Brand</span>\n  <div class="ds-nav__links">…</div>\n  <div class="ds-nav__tools">…</div>\n</div>', 'spec__demo--frame')}
+          ${spec('Hero', `<div class="ds-hero"><h2 class="ds-display">${esc(c.hero[0])}<br>${esc(c.hero[1])}</h2><p>${esc(c.sub)}</p><div class="sys__row"><button class="ds-btn ds-btn--primary">Book a session</button><button class="ds-btn ds-btn--secondary">Read articles</button></div></div>`, '<div class="ds-hero">\n  <h2 class="ds-display">Headline</h2>\n  <p>Supporting line.</p>\n</div>', 'spec__demo--frame')}
+          ${spec('Section', `<div class="stack" style="width:100%"><h4 class="ds-card__title">Mentorship approach</h4><span class="ds-muted">A titled wrapper with consistent padding. Everything on this page sits in one.</span></div>`)}
+          ${spec('Footer', `<div class="ds-footer"><span>${esc(c.brand)}</span><span>Work · Mentorship · Writing · About</span></div>`, '<footer class="ds-footer">…</footer>', 'spec__demo--frame')}
         </section>
 
         <section class="doc__sec" id="sec-hooks"><header><h2 class="ds-display">Hooks</h2><p>Sunrise ships these as React hooks. Here they are plain functions, so they work anywhere.</p></header>
           ${spec('useTheme', `<span>Current theme: <b>${m}</b></span><button class="ds-btn ds-btn--secondary ds-btn--sm" data-toggle-mode>Toggle</button>`, "const toggleTheme = () => {\n  const el = document.documentElement\n  el.dataset.theme = el.dataset.theme === 'dark' ? 'light' : 'dark'\n}")}
           ${spec('useReducedMotion', `<span>prefers-reduced-motion: <b>${window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'reduce' : 'no preference'}</b></span>`, "const reducedMotion = () =>\n  matchMedia('(prefers-reduced-motion: reduce)').matches")}
-          ${spec('useCountUp', `<div class="ds-stat"><b id="count-out">0</b><span>Orders</span></div><button class="ds-btn ds-btn--secondary ds-btn--sm" id="count-add">Add 100</button><button class="ds-btn ds-btn--ghost ds-btn--sm" id="count-reset">Reset</button>`, "function countUp(el, to, ms = 600) {\n  const from = +el.textContent, t0 = performance.now()\n  const step = (t) => {\n    const k = Math.min(1, (t - t0) / ms)\n    el.textContent = Math.round(from + (to - from) * k)\n    if (k < 1) requestAnimationFrame(step)\n  }\n  requestAnimationFrame(step)\n}")}
+          ${spec('useCountUp', `<div class="ds-stat"><b id="count-out">0</b><span>Mentorship minutes</span></div><button class="ds-btn ds-btn--secondary ds-btn--sm" id="count-add">Add 100</button><button class="ds-btn ds-btn--ghost ds-btn--sm" id="count-reset">Reset</button>`, "function countUp(el, to, ms = 600) {\n  const from = +el.textContent, t0 = performance.now()\n  const step = (t) => {\n    const k = Math.min(1, (t - t0) / ms)\n    el.textContent = Math.round(from + (to - from) * k)\n    if (k < 1) requestAnimationFrame(step)\n  }\n  requestAnimationFrame(step)\n}")}
         </section>
       </article>
     </div>`;
@@ -297,9 +268,9 @@
     else if (el.id === 'mode-btn' || 'toggleMode' in el.dataset) toggleMode();
     else if (el.id === 'use-theme') { sheetOpen = !sheetOpen; route(); }
     else if (el.id === 'copy-theme' || el.id === 'copy-doc') copy(themeCss(current), el);
-    else if (el.id === 'cmd-copy') copy(`@import "amberbockel-ui/themes/${current.id}.css";`, el);
-    else if (el.dataset.tab) { document.querySelectorAll('.ds-tab').forEach((b) => b.setAttribute('aria-selected', b === el)); $('#tab-out').textContent = [current.content.products[0].desc, current.content.products[0].spec, 'Wipe clean. Keep out of direct sun.'][el.dataset.tab]; }
-    else if (el.id === 'toast-btn') { $('#toast-out').innerHTML = `<div class="ds-toast" role="status">${ic('check')}Added to bag</div>`; setTimeout(() => { const o = $('#toast-out'); if (o) o.innerHTML = ''; }, 2200); }
+    else if (el.id === 'cmd-copy') copy((el.previousElementSibling && el.previousElementSibling.textContent) || '', el);
+    else if (el.dataset.tab) { document.querySelectorAll('.ds-tab').forEach((b) => b.setAttribute('aria-selected', b === el)); $('#tab-out').textContent = current.content.tabs[el.dataset.tab][1]; }
+    else if (el.id === 'toast-btn') { $('#toast-out').innerHTML = `<div class="ds-toast" role="status">${ic('check')}Request sent</div>`; setTimeout(() => { const o = $('#toast-out'); if (o) o.innerHTML = ''; }, 2200); }
     else if (el.id === 'count-add') countUp($('#count-out'), +$('#count-out').textContent + 100);
     else if (el.id === 'count-reset') $('#count-out').textContent = '0';
   });

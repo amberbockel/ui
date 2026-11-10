@@ -1,5 +1,25 @@
 /* Theme definitions. Each system is the same token contract with different values.
    Used by the site (browser) and by build.js (node) to emit themes/<id>.css. */
+/* Demo content, shared by every system: the same page in four voices.
+   Modelled on the amberbockel UI demo site (hero, stats, cards, testimonial, tabs). */
+const CONTENT = (art) => ({
+  art,
+  brand: 'amber bockel',
+  badge: 'UX + AI',
+  hero: ['Designing for', 'tomorrow'],
+  sub: 'Design leadership, mentorship and a creative practice for teams building with AI.',
+  nav: ['Work', 'Mentorship', 'Writing', 'About'],
+  stats: [['20+', 'Design Leadership'], ['10+', 'Years in Big Tech'], ['200k', 'Mentorship minutes'], ['45+', 'Speaking Engagements']],
+  cards: [
+    { name: 'Design Leadership', desc: 'How I lead teams through complexity and bring clarity to intelligent systems.', tag: 'Work', cta: 'Explore my work' },
+    { name: 'Mentorship', desc: 'Practical, human-centered mentorship shaped by 20 years in the craft.', tag: 'Mentor', cta: 'Work with me' },
+    { name: 'Creative Practice', desc: 'Bold florals, landscapes and abstract pieces that explore joy, movement and color.', tag: 'Art', cta: 'See my art' },
+  ],
+  quote: { text: 'Amber identified a high-impact project that perfectly matched my skills...', author: 'Nico Gao', role: 'Senior Interaction Designer at Google' },
+  tabs: [['Overview', 'Mentorship overview with insights on career growth.'], ['Approach', 'One clear goal per session, with honest feedback on the work in front of us.'], ['Topics', 'AI and UX, agentic systems, behavioral design, leadership.']],
+  topics: [['AI + UX', 'Trust, cognition and multimodal interaction'], ['Agentic systems', 'Orchestration, workflows and handoffs'], ['Behavioral design', 'How people act under ambiguity']],
+});
+
 const THEMES = [
   {
     id: 'sunrise',
@@ -25,16 +45,7 @@ const THEMES = [
       art1: '#1c1630', art2: '#2a1422', art3: '#141c30',
       heroBg: 'linear-gradient(180deg, #2a1c4d 0%, #3b1630 45%, #000000 100%)',
     },
-    content: {
-      brand: 'Miro Prints', art: 'print',
-      hero: ['Colour for the walls', 'you actually look at'],
-      sub: 'Small-run prints, mixed by hand and numbered. Hang one where the morning light lands.',
-      products: [
-        { name: 'Morning Field', desc: 'Lavender into peach, 30 × 40 cm.', tag: 'New', spec: 'Giclée, edition of 80' },
-        { name: 'Peach Hour', desc: 'Warm pinks for a north-facing room.', tag: 'Popular', spec: 'Giclée, edition of 120' },
-        { name: 'Night Garden', desc: 'Periwinkle and green, 50 × 70 cm.', tag: 'Limited', spec: 'Riso, edition of 40' },
-      ],
-    },
+    content: CONTENT('print'),
   },
   {
     id: 'sierra',
@@ -57,16 +68,7 @@ const THEMES = [
       t1Bg: '#34460a', t1Fg: '#e9ffb0', t2Bg: '#0e4a40', t2Fg: '#c8f5ec', t3Bg: '#5a2a16', t3Fg: '#ffe1d4',
       art1: '#d7ff5e', art2: '#74e6d4', art3: '#ffc2a8', heroBg: '#0b0f0c', navBg: '#1a201b',
     },
-    content: {
-      brand: 'Dayroom', art: 'object',
-      hero: ['Good tools,', 'quietly made'],
-      sub: 'A short list of desk things that do one job well and stay out of the way while they do it.',
-      products: [
-        { name: 'Desk Lamp', desc: 'Warm light, one dial, no app.', tag: 'New', spec: 'Powder-coated steel' },
-        { name: 'Enamel Mug', desc: 'Holds 350 ml and a grudge against dishwashers.', tag: 'Popular', spec: 'Enamel on steel' },
-        { name: 'Field Notebook', desc: 'Dot grid, lies flat, 144 pages.', tag: 'Limited', spec: 'A5, sewn binding' },
-      ],
-    },
+    content: CONTENT('shape'),
   },
   {
     id: 'unicorns',
@@ -89,16 +91,7 @@ const THEMES = [
       t1Bg: '#a8bfff', t1Fg: '#1c2a66', t2Bg: '#d1de92', t2Fg: '#3a4210', t3Bg: '#f2edc7', t3Fg: '#2b1619',
       art1: '#a8bfff', art2: '#d1de92', art3: '#f2edc7', heroBg: '#2b1619',
     },
-    content: {
-      brand: 'Unicorns', art: 'drink',
-      hero: ['Something sweet', 'for right now'],
-      sub: 'Cold drinks poured to order in three colours. Pick the one that matches your afternoon.',
-      products: [
-        { name: 'Strawberry Milk', desc: 'Fresh strawberry over cold whole milk.', tag: 'Classic', spec: 'Dairy, 16 oz' },
-        { name: 'Peach Fizz', desc: 'White peach, soda and a lot of ice.', tag: 'Seasonal', spec: 'Vegan, 16 oz' },
-        { name: 'Ube Float', desc: 'Purple yam cream with a vanilla cap.', tag: 'New', spec: 'Dairy, 12 oz' },
-      ],
-    },
+    content: CONTENT('shape'),
   },
   {
     id: 'ember',
@@ -122,16 +115,7 @@ const THEMES = [
       t1Bg: '#ffffff1f', t1Fg: '#ffffff', t2Bg: '#ffd98e29', t2Fg: '#ffd98e', t3Bg: '#ff5a2e33', t3Fg: '#ff9d80',
       art1: '#e9dfd2', art2: '#d6c7b1', art3: '#c2b5a4', heroBg: '#000000',
     },
-    content: {
-      brand: 'Ember', art: 'ceramic',
-      hero: ['Made slowly,', 'used daily'],
-      sub: 'Wheel-thrown stoneware fired in small batches. Every piece is slightly off, which is the point.',
-      products: [
-        { name: 'Bud Vase', desc: 'Raw clay foot, iron-red glaze.', tag: 'New', spec: 'Stoneware, 18 cm' },
-        { name: 'Serving Bowl', desc: 'Wide, shallow, olive matte glaze.', tag: 'Popular', spec: 'Stoneware, 26 cm' },
-        { name: 'Tea Cup', desc: 'Sand glaze, sits well in two hands.', tag: 'Limited', spec: 'Stoneware, 200 ml' },
-      ],
-    },
+    content: CONTENT('shape'),
   },
 ];
 

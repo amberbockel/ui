@@ -121,6 +121,15 @@ body, .top, .panel, .btn { transition: background-color .25s, color .25s, border
 .act small { display: block; color: var(--ds-muted); font-size: 12px; }
 .act b { font-variant-numeric: tabular-nums; }
 
+.sec-label { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--ds-muted); }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
+.quote { display: grid; gap: 14px; align-content: center; justify-items: center; text-align: center; padding: 32px 24px; }
+.quote__mark { font-size: calc(72px * var(--ds-display-scale)); line-height: .6; color: var(--ds-accent); height: .45em; }
+.quote__text { margin: 0; font-size: calc(22px * var(--ds-display-scale)); max-width: 22ch; }
+.quote__by { display: flex; align-items: center; gap: 12px; text-align: left; font-size: 14px; }
+.quote__by small { display: block; color: var(--ds-muted); font-size: 12px; }
+.quote__avatar { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 999px; background: var(--ds-t1-bg); color: var(--ds-t1-fg); font-weight: 700; flex: none; }
+
 /* Sheet (copyable theme CSS) */
 .sheet { border: 1px solid var(--line); border-radius: var(--r-ctl, 14px); background: var(--soft); padding: 12px; display: grid; gap: 10px; }
 .sheet pre { margin: 0; max-height: 260px; overflow: auto; font: 11.5px/1.55 var(--f-mono); white-space: pre; }
