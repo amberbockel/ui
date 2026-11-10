@@ -101,28 +101,29 @@ const THEMES = [
     },
   },
   {
-    id: 'kiln',
-    name: 'Kiln',
-    tagline: 'Matte, square-shouldered and slow. Built for products that want the room quiet.',
+    id: 'ember',
+    name: 'Ember',
+    tagline: 'Near-black, oversized type and almost no chrome. One ember-orange accent does the talking.',
     status: 'Preview',
-    fonts: { display: '"Red Hat Display", system-ui, sans-serif', body: '"Red Hat Text", system-ui, sans-serif' },
-    shape: { rCard: '6px', rCtl: '4px', rBtn: '4px', rImg: '0px', rProd: '6px', displayWeight: '600', displayLs: '0', displayLh: '1.15', displayScale: '1.05' },
+    darkFirst: true,
+    fonts: { display: '"Inter Tight", system-ui, sans-serif', body: '"Inter Tight", system-ui, sans-serif' },
+    shape: { rCard: '0px', rCtl: '2px', rBtn: '999px', rImg: '0px', rProd: '0px', displayWeight: '500', displayLs: '-0.035em', displayLh: '1', displayScale: '1.3', cardBorder: 'transparent', labelCase: 'uppercase', labelLs: '0.03em' },
     light: {
-      bg: '#ebe9e4', surface: '#f7f6f2', surface2: '#dedbd3', fg: '#2b2925', muted: '#6a665e', border: '#2b292533',
-      primary: '#2b2925', onPrimary: '#f7f6f2', btn2Bg: 'transparent', btn2Border: '#2b2925',
-      accent: '#a4502c', accentSoft: '#a4502c22',
-      t1Bg: '#d9dde6', t1Fg: '#33405c', t2Bg: '#d8dcc4', t2Fg: '#454a22', t3Bg: '#edd6c6', t3Fg: '#7a3a1c',
-      art1: '#d9d6cf', art2: '#d3d0c8', art3: '#dddad3', heroBg: '#ebe9e4',
+      bg: '#0f0e0e', surface: '#191716', surface2: '#272423', fg: '#ffffff', muted: '#ffffff8c', border: '#ffffff2e',
+      primary: '#ffffff', onPrimary: '#0f0e0e', btn2Bg: 'transparent', btn2Border: '#ffffff66',
+      accent: '#ff5a2e', accentSoft: '#ff5a2e33',
+      t1Bg: '#ffffff1f', t1Fg: '#ffffff', t2Bg: '#ffd98e29', t2Fg: '#ffd98e', t3Bg: '#ff5a2e33', t3Fg: '#ff9d80',
+      art1: '#e9dfd2', art2: '#d6c7b1', art3: '#c2b5a4', heroBg: '#0f0e0e',
     },
     dark: {
-      bg: '#1b1a18', surface: '#252320', surface2: '#33302b', fg: '#ece8df', muted: '#aaa498', border: '#ece8df33',
-      primary: '#ece8df', onPrimary: '#1b1a18', btn2Bg: 'transparent', btn2Border: '#ece8df',
-      accent: '#d98a63', accentSoft: '#d98a6326',
-      t1Bg: '#2c3447', t1Fg: '#c9d3ea', t2Bg: '#34381f', t2Fg: '#d5dbb4', t3Bg: '#4a2c1d', t3Fg: '#efcdb8',
-      art1: '#2e2c28', art2: '#34322d', art3: '#2a2825', heroBg: '#1b1a18',
+      bg: '#000000', surface: '#0f0e0e', surface2: '#1c1a19', fg: '#ffffff', muted: '#ffffff8c', border: '#ffffff2e',
+      primary: '#ffffff', onPrimary: '#000000', btn2Bg: 'transparent', btn2Border: '#ffffff66',
+      accent: '#ff5a2e', accentSoft: '#ff5a2e33',
+      t1Bg: '#ffffff1f', t1Fg: '#ffffff', t2Bg: '#ffd98e29', t2Fg: '#ffd98e', t3Bg: '#ff5a2e33', t3Fg: '#ff9d80',
+      art1: '#e9dfd2', art2: '#d6c7b1', art3: '#c2b5a4', heroBg: '#000000',
     },
     content: {
-      brand: 'Kiln', art: 'ceramic',
+      brand: 'Ember', art: 'ceramic',
       hero: ['Made slowly,', 'used daily'],
       sub: 'Wheel-thrown stoneware fired in small batches. Every piece is slightly off, which is the point.',
       products: [
@@ -146,6 +147,6 @@ function themeCss(t) {
   const colorKeys = Object.keys(t.light);
   const base = themeVars(t, 'light').map(([k, v]) => `  ${k}: ${v};`).join('\n');
   const dark = colorKeys.map((k) => `  --ds-${kebab(k)}: ${t.dark[k]};`).join('\n');
-  return `/* ${t.name} · token theme */\n:root {\n${base}\n}\n\n[data-theme="dark"] {\n${dark}\n}\n`;
+  return `/* ${t.name} · token theme */\n:root {\n${base}${t.darkFirst ? '\n  color-scheme: dark;' : ''}\n}\n\n[data-theme="dark"] {\n${dark}\n}\n`;
 }
 if (typeof module !== 'undefined') module.exports = { THEMES, themeVars, themeCss };

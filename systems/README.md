@@ -8,15 +8,15 @@ Organisms, Hooks. It is deployed with the demo site at `/ui/systems/`.
 | Sunrise | This React package, `amberbockel-ui` | Released |
 | Sierra | Sage, lime and tight grotesque type | Preview |
 | Pinkypop | Pink, script-led CSS token theme | Preview |
-| Kiln | Matte, square CSS token theme | Preview |
+| Ember | Dark-first, oversized type, one orange accent | Preview |
 
-Sierra, Pinkypop and Kiln are CSS only. They use their own `--ds-*` tokens and a small shared component
+Sierra, Pinkypop and Ember are CSS only. They use their own `--ds-*` tokens and a small shared component
 stylesheet. They do not restyle the React components in this package.
 
 ## Try a theme
 
 ```css
-@import 'amberbockel-ui/themes/kiln.css';
+@import 'amberbockel-ui/themes/ember.css';
 @import 'amberbockel-ui/themes/components.css';
 ```
 
