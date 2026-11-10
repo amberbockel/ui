@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import posts from '../../posts.json';
+import config from '../../site.config.js';
+
+export function getStaticPaths() {
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+const { post } = Astro.props;
+const fmt = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const canonical = config.blog.canonical === 'substack' ? post.source : new URL(`/blog/${post.slug}/`, Astro.site).href;
+---
+<Layout title={`${post.title} | Amber Miro Heinbockel`} description={post.summary} current="/blog/" canonical={canonical}>
+  <div class="wrap">
+    <article class="article">
+      <header class="article__head">
+        <p class="eyebrow"><a href="/blog/" style="text-decoration:none">Blog</a></p>
+        <h1 class="ds-display h1">{post.title}</h1>
+        {post.summary && <p class="lede">{post.summary}</p>}
+        <p class="article__meta"><time datetime={post.date}>{fmt(post.date)}</time> · {post.minutes} min read</p>
+      </header>
+      <div class="article__body" set:html={post.body} />
+      <footer class="article__foot">
+        <a class="ds-btn ds-btn--secondary" href="/blog/">All essays</a>
+        <div class="row">
+          <a class="ds-btn ds-btn--ghost" href={post.source}>Read on Substack</a>
+          <a class="ds-btn ds-btn--primary" href={config.blog.substack + '/subscribe'}>Subscribe</a>
+        </div>
+      </footer>
+    </article>
+  </div>
+</Layout>

@@ -4,4 +4,9 @@ export default {
   system: 'sunrise',
   // Show visitors a control to try the other systems. Turn off to keep the choice yours.
   showSystemSwitch: true,
+  blog: {
+    substack: 'https://amberbockel.substack.com',
+    // Which copy of an essay search engines should credit: 'substack' or 'site'.
+    canonical: 'substack',
+  },
 };

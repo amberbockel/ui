@@ -20,9 +20,18 @@ light/dark switch: one attribute on `<html>` (`data-system`, next to `data-mode`
 
 - `src/systems.js`: every design system as tokens. Add or edit systems here.
 - `src/content.json`: all page copy, captured from the Framer site. Edit copy here.
-- `src/pages/`: the home page and one template for About, Work, Mentor, Art and Blog.
+- `src/pages/`: the home page, one template for About, Work, Mentor and Art, and the blog.
+- `src/posts.json`: essays imported from Substack by `scripts/fetch-posts.mjs`.
 - `src/layouts/Layout.astro`: header, footer, and the system and mode switches.
 - `src/styles/`: `components.css` (buttons, cards, badges) and `site.css` (page layout).
+
+## Blog
+
+Essays come from the Substack feed. `npm run posts` pulls the latest 20 into `src/posts.json`, which is
+committed so the site builds without the network. Each essay gets its own page at `/blog/<slug>/`.
+
+`blog.canonical` in `src/site.config.js` decides which copy search engines credit: `'substack'` (default)
+or `'site'`.
 
 ## Run it
 

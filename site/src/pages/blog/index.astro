@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import content from '../../content.json';
+import posts from '../../posts.json';
+import config from '../../site.config.js';
+
+const hero = content.blog.sections[0];
+const fmt = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+<Layout title={`Blog | Amber Miro Heinbockel`} description={content.blog.description} current="/blog/">
+  <section class="hero">
+    <div class="wrap stack">
+      <p class="eyebrow">Blog</p>
+      <h1 class="ds-display h1">{hero.heading}</h1>
+      <p class="lede">What I’m learning at the intersection of design, AI, and human-centered decision-making.</p>
+      <div class="row"><a class="ds-btn ds-btn--primary" href={config.blog.substack + '/subscribe'}>Subscribe on Substack</a></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="posts">
+        {posts.map((p) => (
+          <a class="post-row" href={`/blog/${p.slug}/`}>
+            <time datetime={p.date}>{fmt(p.date)}</time>
+            <div><h2 class="ds-display">{p.title}</h2>{p.summary && <p>{p.summary}</p>}</div>
+            <span>{p.minutes} min read</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

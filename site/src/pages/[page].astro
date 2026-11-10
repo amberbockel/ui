@@ -5,7 +5,7 @@ import Testimonials from '../components/Testimonials.astro';
 import content from '../content.json';
 
 export function getStaticPaths() {
-  return ['about', 'work', 'mentor', 'art', 'blog'].map((page) => ({ params: { page } }));
+  return ['about', 'work', 'mentor', 'art'].map((page) => ({ params: { page } }));
 }
 const { page } = Astro.params;
 const data = content[page];
