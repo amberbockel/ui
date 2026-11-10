@@ -55,9 +55,9 @@
     },
     object(i) {
       const o = [
-        '<ellipse cx="150" cy="244" rx="52" ry="9" fill="var(--ds-fg)"/><path d="M150 244V140" stroke="var(--ds-fg)" stroke-width="8"/><path d="M104 150 124 86h52l20 64Z" fill="var(--ds-fg)"/><path d="M110 150h80l-6 10h-68Z" fill="#f6e7b8"/>',
-        '<ellipse cx="150" cy="246" rx="58" ry="8" fill="#00000022"/><rect x="100" y="110" width="92" height="132" rx="12" fill="var(--ds-surface)"/><rect x="100" y="110" width="92" height="14" rx="7" fill="var(--ds-fg)"/><path d="M192 140q34 0 34 34t-34 34" fill="none" stroke="var(--ds-surface)" stroke-width="12"/>',
-        '<g transform="rotate(-8 150 150)"><rect x="92" y="64" width="116" height="172" rx="6" fill="var(--ds-fg)"/><rect x="178" y="64" width="10" height="172" fill="var(--ds-muted)"/><rect x="108" y="88" width="50" height="18" rx="3" fill="var(--ds-muted)"/></g>',
+        '<ellipse cx="150" cy="244" rx="52" ry="9" fill="#0b0f0c"/><path d="M150 244V140" stroke="#0b0f0c" stroke-width="8"/><path d="M104 150 124 86h52l20 64Z" fill="#0b0f0c"/><path d="M110 150h80l-6 10h-68Z" fill="#f6e7b8"/>',
+        '<ellipse cx="150" cy="246" rx="58" ry="8" fill="#00000022"/><rect x="100" y="110" width="92" height="132" rx="12" fill="#ffffff"/><rect x="100" y="110" width="92" height="14" rx="7" fill="#0b0f0c"/><path d="M192 140q34 0 34 34t-34 34" fill="none" stroke="#ffffff" stroke-width="12"/>',
+        '<g transform="rotate(-8 150 150)"><rect x="92" y="64" width="116" height="172" rx="6" fill="#0b0f0c"/><rect x="178" y="64" width="10" height="172" fill="#c9d1c3"/><rect x="108" y="88" width="50" height="18" rx="3" fill="#c9d1c3"/></g>',
       ][i];
       return frame(i, o);
     },
@@ -165,19 +165,19 @@
       <p class="eyebrow">Open source design systems by Amber Bockel</p>
       <h1 class="serif">Four systems, one outline</h1>
       <p class="lede">Each system is the same contract of tokens, atoms, molecules, organisms and hooks. What changes is the voice. Pick one, copy its theme file, own it.</p>
-      <div class="cta-row"><a class="btn" href="#themes">See the themes</a><a class="btn btn--quiet" href="#docs-blank">Read the docs</a></div>
+      <div class="cta-row"><a class="btn" href="#themes">See the themes</a><a class="btn btn--quiet" href="#docs-sierra">Read the docs</a></div>
       <p class="note">This site is running on <b>${esc(site.name)}</b>. Change it with the theme switch in the header and every page follows.</p>
     </div></section>
     <div class="wrap"><div class="sys-grid">${THEMES.map(card).join('')}</div></div>
     <section class="band"><div class="wrap band__grid">
       <div><p class="eyebrow">The outline</p><h2 class="serif" style="margin-top:10px">Same five layers in every system</h2>
-        <p>Borrowed from amberbockel UI and kept identical across all four, so moving between systems means changing a theme file and nothing else.</p></div>
+        <p>Borrowed from Sunrise and kept identical across all four, so moving between systems means changing a theme file and nothing else.</p></div>
       <ul class="layers">
         <li><b>Design tokens</b><span>Colour, type, radius. Thirty-odd custom properties with light and dark values.</span></li>
         <li><b>Atoms</b><span>Button, Badge, Input, Icon, CodeBlock.</span></li>
         <li><b>Molecules</b><span>Card, Stat, Tabs, Toast, NavLink, CommandBox, ThemeToggle.</span></li>
         <li><b>Organisms</b><span>Nav, Hero, Section, Footer.</span></li>
-        <li><b>Hooks</b><span>Theme, reduced motion and count-up. React hooks in amberbockel UI, plain functions in the CSS systems.</span></li>
+        <li><b>Hooks</b><span>Theme, reduced motion and count-up. React hooks in Sunrise, plain functions in the CSS systems.</span></li>
       </ul>
     </div></section>`;
   }
@@ -209,7 +209,7 @@
     const c = t.content;
     return `<div class="wrap dv">
       <aside class="dnav">
-        <div class="dnav__sys"><p class="eyebrow" style="padding:0 12px 6px">Systems</p>${THEMES.filter((x) => !x.external).map((x) => `<a href="#docs-${x.id}" ${x.id === t.id ? 'aria-current="page"' : ''}>${esc(x.name)}</a>`).join('')}<a href="${THEMES[0].external.site}" target="_blank" rel="noopener">amberbockel UI ↗</a></div>
+        <div class="dnav__sys"><p class="eyebrow" style="padding:0 12px 6px">Systems</p>${THEMES.filter((x) => !x.external).map((x) => `<a href="#docs-${x.id}" ${x.id === t.id ? 'aria-current="page"' : ''}>${esc(x.name)}</a>`).join('')}<a href="${THEMES[0].external.site}" target="_blank" rel="noopener">Sunrise ↗</a></div>
         <div class="dnav__sec"><p class="eyebrow" style="padding:0 12px 6px">On this page</p>${SECTIONS.map(([id, label]) => `<a href="#" data-scroll="sec-${id}">${label}</a>`).join('')}</div>
       </aside>
       <article class="doc ds" style="${scope(t)}">
@@ -249,7 +249,7 @@
           ${spec('Footer', `<div class="ds-footer"><span>${esc(c.brand)}</span><span>Shipping · Returns · Contact</span></div>`, '<footer class="ds-footer">…</footer>', 'spec__demo--frame')}
         </section>
 
-        <section class="doc__sec" id="sec-hooks"><header><h2 class="ds-display">Hooks</h2><p>amberbockel UI ships these as React hooks. Here they are plain functions, so they work anywhere.</p></header>
+        <section class="doc__sec" id="sec-hooks"><header><h2 class="ds-display">Hooks</h2><p>Sunrise ships these as React hooks. Here they are plain functions, so they work anywhere.</p></header>
           ${spec('useTheme', `<span>Current theme: <b>${m}</b></span><button class="ds-btn ds-btn--secondary ds-btn--sm" data-toggle-mode>Toggle</button>`, "const toggleTheme = () => {\n  const el = document.documentElement\n  el.dataset.theme = el.dataset.theme === 'dark' ? 'light' : 'dark'\n}")}
           ${spec('useReducedMotion', `<span>prefers-reduced-motion: <b>${window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'reduce' : 'no preference'}</b></span>`, "const reducedMotion = () =>\n  matchMedia('(prefers-reduced-motion: reduce)').matches")}
           ${spec('useCountUp', `<div class="ds-stat"><b id="count-out">0</b><span>Orders</span></div><button class="ds-btn ds-btn--secondary ds-btn--sm" id="count-add">Add 100</button><button class="ds-btn ds-btn--ghost ds-btn--sm" id="count-reset">Reset</button>`, "function countUp(el, to, ms = 600) {\n  const from = +el.textContent, t0 = performance.now()\n  const step = (t) => {\n    const k = Math.min(1, (t - t0) / ms)\n    el.textContent = Math.round(from + (to - from) * k)\n    if (k < 1) requestAnimationFrame(step)\n  }\n  requestAnimationFrame(step)\n}")}
@@ -267,9 +267,9 @@
     const c = site[mode()], sh = site.shape, set = (k, v) => root.style.setProperty(k, v);
     set('--page', c.bg); set('--card', c.surface); set('--ink', c.fg); set('--ink-2', c.muted); set('--line', c.border);
     set('--cta', c.fg); set('--on-cta', c.bg); set('--accent', c.accent); set('--soft', c.surface2);
-    if (site.id === 'amber') root.style.removeProperty('--wash'); else set('--wash', c.heroBg);
+    if (site.id === 'sunrise') root.style.removeProperty('--wash'); else set('--wash', c.heroBg);
     set('--f-display', site.fonts.display); set('--f-body', site.fonts.body);
-    set('--f-dw', sh.displayWeight); set('--f-dls', sh.displayLs); set('--f-dlh', sh.displayLh); set('--f-ds', sh.displayScale);
+    set('--f-bls', sh.bodyLs || 'normal'); set('--f-dw', sh.displayWeight); set('--f-dls', sh.displayLs); set('--f-dlh', sh.displayLh); set('--f-ds', sh.displayScale);
     set('--r-btn', sh.rBtn); set('--r-card', sh.rCard); set('--r-ctl', sh.rCtl);
     root.setAttribute('data-site', site.id);
     try { localStorage.setItem('os-theme', site.id); } catch (e) {}

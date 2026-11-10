@@ -5,12 +5,12 @@ Organisms, Hooks. It is deployed with the demo site at `/ui/systems/`.
 
 | System | What it is | Status |
 | --- | --- | --- |
-| amberbockel UI | This React package | Released |
-| Blank | Neutral CSS token theme | Preview |
+| Sunrise | This React package, `amberbockel-ui` | Released |
+| Sierra | Sage, lime and tight grotesque type | Preview |
 | Pinkypop | Pink, script-led CSS token theme | Preview |
 | Kiln | Matte, square CSS token theme | Preview |
 
-Blank, Pinkypop and Kiln are CSS only. They use their own `--ds-*` tokens and a small shared component
+Sierra, Pinkypop and Kiln are CSS only. They use their own `--ds-*` tokens and a small shared component
 stylesheet. They do not restyle the React components in this package.
 
 ## Try a theme

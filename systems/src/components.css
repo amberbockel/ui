@@ -1,5 +1,5 @@
 /* Shared component layer. Every rule reads --ds-* tokens, so a theme file is all a system needs. */
-.ds { background: var(--ds-bg); color: var(--ds-fg); font-family: var(--ds-font-body); font-size: 15px; line-height: 1.5; }
+.ds { background: var(--ds-bg); color: var(--ds-fg); font-family: var(--ds-font-body); font-size: 15px; line-height: 1.5; letter-spacing: var(--ds-body-ls, normal); }
 .ds *, .ds *::before, .ds *::after { box-sizing: border-box; }
 .ds-display { font-family: var(--ds-font-display); font-weight: var(--ds-display-weight); letter-spacing: var(--ds-display-ls); line-height: var(--ds-display-lh); margin: 0; text-wrap: balance; }
 .ds-muted { color: var(--ds-muted); }
@@ -39,7 +39,7 @@
 .ds-icons svg { width: 20px; height: 20px; }
 
 /* Molecules */
-.ds-card { background: var(--ds-surface); border: 1px solid var(--ds-border); border-radius: var(--ds-r-card); padding: 20px; min-width: 0; }
+.ds-card { background: var(--ds-surface); border: 1px solid var(--ds-card-border, var(--ds-border)); border-radius: var(--ds-r-card); padding: 20px; min-width: 0; }
 .ds-card__title { font-family: var(--ds-font-display); font-weight: var(--ds-display-weight); letter-spacing: var(--ds-display-ls); line-height: var(--ds-display-lh); font-size: calc(20px * var(--ds-display-scale)); margin: 0; }
 .ds-stat { display: grid; gap: 2px; }
 .ds-stat b { font-family: var(--ds-font-display); font-weight: var(--ds-display-weight); line-height: var(--ds-display-lh); font-size: calc(28px * var(--ds-display-scale)); font-variant-numeric: tabular-nums; }
@@ -61,7 +61,8 @@
 .ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; flex-wrap: wrap; }
 .ds-nav__brand { font-family: var(--ds-font-display); font-weight: var(--ds-display-weight); font-size: 19px; line-height: var(--ds-display-lh); }
 .ds-nav__links, .ds-nav__tools { display: flex; align-items: center; gap: 4px; }
-.ds-hero { text-align: center; padding: 40px 20px 36px; background: var(--ds-hero-bg); display: grid; gap: 14px; justify-items: center; }
+.ds-nav__links { background: var(--ds-nav-bg, transparent); border-radius: var(--ds-r-btn); padding: 4px; }
+.ds-hero { text-align: var(--ds-hero-align, center); padding: 40px clamp(20px, 5vw, 64px) 36px; background: var(--ds-hero-bg); display: grid; gap: 14px; justify-items: var(--ds-hero-justify, center); }
 .ds-hero h2 { font-size: calc(clamp(30px, 4.4vw, 46px) * var(--ds-display-scale)); }
 .ds-hero p { margin: 0; max-width: 52ch; color: var(--ds-muted); }
 .ds-footer { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 18px 20px; border-top: 1px solid var(--ds-border); color: var(--ds-muted); font-size: 13px; }
