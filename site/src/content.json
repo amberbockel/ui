@@ -1,0 +1,607 @@
+{
+ "home": {
+  "title": "Amber Miro Heinbockel | Design Leader, Mentor & AI UX Specialist",
+  "description": "AI-focused design leader helping teams build human-centered products. Mentorship for designers and vibrant artwork through Amber Miro.",
+  "sections": [
+   {
+    "heading": "",
+    "paras": [],
+    "links": [],
+    "images": [
+     {
+      "src": "/images/e6Zbf2tHhoksguv7DvhbhlWVLY.webp",
+      "alt": "",
+      "w": 1440,
+      "h": 1276
+     }
+    ]
+   },
+   {
+    "heading": "I help organizations design how humans and AI make decisions together.",
+    "level": "h1",
+    "paras": [
+     "Helping designers and leaders stay human while building with AI."
+    ],
+    "links": [],
+    "images": [
+     {
+      "src": "/images/SffeKsuKsBqX5cZA1PTpsRbJe0.png",
+      "alt": "",
+      "w": 421,
+      "h": 566
+     }
+    ]
+   },
+   {
+    "heading": "A design leader shaping how intelligent systems meet human judgment.",
+    "level": "h3",
+    "paras": [
+     "I lead design for Google’s AI & Compute Enablement (ACE UX) team, where we turn complex machine learning capabilities into products people can trust."
+    ],
+    "links": [],
+    "images": [],
+    "eyebrow": "I'm Amber Heinbockel —",
+    "logos": [
+     "/images/4K4lz2nWttjw6zNpGzHoxR8jQ.png",
+     "/images/NMqSEZDXhH4iF2askD8WXETdhDk.png",
+     "/images/IsvEa5AOyrbtOEKbMmbWydQ0.png"
+    ]
+   },
+   {
+    "heading": "Design Leadership",
+    "level": "h3",
+    "paras": [
+     "A look at the systems, decisions, and product spaces I’ve shaped across AI, developer experience, and emerging technologies.",
+     "How I lead teams through complexity and bring clarity to intelligent systems."
+    ],
+    "links": [
+     {
+      "label": "Explore my work",
+      "href": "/work"
+     }
+    ],
+    "images": [
+     {
+      "src": "/images/9I1HTKYV2KroBSPtk2oL6Nkp0.png",
+      "alt": "",
+      "w": 488,
+      "h": 475
+     },
+     {
+      "src": "/images/w37o2DK6SV62hwDSwpX2tzo69g.png",
+      "alt": "",
+      "w": 467,
+      "h": 491
+     }
+    ]
+   },
+   {
+    "heading": "Mentorship",
+    "level": "h3",
+    "paras": [
+     "Clarity, direction, and honest guidance for designers navigating their careers in the age of AI.",
+     "Practical, human-centered mentorship shaped by 20 years in the craft."
+    ],
+    "links": [],
+    "images": []
+   },
+   {
+    "heading": "Creative Practice",
+    "level": "h3",
+    "paras": [
+     "A look into the vibrant, intuitive side of my work.",
+     "Bold florals, landscapes, and abstract pieces that explore joy, movement, and color.",
+     "Where I experiment, play, and create the work that fuels my design leadership."
+    ],
+    "links": [
+     {
+      "label": "See my art",
+      "href": "https://ambermiro.com/"
+     }
+    ],
+    "images": [
+     {
+      "src": "/images/AiWelu5gtIplutsZSeL7CgcHTtE.png",
+      "alt": "",
+      "w": 501,
+      "h": 488
+     }
+    ]
+   },
+   {
+    "heading": "Perspectives",
+    "level": "h3",
+    "paras": [
+     "Reflections on leadership, human–AI collaboration, and designing with clarity in an increasingly intelligent world."
+    ],
+    "links": [
+     {
+      "label": "Read the latest",
+      "href": "/blog"
+     }
+    ],
+    "images": [
+     {
+      "src": "/images/bJGch4JC2ITo6hBgFdE9BmIawbQ.webp",
+      "alt": "",
+      "w": 1170,
+      "h": 442
+     }
+    ]
+   },
+   {
+    "heading": "Bringing clarity to what you're building next.",
+    "level": "h2",
+    "paras": [
+     "Let's connect",
+     "Advising",
+     "Read the Blog",
+     "About Me"
+    ],
+    "links": [
+     {
+      "label": "Read the Blog",
+      "href": "/blog"
+     }
+    ],
+    "images": []
+   }
+  ]
+ },
+ "about": {
+  "title": "Amber Miro Heinbockel | Design Leader, Mentor & AI UX Specialist",
+  "description": "Amber Miro Heinbockel is an AI-focused UX design leader helping teams create usable, trustworthy intelligent systems. Insights on human-AI collaboration, product strategy, and career mentorship.",
+  "sections": [
+   {
+    "heading": "Design leader. Systems thinker. Mentor. Artist.",
+    "level": "h2",
+    "paras": [],
+    "links": [],
+    "images": [],
+    "eyebrow": "About"
+   },
+   {
+    "heading": "My Story.",
+    "level": "h3",
+    "paras": [
+     "I’ve spent my career designing how people move through complex systems — from early agency days and startups to Google’s AI & Compute Enablement team. I learned quickly that the impact of design isn’t about the tools we use. It’s about creating clarity in places where people feel overwhelmed or unsure.",
+     "I’ve always believed that intelligent systems should enhance human judgment, not override it. That belief shaped the teams I’ve built, the systems I’ve led, and the way I help designers and leaders navigate change.",
+     "Head of Design, ACE UX - Google"
+    ],
+    "links": [
+     {
+      "label": "Download My Resume",
+      "href": "https://drive.google.com/file/d/1qyNj2Bqpdp08EB4J3gBHj-khUg617JFi/view?usp=sharing"
+     }
+    ],
+    "images": [
+     {
+      "src": "/images/K2KjrgOpfr0SvJhTISmS2sTs2bw.jpg",
+      "alt": "",
+      "w": 415,
+      "h": 527
+     }
+    ],
+    "labels": [
+     "Amber Heinbockel"
+    ]
+   },
+   {
+    "heading": "My focus",
+    "level": "h3",
+    "paras": [
+     "Designing AI-assisted developer tools that improve speed and confidence in decision-making",
+     "Creating cross-product UX frameworks and responsible AI standards adopted across Google",
+     "Scaling design teams and establishing clear design culture",
+     "Shaping strategy for intelligence “surfaces” that operate across multiple Google products",
+     "Design Leadership",
+     "Years in Big Tech",
+     "Mentorship minutes",
+     "Speaking Engagements",
+     "Mentee's Served",
+     "of Projects & Counting"
+    ],
+    "links": [],
+    "images": []
+   },
+   {
+    "heading": "Helping teams make clear, aligned decisions in complex spaces",
+    "level": "h2",
+    "paras": [
+     "As a leader my approach blends systems thinking, research, and intuition to shape products that feel both powerful and human."
+    ],
+    "links": [],
+    "images": [],
+    "eyebrow": "How I Work",
+    "labels": [
+     "AI/UX Strategy",
+     "Mentorship & Speaking"
+    ]
+   },
+   {
+    "heading": "AI & UX Strategy",
+    "level": "h3",
+    "paras": [
+     "Whether your team is experimenting with GenAI or integrating ML into mature products, I help bridge design and data. Together, we align insights, ethics, and execution so innovation remains both responsible and real.",
+     "AI design playbooks & system mapping",
+     "Trust & transparency frameworks",
+     "Responsible AI guidelines & thought leadership",
+     "UX metrics for adoption and velocity"
+    ],
+    "links": [],
+    "images": []
+   },
+   {
+    "heading": "Feedback from leaders & collaborators.",
+    "level": "h2",
+    "paras": [
+     "A glimpse into what it’s like to think, design, and grow together."
+    ],
+    "links": [],
+    "images": [],
+    "eyebrow": "Testimonials",
+    "quotes": [
+     {
+      "text": "Amber identified a high-impact project that perfectly matched my skills, setting the stage for my immediate and future success with the team. Her proactive approach not only preserved my position but also demonstrated her exceptional commitment to her team's professional growth.",
+      "author": "Nico Gao",
+      "role": "Senior Interaction Designer at Google"
+     },
+     {
+      "text": "Amber's one of the most driven, passionate, and talented colleagues I've had the pleasure of working with at Google. As a product design leader, she expertly bridges business and user needs, and knows how to bring other leaders together to build consensus.",
+      "author": "Roman Nurik",
+      "role": "Sr. Staff Product Design Engineer, Google"
+     },
+     {
+      "text": "Amber's contributions set the standard on our team, making her an exemplary leader. I could only wish to work with her again in the future and I would highly recommend her!",
+      "author": "Andrea Chirasello",
+      "role": "VP of Sales, The Futurum Group"
+     }
+    ]
+   }
+  ]
+ },
+ "work": {
+  "title": "Amber Miro Heinbockel | Design Leader, Mentor & AI UX Specialist",
+  "description": "A selection of the product spaces, systems, and teams Amber has shaped across AI, and developer experience.. These projects reflect her design leadership in bringing clarity to complex problems and helping teams build intelligent, human-centered products.",
+  "sections": [
+   {
+    "heading": "Design in Practice",
+    "level": "h2",
+    "paras": [
+     "A look at the product spaces, decisions, and frameworks I’ve shaped across AI, developer experience, and emerging technologies. From vision and strategy to hands-on collaboration with research, PM, and engineering — here’s how I guide complex systems toward clarity."
+    ],
+    "links": [],
+    "images": [],
+    "eyebrow": "Selected Works"
+   },
+   {
+    "heading": "Deploy AI, Anywhere",
+    "level": "h2",
+    "paras": [
+     "I led the design of Google’s AI Edge Gallery, a platform that helps developers discover, evaluate, and deploy on-device ML models with clarity and confidence. From model selection to performance insights, Edge Gallery brings structure to an emerging ecosystem that’s historically been fragmented and opaque.",
+     "Model Discovery",
+     "A curated, transparent way to explore models optimized for on-device performance across use cases, hardware targets, and constraints.",
+     "Seamless Integration",
+     "Structured documentation, sample apps, and code paths that shorten the gap between choosing a model and shipping it into production.",
+     "Offline & Edge Ready",
+     "Support for models built to run reliably on-device — even without connectivity — unlocking new experiences for mobile, IoT, and embedded products.",
+     "Media"
+    ],
+    "links": [
+     {
+      "label": "Privacy & On Device Use",
+      "href": "https://dig.watch/updates/googles-ai-edge-gallery-boosts-privacy-with-on-device-model-use"
+     },
+     {
+      "label": "AI Best Served on Device",
+      "href": "https://www.digitaltrends.com/computing/googles-secret-app-offers-a-glimpse-of-how-ai-is-best-served-on-a-phone/"
+     },
+     {
+      "label": "Deploying offline models",
+      "href": "https://www.infoworld.com/article/4000176/googles-ai-edge-gallery-will-let-developers-deploy-offline-ai-models-heres-how-it-works.html"
+     },
+     {
+      "label": "Google Developers",
+      "href": "https://developers.googleblog.com/en/google-ai-edge-gallery-now-with-audio-and-on-google-play/"
+     },
+     {
+      "label": "Install the app",
+      "href": "https://play.google.com/store/apps/details?id=com.google.ai.edge.gallery&hl=en_US"
+     }
+    ],
+    "images": [
+     {
+      "src": "/images/nnf0q3LigxwGAquGclS5cbQB0.gif",
+      "alt": "",
+      "w": 517,
+      "h": 834
+     },
+     {
+      "src": "/images/avB1qCPbrCTx6A3vBeYhv20UDWM.png",
+      "alt": "",
+      "w": 588,
+      "h": 459
+     }
+    ],
+    "eyebrow": "On Device ML"
+   },
+   {
+    "heading": "AI Assistant for WearOS",
+    "level": "h2",
+    "paras": [
+     "Faster, Hands-Free Interactions",
+     "Context-Aware Responses",
+     "Glanceable Intelligence",
+     "A More Human Voice"
+    ],
+    "links": [
+     {
+      "label": "Read the launch",
+      "href": "https://blog.google/products/wear-os/wear-os-google-health-and-help-are-just-swipe-away/"
+     }
+    ],
+    "images": [],
+    "eyebrow": "WearOS"
+   },
+   {
+    "heading": "Build, edit, and share AI mini-apps using natural language",
+    "level": "h2",
+    "paras": [],
+    "links": [
+     {
+      "label": "Give Opal a try",
+      "href": "https://opal.google/landing/"
+     }
+    ],
+    "images": [
+     {
+      "src": "/images/nSzaRCeiUW3GXtgsin82R5R4Q4M.gif",
+      "alt": "Dashboard Image",
+      "w": 862,
+      "h": 544
+     }
+    ],
+    "eyebrow": "Experiments - Opal"
+   },
+   {
+    "heading": "The Work Beneath the Work",
+    "level": "h2",
+    "paras": [
+     "Design leadership often happens offstage."
+    ],
+    "links": [
+     {
+      "label": "See the deck",
+      "href": "https://www.figma.com/proto/mi9RVBh7habCVfSzmcz6pc/%F0%9F%8E%A8-AmberBockel?page-id=32204%3A3497&type=design&node-id=32204-3498&viewport=464%2C135%2C0.06&t=4WK3QscgN8g82qHZ-1&scaling=contain&starting-point-node-id=32204%3A3498&hide-ui=1"
+     }
+    ],
+    "images": [
+     {
+      "src": "/images/BLiYDRqXVbjVVQnHyLpbTuv8.gif",
+      "alt": "",
+      "w": 562,
+      "h": 304
+     },
+     {
+      "src": "/images/bJGch4JC2ITo6hBgFdE9BmIawbQ.webp",
+      "alt": "",
+      "w": 1170,
+      "h": 442
+     }
+    ],
+    "eyebrow": "Artifact"
+   },
+   {
+    "heading": "Bringing clarity to what you're building next.",
+    "level": "h2",
+    "paras": [
+     "Let's connect",
+     "Design Leadership",
+     "Mentorship",
+     "Advising",
+     "Read the Blog",
+     "About Me"
+    ],
+    "links": [
+     {
+      "label": "Read the Blog",
+      "href": "/blog"
+     }
+    ],
+    "images": []
+   }
+  ]
+ },
+ "mentor": {
+  "title": "Amber Miro Heinbockel | Design Leader, Mentor & AI UX Specialist",
+  "description": "Personal, honest mentorship for designers seeking clarity in their careers. Amber helps people think through decisions, build confidence, and develop the skills needed to design in an AI-driven world.",
+  "sections": [
+   {
+    "heading": "Clarity for designers in the age of AI",
+    "level": "h2",
+    "paras": [
+     "I mentor designers who are navigating big decisions: career moves, AI shifts, leadership growth, and the messy middle of product work. If you’re looking for honest feedback, practical frameworks, and a little encouragement, you’re in the right place.",
+     "Currently volunteering mentorship time on ADP List"
+    ],
+    "links": [
+     {
+      "label": "ADP List",
+      "href": "https://adplist.org/mentors/amber-heinbockel"
+     }
+    ],
+    "images": [],
+    "eyebrow": "Mentorship"
+   },
+   {
+    "heading": "Mentorship matters",
+    "level": "h3",
+    "paras": [
+     "If I look back at the arc of my career, the turning points were almost always sparked, supported or challenged by someone who chose to mentor me. Not with grand gestures — just quiet clarity. A conversation that reframed a problem, a question I hadn’t thought to ask, a reminder that my work mattered.",
+     "The mentors who shaped me didn’t just teach me how to design products — they taught me how to design a life. How to navigate uncertainty with some grace, how to advocate for myself, how to lead with heart, and how to stay creative even under pressure. Their influence shows up not only in my work as a design leader, but in my art practice as well — the confidence to explore, to take risks, to create without permission.",
+     "Every designer needs someone in their corner. I mentor because I’ve been on the other side of uncertainty, and I know how much a single honest conversation can change your direction. This is how I give that moment back."
+    ],
+    "links": [],
+    "images": []
+   },
+   {
+    "heading": "Feedback from leaders & collaborators.",
+    "level": "h2",
+    "paras": [
+     "A glimpse into what it’s like to think, design, and grow together."
+    ],
+    "links": [],
+    "images": [],
+    "eyebrow": "Testimonials",
+    "quotes": [
+     {
+      "text": "Amber identified a high-impact project that perfectly matched my skills, setting the stage for my immediate and future success with the team. Her proactive approach not only preserved my position but also demonstrated her exceptional commitment to her team's professional growth.",
+      "author": "Nico Gao",
+      "role": "Senior Interaction Designer at Google"
+     },
+     {
+      "text": "Amber's one of the most driven, passionate, and talented colleagues I've had the pleasure of working with at Google. As a product design leader, she expertly bridges business and user needs, and knows how to bring other leaders together to build consensus.",
+      "author": "Roman Nurik",
+      "role": "Sr. Staff Product Design Engineer, Google"
+     },
+     {
+      "text": "Amber's contributions set the standard on our team, making her an exemplary leader. I could only wish to work with her again in the future and I would highly recommend her!",
+      "author": "Andrea Chirasello",
+      "role": "VP of Sales, The Futurum Group"
+     }
+    ]
+   }
+  ]
+ },
+ "blog": {
+  "title": "Amber Miro Heinbockel | Design Leader, Mentor & AI UX Specialist",
+  "description": "Essays on AI, UX leadership, and human-centered product design. Amber writes about clarity, systems, and the future of creative work.",
+  "sections": [
+   {
+    "heading": "Perspectives on leading, designing, and building with intelligence.",
+    "level": "h2",
+    "paras": [],
+    "links": [
+     {
+      "label": "Read more on my Substack",
+      "href": "https://amberbockel.substack.com/"
+     }
+    ],
+    "images": [],
+    "eyebrow": "Blog"
+   }
+  ]
+ },
+ "art": {
+  "title": "Amber Miro Heinbockel | Design Leader, Mentor & AI UX Specialist",
+  "description": "Amber’s art practice, shared through AmberMiro.com, explores vibrant florals, landscapes, and abstract pieces in watercolor and acrylic. Joyful, expressive work designed to bring color, energy, and warmth into modern homes.",
+  "sections": [
+   {
+    "heading": "A joyful counterweight to the technical world of AI & design.",
+    "level": "h2",
+    "paras": [
+     "My fine art practice is where I come back to color, intuition, and play."
+    ],
+    "links": [],
+    "images": [],
+    "eyebrow": "Art"
+   },
+   {
+    "heading": "My Artist Story.",
+    "level": "h3",
+    "paras": [
+     "I paint under the name Amber Miro — Miro is my middle name, after the painter Joan Miró, my parents know i was destined to be a creative from the start.. My art practice draws from that same spirit for Joan Miró in vibrancy and experimentation, translated through florals, landscapes, and expressive abstract work.",
+     "I hope my work brings the same joy to you that it brings to me while I’m making it.I’ve always believed that intelligent systems should enhance human judgment, not override it. That belief shaped the teams I’ve built, the systems I’ve led, and the way I help designers and leaders navigate change."
+    ],
+    "links": [],
+    "images": [
+     {
+      "src": "/images/AwI8Ht6vEsB0Ks1TSPBS8jfQi2k.png",
+      "alt": "",
+      "w": 374,
+      "h": 647
+     },
+     {
+      "src": "/images/ABcDynBkaiEXfPvAiR1Kt0cMm3U.jpg",
+      "alt": "",
+      "w": 307,
+      "h": 440
+     }
+    ]
+   },
+   {
+    "heading": "Floating Poppies",
+    "level": "h3",
+    "paras": [],
+    "links": [],
+    "images": [
+     {
+      "src": "/images/27hd3OWOodgA9bpN1aGUUR2mFrg.jpg",
+      "alt": "",
+      "w": 307,
+      "h": 440
+     }
+    ]
+   },
+   {
+    "heading": "Watercolor Rose",
+    "level": "h3",
+    "paras": [],
+    "links": [],
+    "images": [
+     {
+      "src": "/images/461Pzt7fVgoXgUCOJpdJC4XpPRM.png",
+      "alt": "",
+      "w": 307,
+      "h": 440
+     }
+    ]
+   },
+   {
+    "heading": "Lake Sunsets",
+    "level": "h3",
+    "paras": [],
+    "links": [],
+    "images": [],
+    "eyebrow": "Subtitle"
+   },
+   {
+    "heading": "Amber Miro Art",
+    "level": "h2",
+    "paras": [
+     "I’m inspired by Nature, travel, wild blooms, and the soft shifts of light . My style leans toward bold palettes and lively, energetic marks — pieces meant to feel warm, alive, and quietly celebratory, bringing joy to the spaces we live in.",
+     "Whether you’re here get to know me or explore my new collections. I hope you'll explore"
+    ],
+    "links": [
+     {
+      "label": "AmberMiro.com",
+      "href": "https://ambermiro.com/"
+     }
+    ],
+    "images": []
+   }
+  ]
+ },
+ "lab": {
+  "title": "Amber Miro Heinbockel | Design Leader, Mentor & AI UX Specialist",
+  "description": "Amber’s art practice, shared through AmberMiro.com, explores vibrant florals, landscapes, and abstract pieces in watercolor and acrylic. Joyful, expressive work designed to bring color, energy, and warmth into modern homes.",
+  "sections": [
+   {
+    "heading": "Active experiments in code, craft, and curiosity",
+    "level": "h2",
+    "paras": [],
+    "links": [],
+    "images": [],
+    "eyebrow": "Lab"
+   },
+   {
+    "heading": "Feature title.",
+    "level": "h3",
+    "paras": [
+     "Feature description."
+    ],
+    "links": [],
+    "images": []
+   }
+  ]
+ }
+}

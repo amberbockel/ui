@@ -1,0 +1,11 @@
+---
+const { quotes = [] } = Astro.props;
+---
+<div class="grid-3">
+  {quotes.map((q) => (
+    <figure class="ds-card quote" style="margin:0">
+      <p>{q.text}</p>
+      <footer><b>{q.author}</b><small>{q.role}</small></footer>
+    </figure>
+  ))}
+</div>

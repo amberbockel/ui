@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Cta from '../components/Cta.astro';
+import content from '../content.json';
+
+const page = content.home;
+const s = page.sections;
+const hero = s.find((x) => x.level === 'h1');
+const intro = s.find((x) => x.eyebrow && x.eyebrow.startsWith('I'));
+const names = ['Design Leadership', 'Mentorship', 'Creative Practice', 'Perspectives'];
+const features = names.map((n) => s.find((x) => x.heading === n));
+// Images arrive in page order; the first three belong to the first three features.
+const featureImages = features.flatMap((f) => f.images).filter((i) => i.w < 900).slice(0, 3);
+const links = [{ label: 'Explore my work', href: '/work/' }, { label: 'Work with me', href: '/mentor/' }, { label: 'See my art', href: 'https://ambermiro.com/' }, { label: 'Read the latest', href: '/blog/' }];
+---
+<Layout title={page.title} description={page.description} current="/">
+  <section class="hero">
+    <div class="wrap stack">
+      <h1 class="ds-display h1">{hero.heading}</h1>
+      <p class="lede">{hero.paras[0]}</p>
+      <div class="row">
+        <a class="ds-btn ds-btn--primary" href="/work/">Explore my work</a>
+        <a class="ds-btn ds-btn--secondary" href="/mentor/">Work with me</a>
+      </div>
+      {hero.images[0] && <div class="hero__portrait"><img src={hero.images[0].src} alt="Amber Heinbockel" width={hero.images[0].w} height={hero.images[0].h} /></div>}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap stack" style="gap:20px">
+      <p class="eyebrow">{intro.eyebrow}</p>
+      <h2 class="ds-display h2" style="max-width:22ch">{intro.heading}</h2>
+      <p class="lede">{intro.paras[0]}</p>
+      {intro.logos && <div class="logos">{intro.logos.map((src) => <img src={src} alt="" loading="lazy" />)}</div>}
+    </div>
+  </section>
+
+  {features.map((f, i) => (
+    <section class="section">
+      <div class={`wrap ${featureImages[i] ? 'split' : ''} ${i % 2 ? 'split--flip' : ''}`}>
+        <div class="stack">
+          <h2 class="ds-display h2">{f.heading}</h2>
+          <div class="prose">{f.paras.map((p) => <p>{p}</p>)}</div>
+          <div><a class="ds-btn ds-btn--secondary" href={links[i].href}>{links[i].label}</a></div>
+        </div>
+        {featureImages[i] && <div class="split__media"><img src={featureImages[i].src} alt="" loading="lazy" width={featureImages[i].w} height={featureImages[i].h} /></div>}
+      </div>
+    </section>
+  ))}
+
+  <Cta />
+</Layout>
