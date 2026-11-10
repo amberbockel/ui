@@ -15,7 +15,7 @@ const CONTENT = (art) => ({
     { name: 'Mentorship', desc: 'Practical, human-centered mentorship shaped by 20 years in the craft.', tag: 'Mentor', cta: 'Work with me' },
     { name: 'Creative Practice', desc: 'Bold florals, landscapes and abstract pieces that explore joy, movement and color.', tag: 'Art', cta: 'See my art' },
   ],
-  quote: { text: 'Amber identified a high-impact project that perfectly matched my skills...', author: 'Nico Gao', role: 'Senior Interaction Designer at Google' },
+  quote: { text: 'A short quote from someone you have worked with goes here.', author: 'Client Name', role: 'Role, Company' },
   tabs: [['Overview', 'Mentorship overview with insights on career growth.'], ['Approach', 'One clear goal per session, with honest feedback on the work in front of us.'], ['Topics', 'AI and UX, agentic systems, behavioral design, leadership.']],
   topics: [['AI + UX', 'Trust, cognition and multimodal interaction'], ['Agentic systems', 'Orchestration, workflows and handoffs'], ['Behavioral design', 'How people act under ambiguity']],
 });
