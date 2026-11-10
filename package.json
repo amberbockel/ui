@@ -12,7 +12,8 @@
       "types": "./dist/index.d.ts"
     },
     "./styles": "./dist/styles.css",
-    "./tailwind": "./tailwind.preset.js"
+    "./tailwind": "./tailwind.preset.js",
+    "./themes/*": "./dist/themes/*"
   },
   "files": [
     "dist",
@@ -22,10 +23,11 @@
   "scripts": {
     "dev": "vite build --watch",
     "demo": "vite --config vite.demo.config.ts",
-    "demo:build": "vite build --base=/ui/ --config vite.demo.config.ts && cp dist-demo/index.html dist-demo/404.html",
+    "systems:build": "node systems/build.js --site dist-demo/systems",
+    "demo:build": "vite build --base=/ui/ --config vite.demo.config.ts && cp dist-demo/index.html dist-demo/404.html && node systems/build.js --site dist-demo/systems",
     "predeploy": "npm run demo:build",
     "deploy": "gh-pages -d dist-demo",
-    "build": "tsc && vite build && node -e \"const fs=require('fs');const css=fs.readFileSync('src/styles.css','utf8').replace(/@import 'tailwindcss';\\n\\n/,'');fs.writeFileSync('dist/styles.css',css)\"",
+    "build": "tsc && vite build && node -e \"const fs=require('fs');const css=fs.readFileSync('src/styles.css','utf8').replace(/@import 'tailwindcss';\\n\\n/,'');fs.writeFileSync('dist/styles.css',css)\" && node systems/build.js --themes dist/themes",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint src",
