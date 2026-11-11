@@ -10,7 +10,7 @@ export const THEMES = [
     shape: { rCard: '20px', rCtl: '12px', rBtn: '999px', rImg: '14px', rProd: '20px', displayWeight: '400', displayLs: '-0.01em', displayLh: '1.12', displayScale: '1.1' },
     light: {
       bg: '#fafafa', surface: '#ffffff', surface2: '#f0f0f3', fg: '#1d1d1f', muted: '#636366', border: '#00000014',
-      primary: '#71d45c', onPrimary: '#0d2b07', btn2Bg: '#ffffff', btn2Border: '#00000014',
+      primary: '#2a8527', onPrimary: '#ffffff', labelColor: '#257a22', btn2Bg: '#ffffff', btn2Border: '#00000014',
       accent: '#e01a8a', accentSoft: '#e01a8a1a', accentText: '#c8147a',
       t1Bg: '#5b93ff22', t1Fg: '#2456c4', t2Bg: '#ffb8d955', t2Fg: '#a3155f', t3Bg: '#c67fff2e', t3Fg: '#6a2ea8',
       art1: '#ece6ff', art2: '#ffe9f3', art3: '#e6f0ff',
@@ -18,7 +18,7 @@ export const THEMES = [
     },
     dark: {
       bg: '#000000', surface: '#0f0f10', surface2: '#1d1d1f', fg: '#ffffff', muted: '#a1a1a6', border: '#ffffff26',
-      primary: '#71d45c', onPrimary: '#0d2b07', btn2Bg: '#ffffff0d', btn2Border: '#ffffff26',
+      primary: '#71d45c', onPrimary: '#0d2b07', labelColor: '#71d45c', btn2Bg: '#ffffff0d', btn2Border: '#ffffff26',
       accent: '#e01a8a', accentSoft: '#e01a8a26', accentText: '#ff6cb8',
       t1Bg: '#5b93ff33', t1Fg: '#a9c6ff', t2Bg: '#ffb8d933', t2Fg: '#ffb8d9', t3Bg: '#c67fff33', t3Fg: '#dcb3ff',
       art1: '#1c1630', art2: '#2a1422', art3: '#141c30',
@@ -50,10 +50,10 @@ export const THEMES = [
   {
     id: 'unicorns',
     name: 'Unicorns',
-    tagline: 'Bubblegum pink, butter cream and aubergine in tall condensed type, with sticker shadows. Loud on purpose.',
+    tagline: 'Bubblegum pink, butter cream and aubergine in a puffy, rounded face, with sticker shadows. Loud on purpose.',
     status: 'Preview',
-    fonts: { display: '"Sofia Sans Extra Condensed", "Arial Narrow", sans-serif', body: '"Sofia Sans Condensed", "Arial Narrow", sans-serif' },
-    shape: { rCard: '32px', rCtl: '13px', rBtn: '8px', rImg: '0px', rProd: '32px', displayWeight: '700', displayLs: '0.005em', displayLh: '1', displayScale: '1.5', bodySize: '17px', cardBorder: 'transparent', labelCase: 'lowercase', labelLs: '0.01em' },
+    fonts: { display: '"DynaPuff", "Fredoka", system-ui, sans-serif', body: '"Fredoka", system-ui, sans-serif' },
+    shape: { rCard: '32px', rCtl: '13px', rBtn: '8px', rImg: '0px', rProd: '32px', displayWeight: '600', displayLs: '-0.01em', displayLh: '1.08', displayScale: '1', bodySize: '16px', cardBorder: 'transparent', labelCase: 'lowercase', labelLs: '0.01em' },
     light: {
       bg: '#ff9ee4', surface: '#f2edc7', surface2: '#ffffff8c', fg: '#2b1619', muted: '#2b1619bf', border: '#2b161940',
       primary: '#2b1619', onPrimary: '#ffb5f0', btn2Bg: '#a8bfff', btn2Border: 'transparent', btnShadow: '3px 3px 0 #bd4f9e',
@@ -99,10 +99,17 @@ const decl = (o) => Object.entries(o).map(([k, v]) => `--ds-${kebab(k)}:${v}`).j
 
 /* One CSS block per system, plus one per system for dark mode.
    <html data-system="ember" data-mode="dark"> selects them, exactly like a light/dark switch. */
+// Some tokens are optional, and only some systems set them. Every system still declares all of them,
+// so a system previewed inside another never inherits the outer one's extras.
+const union = (pick) => [...new Set(THEMES.flatMap((t) => Object.keys(pick(t))))];
+const full = (keys, o) => Object.fromEntries(keys.map((k) => [k, o[k] ?? 'initial']));
+
 export function systemsCss() {
+  const shapeKeys = union((t) => t.shape), colourKeys = union((t) => ({ ...t.light, ...t.dark }));
   return THEMES.map((t) => {
-    const sel = `:root[data-system="${t.id}"]`;
+    const sel = `[data-system="${t.id}"]`;
     const scheme = (m) => `color-scheme:${t.darkFirst || m === 'dark' ? 'dark' : 'light'}`;
-    return `${sel}{--ds-font-display:${t.fonts.display};--ds-font-body:${t.fonts.body};${decl(t.shape)};${decl(t.light)};${scheme('light')}}\n${sel}[data-mode="dark"]{${decl(t.dark)};${scheme('dark')}}`;
+    return `${sel}{--ds-font-display:${t.fonts.display};--ds-font-body:${t.fonts.body};${decl(full(shapeKeys, t.shape))};${decl(full(colourKeys, t.light))};${scheme('light')}}\n${sel}[data-mode="dark"],[data-mode="dark"] ${sel}{${decl(full(colourKeys, t.dark))};${scheme('dark')}}`;
   }).join('\n');
 }
+export const tokenCount = (t) => 2 + Object.keys(t.shape).length + Object.keys(t.light).length;

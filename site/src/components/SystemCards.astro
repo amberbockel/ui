@@ -1,0 +1,16 @@
+---
+import { THEMES } from '../systems.js';
+const dots = ['bg', 'surface', 'primary', 'accent', 't1Bg', 't2Bg'];
+---
+<div class="sys-grid">
+  {THEMES.map((t, i) => (
+    <article class="sys-card ds" data-system={t.id} data-reveal style={`--d:${i * 0.08}s`}>
+      <div>
+        <h3 class="ds-display">{t.name}</h3>
+        <p>{t.tagline}</p>
+        <div class="sys-card__dots">{dots.map((k) => <i style={`background:var(--ds-${k.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase())})`}></i>)}</div>
+      </div>
+      <div><button type="button" class="ds-btn ds-btn--primary" data-system-id={t.id} data-wear={t.name} aria-pressed="false">Wear {t.name}</button></div>
+    </article>
+  ))}
+</div>

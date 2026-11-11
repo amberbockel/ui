@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Cta from '../components/Cta.astro';
+import SystemCards from '../components/SystemCards.astro';
 import { sec, meta, img } from '../lib.js';
 import extra from '../extra.json';
 import posts from '../posts.json';
@@ -76,6 +77,20 @@ const fmt = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { year
           </a>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap stack" style="gap:28px">
+      <div class="split-head" data-reveal>
+        <div class="stack" style="gap:12px">
+          <p class="eyebrow eyebrow--accent">An experiment</p>
+          <h2 class="ds-display h2">This site wears four design systems</h2>
+          <p class="lede">Same pages, same words. Pick a look and the whole site changes its colour, type and shape.</p>
+        </div>
+        <a class="arrow-link" href="/systems/">How it works<span aria-hidden="true">→</span></a>
+      </div>
+      <SystemCards />
     </div>
   </section>
 

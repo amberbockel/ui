@@ -7,6 +7,7 @@ import { THEMES, systemsCss } from '../systems.js';
 
 const { title, description, current = '', canonical = '', overlay = false } = Astro.props;
 const nav = [['Home', '/'], ['About', '/about/'], ['Work', '/work/'], ['Mentor', '/mentor/'], ['Art', '/art/'], ['Blog', '/blog/']];
+const footNav = [...nav, ['Design systems', '/systems/']];
 const ids = THEMES.map((t) => t.id);
 const year = new Date().getFullYear();
 const swatch = (t) => 'background:linear-gradient(135deg, ' + t.light.bg + ' 50%, ' + t.light.accent + ' 50%)';
@@ -22,7 +23,7 @@ const currentName = THEMES.find((t) => t.id === config.system).name;
     <meta name="description" content={description} />
     {canonical && <link rel="canonical" href={canonical} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Inter+Tight:wght@400;500;600;700&family=Prata&family=Sofia+Sans+Condensed:wght@400;500;600;700&family=Sofia+Sans+Extra+Condensed:wght@600;700;800&family=Wix+Madefor+Display:wght@400..800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Inter+Tight:wght@400;500;600;700&family=Prata&family=DynaPuff:wght@400..700&family=Fredoka:wght@400..700&family=Wix+Madefor+Display:wght@400..800&display=swap" />
     <style is:inline set:html={systemsCss()}></style>
     <!-- Applies the saved system and mode before first paint, so there is no flash. -->
     <script is:inline define:vars={{ ids, allowSwitch: config.showSystemSwitch, fallback: config.system }}>
@@ -33,6 +34,7 @@ const currentName = THEMES.find((t) => t.id === config.system).name;
         try {
           var s = allowSwitch && localStorage.getItem('ab-system');
           if (s && ids.indexOf(s) > -1) r.setAttribute('data-system', s);
+          if (localStorage.getItem('ab-coach')) r.classList.add('sys-seen');
           var m = localStorage.getItem('ab-mode') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
           r.setAttribute('data-mode', m);
         } catch (e) { r.setAttribute('data-mode', 'light'); }
@@ -48,15 +50,15 @@ const currentName = THEMES.find((t) => t.id === config.system).name;
             {nav.map(([label, href]) => <a class="ds-navlink" href={href} aria-current={current === href ? 'page' : undefined}>{label}</a>)}
           </nav>
           <div class="ds-nav__tools">
-            <button class="ds-iconbtn menu-btn" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
-            </button>
+            <button class="ds-iconbtn menu-btn" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span></button>
             {config.showSystemSwitch && (
             <div class="sysmenu" data-sysmenu>
               <button class="sysmenu__btn" id="sys-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sys-list" aria-label="Change design system"><span class="sysmenu__dot" aria-hidden="true"></span><span data-sys-name>{currentName}</span></button>
               <div class="sysmenu__list" id="sys-list" hidden>
                 {THEMES.map((t) => <button type="button" data-system-id={t.id} data-system-name={t.name} aria-pressed="false"><i style={swatch(t)}></i><span>{t.name}<small>{fontName(t)}</small></span></button>)}
+                <a class="sysmenu__more" href="/systems/">How this works<span aria-hidden="true">→</span></a>
               </div>
+              <div class="coach" id="sys-coach" role="status" hidden><span>This site has four looks. Try another.</span><button type="button" id="coach-close" aria-label="Dismiss">×</button></div>
             </div>
             )}
             <button class="ds-iconbtn" id="mode-toggle" aria-label="Switch between light and dark">
@@ -78,7 +80,7 @@ const currentName = THEMES.find((t) => t.id === config.system).name;
             <p class="ds-muted" style="margin:0">If you’re looking for guidance, clarity, or a little color for your walls, I’m your person.</p>
             <div><a class="ds-btn ds-btn--secondary" href="mailto:amberbockel+website@gmail.com">Say hello</a></div>
           </div>
-          <nav aria-label="Footer">{nav.map(([label, href]) => <a href={href}>{label}</a>)}</nav>
+          <nav aria-label="Footer">{footNav.map(([label, href]) => <a href={href}>{label}</a>)}</nav>
         </div>
         <div class="site-foot__bottom">
           <span>© {year} Amber Miro Creative. All rights reserved</span>
@@ -98,7 +100,8 @@ const currentName = THEMES.find((t) => t.id === config.system).name;
         function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
         function paint() {
           var b = document.querySelectorAll('[data-system-id]');
-          for (var i = 0; i < b.length; i++) { var on = b[i].getAttribute('data-system-id') === r.getAttribute('data-system'); b[i].setAttribute('aria-pressed', String(on)); if (on && b[i].getAttribute('data-system-name')) { var n = document.querySelector('[data-sys-name]'); if (n) n.textContent = b[i].getAttribute('data-system-name'); } }
+          for (var i = 0; i < b.length; i++) { var on = b[i].getAttribute('data-system-id') === r.getAttribute('data-system'); b[i].setAttribute('aria-pressed', String(on)); if (b[i].hasAttribute('data-wear')) b[i].textContent = (on ? 'Wearing ' : 'Wear ') + b[i].getAttribute('data-wear');
+            if (on && b[i].getAttribute('data-system-name')) { var n = document.querySelector('[data-sys-name]'); if (n) n.textContent = b[i].getAttribute('data-system-name'); } }
         }
         document.getElementById('mode-toggle').addEventListener('click', function () {
           var m = r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark';
@@ -110,8 +113,16 @@ const currentName = THEMES.find((t) => t.id === config.system).name;
         });
         var sysBtn = document.getElementById('sys-toggle'), sysList = document.getElementById('sys-list');
         function closeSys() { if (sysList) { sysList.hidden = true; sysBtn.setAttribute('aria-expanded', 'false'); } }
+        /* A one-time nudge: the switch is easy to miss, so point at it once. */
+        var coach = document.getElementById('sys-coach');
+        function seen() { r.classList.add('sys-seen'); save('ab-coach', '1'); if (coach) coach.hidden = true; }
+        if (coach && !r.classList.contains('sys-seen')) {
+          setTimeout(function () { if (!r.classList.contains('sys-seen')) coach.hidden = false; }, 1800);
+          setTimeout(function () { if (coach) coach.hidden = true; }, 12000);
+          document.getElementById('coach-close').addEventListener('click', function (e) { e.stopPropagation(); seen(); });
+        }
         if (sysBtn) {
-          sysBtn.addEventListener('click', function (e) { e.stopPropagation(); sysList.hidden = !sysList.hidden; sysBtn.setAttribute('aria-expanded', String(!sysList.hidden)); });
+          sysBtn.addEventListener('click', function (e) { e.stopPropagation(); seen(); sysList.hidden = !sysList.hidden; sysBtn.setAttribute('aria-expanded', String(!sysList.hidden)); });
           document.addEventListener('click', function (e) { if (!e.target.closest('[data-sysmenu]')) closeSys(); });
           document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSys(); });
         }
@@ -122,7 +133,10 @@ const currentName = THEMES.find((t) => t.id === config.system).name;
         function stick() { head.classList.toggle('is-stuck', window.scrollY > 12); }
         stick(); window.addEventListener('scroll', stick, { passive: true });
         var menu = document.getElementById('menu-toggle');
-        menu.addEventListener('click', function () { var open = head.classList.toggle('is-open'); menu.setAttribute('aria-expanded', String(open)); });
+        function setMenu(open) { head.classList.toggle('is-open', open); menu.setAttribute('aria-expanded', String(open)); menu.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); }
+        menu.addEventListener('click', function () { setMenu(!head.classList.contains('is-open')); });
+        document.getElementById('main-nav').addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
 
         /* Reveal on scroll. Content is visible by default; this only adds the entrance. */
         var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
