@@ -75,6 +75,7 @@ function Showcase() {
         items={[
           { label: 'Components', href: import.meta.env.BASE_URL || '/', isActive: true },
           { label: 'Docs', href: `${import.meta.env.BASE_URL || '/'}docs/getting-started` },
+          { label: 'Systems', href: `${import.meta.env.BASE_URL || '/'}systems/`, external: true },
           { label: 'GitHub', href: 'https://github.com/amberbockel/ui', external: true },
         ]}
         theme={theme}
