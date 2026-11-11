@@ -16,6 +16,17 @@ export default {
 Changing `system` re-skins the whole site: colour, type and shape. It works the same way as the
 light/dark switch: one attribute on `<html>` (`data-system`, next to `data-mode`) selects a set of tokens.
 
+Visitors get the same switch in the header, beside the light/dark button, when `showSystemSwitch` is on.
+
+### What a system is made of
+
+- **Tokens** in `src/systems.js`: colour, type and shape. These do most of the work.
+- **One signature gesture** in `src/styles/site.css`, under "Per-system art direction": Sunrise's aurora,
+  Sierra's glow, Unicorns' stickers, Ember's black-and-white portraits. Tokens cannot carry these.
+
+Two tokens exist because one colour could not do two jobs: `accent` is for fills and marks,
+`accentText` is the same hue tuned to be readable as text.
+
 ## Where things live
 
 - `src/systems.js`: every design system as tokens. Add or edit systems here.

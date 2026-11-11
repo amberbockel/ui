@@ -9,6 +9,9 @@ const { title, description, current = '', canonical = '', overlay = false } = As
 const nav = [['Home', '/'], ['About', '/about/'], ['Work', '/work/'], ['Mentor', '/mentor/'], ['Art', '/art/'], ['Blog', '/blog/']];
 const ids = THEMES.map((t) => t.id);
 const year = new Date().getFullYear();
+const swatch = (t) => 'background:linear-gradient(135deg, ' + t.light.bg + ' 50%, ' + t.light.accent + ' 50%)';
+const fontName = (t) => t.fonts.display.split(',')[0].replace(/"/g, '');
+const currentName = THEMES.find((t) => t.id === config.system).name;
 ---
 <!doctype html>
 <html lang="en" data-system={config.system}>
@@ -48,6 +51,14 @@ const year = new Date().getFullYear();
             <button class="ds-iconbtn menu-btn" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
             </button>
+            {config.showSystemSwitch && (
+            <div class="sysmenu" data-sysmenu>
+              <button class="sysmenu__btn" id="sys-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sys-list" aria-label="Change design system"><span class="sysmenu__dot" aria-hidden="true"></span><span data-sys-name>{currentName}</span></button>
+              <div class="sysmenu__list" id="sys-list" hidden>
+                {THEMES.map((t) => <button type="button" data-system-id={t.id} data-system-name={t.name} aria-pressed="false"><i style={swatch(t)}></i><span>{t.name}<small>{fontName(t)}</small></span></button>)}
+              </div>
+            </div>
+            )}
             <button class="ds-iconbtn" id="mode-toggle" aria-label="Switch between light and dark">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" /></svg>
             </button>
@@ -87,7 +98,7 @@ const year = new Date().getFullYear();
         function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
         function paint() {
           var b = document.querySelectorAll('[data-system-id]');
-          for (var i = 0; i < b.length; i++) b[i].setAttribute('aria-pressed', String(b[i].getAttribute('data-system-id') === r.getAttribute('data-system')));
+          for (var i = 0; i < b.length; i++) { var on = b[i].getAttribute('data-system-id') === r.getAttribute('data-system'); b[i].setAttribute('aria-pressed', String(on)); if (on && b[i].getAttribute('data-system-name')) { var n = document.querySelector('[data-sys-name]'); if (n) n.textContent = b[i].getAttribute('data-system-name'); } }
         }
         document.getElementById('mode-toggle').addEventListener('click', function () {
           var m = r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark';
@@ -95,8 +106,15 @@ const year = new Date().getFullYear();
         });
         document.addEventListener('click', function (e) {
           var b = e.target.closest('[data-system-id]'); if (!b) return;
-          r.setAttribute('data-system', b.getAttribute('data-system-id')); save('ab-system', b.getAttribute('data-system-id')); paint();
+          r.setAttribute('data-system', b.getAttribute('data-system-id')); save('ab-system', b.getAttribute('data-system-id')); paint(); closeSys();
         });
+        var sysBtn = document.getElementById('sys-toggle'), sysList = document.getElementById('sys-list');
+        function closeSys() { if (sysList) { sysList.hidden = true; sysBtn.setAttribute('aria-expanded', 'false'); } }
+        if (sysBtn) {
+          sysBtn.addEventListener('click', function (e) { e.stopPropagation(); sysList.hidden = !sysList.hidden; sysBtn.setAttribute('aria-expanded', String(!sysList.hidden)); });
+          document.addEventListener('click', function (e) { if (!e.target.closest('[data-sysmenu]')) closeSys(); });
+          document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSys(); });
+        }
         paint();
 
         /* Header: clear over the hero, solid once the page scrolls. */
