@@ -1,52 +1,83 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Cta from '../components/Cta.astro';
-import content from '../content.json';
+import { sec, meta, img } from '../lib.js';
+import extra from '../extra.json';
+import posts from '../posts.json';
 
-const page = content.home;
-const s = page.sections;
-const hero = s.find((x) => x.level === 'h1');
-const intro = s.find((x) => x.eyebrow && x.eyebrow.startsWith('I'));
-const names = ['Design Leadership', 'Mentorship', 'Creative Practice', 'Perspectives'];
-const features = names.map((n) => s.find((x) => x.heading === n));
-// Images arrive in page order; the first three belong to the first three features.
-const featureImages = features.flatMap((f) => f.images).filter((i) => i.w < 900).slice(0, 3);
-const links = [{ label: 'Explore my work', href: '/work/' }, { label: 'Work with me', href: '/mentor/' }, { label: 'See my art', href: 'https://ambermiro.com/' }, { label: 'Read the latest', href: '/blog/' }];
+const hero = sec('home', 'I help organizations');
+const intro = sec('home', 'A design leader');
+const tiles = [
+  { ...sec('home', 'Design Leadership'), image: '9I1HTKYV2KroBSPtk2oL6Nkp0.png', alt: 'Amber leading a team workshop at a whiteboard', link: ['Explore my work', '/work/'] },
+  { ...sec('home', 'Mentorship'), image: 'w37o2DK6SV62hwDSwpX2tzo69g.png', alt: 'Amber standing in front of one of her paintings', link: ['Work with me', '/mentor/'] },
+  { ...sec('home', 'Creative Practice'), image: 'AiWelu5gtIplutsZSeL7CgcHTtE.png', alt: 'A bright abstract painting hung in a hallway', link: ['See my art', '/art/'] },
+];
+const persp = sec('home', 'Perspectives');
+const latest = posts.slice(0, 3);
+const fmt = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 ---
-<Layout title={page.title} description={page.description} current="/">
-  <section class="hero">
-    <div class="wrap stack">
-      <h1 class="ds-display h1">{hero.heading}</h1>
-      <p class="lede">{hero.paras[0]}</p>
-      <div class="row">
-        <a class="ds-btn ds-btn--primary" href="/work/">Explore my work</a>
-        <a class="ds-btn ds-btn--secondary" href="/mentor/">Work with me</a>
+<Layout {...meta('home')} current="/" overlay>
+  <section class="hero hero--aurora">
+    <div class="wrap stack center hero__in">
+      <h1 class="ds-display h1" data-rise style="--i:0">I help organizations design how humans and AI make decisions <em>together</em>.</h1>
+      <p class="lede" data-rise style="--i:1">{hero.paras[0]}</p>
+      <div class="hero__portrait glass" data-rise style="--i:2">
+        <img src={img('SffeKsuKsBqX5cZA1PTpsRbJe0.png')} alt="Amber Heinbockel, smiling, holding a laptop" width="559" height="852" />
       </div>
-      {hero.images[0] && <div class="hero__portrait"><img src={hero.images[0].src} alt="Amber Heinbockel" width={hero.images[0].w} height={hero.images[0].h} /></div>}
+    </div>
+  </section>
+
+  <section class="section section--flush">
+    <div class="wrap stack" style="gap:18px" data-reveal>
+      <p class="eyebrow eyebrow--accent">{intro.eyebrow}</p>
+      <h2 class="ds-display h2">{intro.heading}</h2>
+      <p class="lede">{intro.paras[0]}</p>
+    </div>
+    <div class="marquee" aria-label="Places Amber has worked" data-reveal>
+      <div class="marquee__track">
+        {[0, 1, 2].map((r) => extra.logos.map(([name, file]) => <img src={img(file)} alt={r === 0 ? name : ''} aria-hidden={r === 0 ? undefined : 'true'} loading="lazy" />))}
+      </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="wrap stack" style="gap:20px">
-      <p class="eyebrow">{intro.eyebrow}</p>
-      <h2 class="ds-display h2" style="max-width:22ch">{intro.heading}</h2>
-      <p class="lede">{intro.paras[0]}</p>
-      {intro.logos && <div class="logos">{intro.logos.map((src) => <img src={src} alt="" loading="lazy" />)}</div>}
+    <div class="wrap">
+      <div class="mosaic">
+        {tiles.map((t, i) => (
+          <>
+            <div class={`mosaic__text ${i % 2 ? 'mosaic__text--b' : ''}`} data-reveal>
+              <h2 class="ds-display h3">{t.heading}</h2>
+              {t.paras.map((p) => <p>{p}</p>)}
+              <a class="arrow-link" href={t.link[1]}>{t.link[0]}<span aria-hidden="true">→</span></a>
+            </div>
+            <a class={`mosaic__media ${i % 2 ? 'mosaic__media--b' : ''}`} href={t.link[1]} tabindex="-1" aria-hidden="true" data-reveal style="--d:.08s">
+              <img src={img(t.image)} alt={t.alt} loading="lazy" />
+            </a>
+          </>
+        ))}
+      </div>
     </div>
   </section>
 
-  {features.map((f, i) => (
-    <section class="section">
-      <div class={`wrap ${featureImages[i] ? 'split' : ''} ${i % 2 ? 'split--flip' : ''}`}>
-        <div class="stack">
-          <h2 class="ds-display h2">{f.heading}</h2>
-          <div class="prose">{f.paras.map((p) => <p>{p}</p>)}</div>
-          <div><a class="ds-btn ds-btn--secondary" href={links[i].href}>{links[i].label}</a></div>
+  <section class="section section--tint">
+    <div class="wrap stack" style="gap:28px">
+      <div class="split-head" data-reveal>
+        <div class="stack" style="gap:12px">
+          <h2 class="ds-display h2">{persp.heading}</h2>
+          <p class="lede">{persp.paras[0]}</p>
         </div>
-        {featureImages[i] && <div class="split__media"><img src={featureImages[i].src} alt="" loading="lazy" width={featureImages[i].w} height={featureImages[i].h} /></div>}
+        <a class="arrow-link" href="/blog/">Read the latest<span aria-hidden="true">→</span></a>
       </div>
-    </section>
-  ))}
+      <div class="post-grid">
+        {latest.map((p, i) => (
+          <a class="post-card" href={`/blog/${p.slug}/`} data-reveal style={`--d:${i * 0.08}s`}>
+            <div class="post-card__media">{p.cover && <img src={p.cover} alt="" loading="lazy" />}</div>
+            <div class="post-card__body"><time datetime={p.date}>{fmt(p.date)} · {p.minutes} min read</time><h3 class="ds-display">{p.title}</h3></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <Cta />
 </Layout>

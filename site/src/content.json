@@ -329,6 +329,7 @@
     "heading": "AI Assistant for WearOS",
     "level": "h2",
     "paras": [
+     "I helped shape the next-generation Assistant experience on WearOS — designing how intelligent, on-device AI shows up on the smallest, fastest surface we have: the wrist.From voice interactions to proactive suggestions, my work focused on making the Assistant feel helpful, calm, and deeply integrated into everyday moments.",
      "Faster, Hands-Free Interactions",
      "Context-Aware Responses",
      "Glanceable Intelligence",
@@ -346,7 +347,9 @@
    {
     "heading": "Build, edit, and share AI mini-apps using natural language",
     "level": "h2",
-    "paras": [],
+    "paras": [
+     "Opal is a reminder that creating with AI shouldn’t feel technical — it should feel imaginative. My job was to support the team building it: clearing space, offering direction when needed, and helping translate a big idea into something creators can actually use."
+    ],
     "links": [
      {
       "label": "Give Opal a try",
@@ -367,7 +370,9 @@
     "heading": "The Work Beneath the Work",
     "level": "h2",
     "paras": [
-     "Design leadership often happens offstage."
+     "Design leadership often happens offstage.",
+     "It’s the listening, the clearing of obstacles, the quiet support that lets teams do their best work — long before anything ships.",
+     "This deck captures some of that early thinking — the frameworks, questions, and narrative threads I use to guide teams toward clarity. Not as deliverables, but as a way of working: inviting momentum, reducing friction, and helping people move together with purpose."
     ],
     "links": [
      {

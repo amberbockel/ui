@@ -22,3 +22,5 @@ mkdir -p public/images
 [ -f "public/images/nSzaRCeiUW3GXtgsin82R5R4Q4M.gif" ] || curl -sSL -o "public/images/nSzaRCeiUW3GXtgsin82R5R4Q4M.gif" "https://framerusercontent.com/images/nSzaRCeiUW3GXtgsin82R5R4Q4M.gif"
 [ -f "public/images/nnf0q3LigxwGAquGclS5cbQB0.gif" ] || curl -sSL -o "public/images/nnf0q3LigxwGAquGclS5cbQB0.gif" "https://framerusercontent.com/images/nnf0q3LigxwGAquGclS5cbQB0.gif"
 [ -f "public/images/w37o2DK6SV62hwDSwpX2tzo69g.png" ] || curl -sSL -o "public/images/w37o2DK6SV62hwDSwpX2tzo69g.png" "https://framerusercontent.com/images/w37o2DK6SV62hwDSwpX2tzo69g.png"
+[ -f "public/images/mbT1V3BYQ6Yk9Q0VAAgItc0ekog.png" ] || curl -sSL -o "public/images/mbT1V3BYQ6Yk9Q0VAAgItc0ekog.png" "https://framerusercontent.com/images/mbT1V3BYQ6Yk9Q0VAAgItc0ekog.png"
+[ -f "public/images/st75lZ3qy96STCHuFPQE57FEKmY.png" ] || curl -sSL -o "public/images/st75lZ3qy96STCHuFPQE57FEKmY.png" "https://framerusercontent.com/images/st75lZ3qy96STCHuFPQE57FEKmY.png"

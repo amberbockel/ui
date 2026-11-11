@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Cta from '../components/Cta.astro';
+import { sec, meta, img } from '../lib.js';
+import extra from '../extra.json';
+
+const hero = sec('work', 'Design in Practice');
+const edge = sec('work', 'Deploy AI');
+const wear = sec('work', 'AI Assistant');
+const opal = sec('work', 'Build, edit');
+const deck = sec('work', 'The Work Beneath');
+// "Deploy AI" lists three features as a title followed by its description.
+const titles = ['Model Discovery', 'Seamless Integration', 'Offline & Edge Ready'];
+const features = titles.map((t) => ({ title: t, text: edge.paras[edge.paras.indexOf(t) + 1] }));
+const edgeIntro = edge.paras[0];
+const wearIntro = wear.paras.filter((p) => !extra.wearBullets.includes(p));
+// The old page attached the Opal blurb to the section before it.
+const opalText = wear.paras.find((p) => p.startsWith('Opal is')) || opal.paras[0] || '';
+---
+<Layout {...meta('work')} current="/work/">
+  <section class="hero hero--plain">
+    <div class="wrap stack center">
+      <p class="eyebrow eyebrow--accent" data-rise style="--i:0">{hero.eyebrow}</p>
+      <h1 class="ds-display h1" data-rise style="--i:1">{hero.heading}</h1>
+      <p class="lede" data-rise style="--i:2">{hero.paras[0]}</p>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap split split--top">
+      <div class="stack" style="gap:28px" data-reveal>
+        <div class="stack" style="gap:14px">
+          <span class="ds-badge ds-badge--outline">{edge.eyebrow}</span>
+          <h2 class="ds-display h2">{edge.heading}</h2>
+          <p class="lede">{edgeIntro}</p>
+        </div>
+        <div class="feature-grid">
+          {features.map((f) => <div><h3>{f.title}</h3><p>{f.text}</p></div>)}
+          <div><h3>Media</h3><ul class="links">{edge.links.map((l) => <li><a class="arrow-link" href={l.href}>{l.label}<span aria-hidden="true">→</span></a></li>)}</ul></div>
+        </div>
+      </div>
+      <div class="device" data-reveal style="--d:.1s"><img src={img('nnf0q3LigxwGAquGclS5cbQB0.gif')} alt="Screen recording of Google AI Edge Gallery running an on-device model" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div class="media-card" data-reveal><img src={img('avB1qCPbrCTx6A3vBeYhv20UDWM.png')} alt="Three Wear OS watches showing the Assistant" loading="lazy" /></div>
+      <div class="stack" data-reveal style="--d:.1s">
+        <span class="ds-badge ds-badge--outline">{wear.eyebrow}</span>
+        <h2 class="ds-display h2">{wear.heading}</h2>
+        <div class="prose">{wearIntro.filter((p) => !p.startsWith('Opal is')).map((p) => <p>{p}</p>)}</div>
+        <div>{wear.links.map((l) => <a class="arrow-link" href={l.href}>{l.label}<span aria-hidden="true">→</span></a>)}</div>
+        <ul class="checks">{extra.wearBullets.map((b) => <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>{b}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap stack center" style="gap:16px" data-reveal>
+      <span class="ds-badge ds-badge--outline">{opal.eyebrow}</span>
+      <h2 class="ds-display h2" style="max-width:20ch">{opal.heading}</h2>
+      {opalText && <p class="lede">{opalText}</p>}
+      <div>{opal.links.map((l) => <a class="arrow-link" href={l.href}>{l.label}<span aria-hidden="true">→</span></a>)}</div>
+    </div>
+    <div class="wrap"><div class="media-card media-card--wide" data-reveal><img src={img('nSzaRCeiUW3GXtgsin82R5R4Q4M.gif')} alt="Opal building a mini-app from a typed prompt" loading="lazy" /></div></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div class="stack" data-reveal>
+        <span class="ds-badge ds-badge--outline">{deck.eyebrow}</span>
+        <h2 class="ds-display h2">The Work Beneath the Work</h2>
+        <div class="prose">{deck.paras.map((p) => <p>{p}</p>)}</div>
+        <div>{deck.links.map((l) => <a class="arrow-link" href={l.href}>{l.label}<span aria-hidden="true">→</span></a>)}</div>
+      </div>
+      <div class="media-card" data-reveal style="--d:.1s"><img src={img('BLiYDRqXVbjVVQnHyLpbTuv8.gif')} alt="Slides from Amber’s design leadership deck" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <Cta />
+</Layout>

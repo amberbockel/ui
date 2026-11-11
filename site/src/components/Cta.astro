@@ -1,10 +1,16 @@
-<section class="section section--tint cta">
-  <div class="wrap stack">
-    <p class="eyebrow">Let’s connect</p>
-    <h2 class="ds-display h2">Bringing clarity to what you’re building next.</h2>
-    <div class="row" style="justify-content:center">
-      <a class="ds-btn ds-btn--primary" href="/blog/">Read the Blog</a>
-      <a class="ds-btn ds-btn--secondary" href="/about/">About Me</a>
+---
+import extra from '../extra.json';
+---
+<section class="section">
+  <div class="wrap">
+    <div class="cta-card" data-reveal>
+      <p class="eyebrow">Let’s connect</p>
+      <h2 class="ds-display h2">Bringing clarity to what you’re building next.</h2>
+      <ul class="chips">{extra.chips.map((c) => <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>{c}</li>)}</ul>
+      <div class="row" style="justify-content:center">
+        <a class="ds-btn ds-btn--secondary" href="/blog/">Read the Blog</a>
+        <a class="ds-btn ds-btn--primary" href="/about/">About Me</a>
+      </div>
     </div>
   </div>
 </section>

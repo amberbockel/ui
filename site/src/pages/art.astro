@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { sec, meta, img } from '../lib.js';
+
+const hero = sec('art', 'A joyful counterweight');
+const story = sec('art', 'My Artist Story');
+const miro = sec('art', 'Amber Miro Art');
+const works = [
+  ['Floating Poppies', 'ABcDynBkaiEXfPvAiR1Kt0cMm3U.jpg', 'A framed painting of loose, colourful poppies leaning against a wall'],
+  ['Watercolor Rose', '27hd3OWOodgA9bpN1aGUUR2mFrg.jpg', 'A framed watercolour of a pink rose above a console table'],
+  ['Lake Sunsets', '461Pzt7fVgoXgUCOJpdJC4XpPRM.png', 'A framed painting of figures wading at sunset, on a wooden floor'],
+];
+// Keep only the art half of the second paragraph: the old page had pasted in a sentence from About.
+const storyParas = story.paras.map((p) => p.split('I’ve always believed')[0].trim());
+---
+<Layout {...meta('art')} current="/art/">
+  <section class="hero hero--plain">
+    <div class="wrap stack center">
+      <p class="eyebrow eyebrow--accent" data-rise style="--i:0">Art</p>
+      <h1 class="ds-display h1" data-rise style="--i:1">{hero.heading}</h1>
+      <p class="lede" data-rise style="--i:2">{hero.paras[0]}</p>
+    </div>
+  </section>
+
+  <section class="section section--flush">
+    <div class="wrap split">
+      <div class="stack" data-reveal>
+        <h2 class="ds-display h2">{story.heading}</h2>
+        <div class="prose prose--lg">{storyParas.map((p) => <p>{p}</p>)}</div>
+      </div>
+      <div class="illustration" data-reveal style="--d:.1s"><img src={img('AwI8Ht6vEsB0Ks1TSPBS8jfQi2k.png')} alt="Watercolour illustration of Amber painting swatches" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="art-grid">
+        {works.map(([title, file, alt], i) => (
+          <figure class="art-card" data-reveal style={`--d:${i * 0.08}s`}>
+            <img src={img(file)} alt={alt} loading="lazy" />
+            <figcaption class="ds-display">{title}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap narrow stack" data-reveal>
+      <h2 class="ds-display h2">{miro.heading}</h2>
+      <div class="prose prose--lg">{miro.paras.map((p) => <p>{p}</p>)}</div>
+      <div><a class="ds-btn ds-btn--primary" href="https://ambermiro.com/">Visit AmberMiro.com</a></div>
+    </div>
+  </section>
+</Layout>

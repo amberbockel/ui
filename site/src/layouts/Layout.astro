@@ -5,7 +5,7 @@ import Logo from '../components/Logo.astro';
 import config from '../site.config.js';
 import { THEMES, systemsCss } from '../systems.js';
 
-const { title, description, current = '', canonical = '' } = Astro.props;
+const { title, description, current = '', canonical = '', overlay = false } = Astro.props;
 const nav = [['Home', '/'], ['About', '/about/'], ['Work', '/work/'], ['Mentor', '/mentor/'], ['Art', '/art/'], ['Blog', '/blog/']];
 const ids = THEMES.map((t) => t.id);
 const year = new Date().getFullYear();
@@ -25,6 +25,7 @@ const year = new Date().getFullYear();
     <script is:inline define:vars={{ ids, allowSwitch: config.showSystemSwitch, fallback: config.system }}>
       (function () {
         var r = document.documentElement;
+        r.classList.add('js');
         if (!r.getAttribute('data-system')) r.setAttribute('data-system', fallback);
         try {
           var s = allowSwitch && localStorage.getItem('ab-system');
@@ -35,19 +36,22 @@ const year = new Date().getFullYear();
       })();
     </script>
   </head>
-  <body class="ds">
+  <body class={`ds ${overlay ? "has-overlay" : ""}`}>
     <header class="site-head">
       <div class="wrap">
         <div class="ds-nav">
           <a class="logo" href="/" aria-label="Amber Bockel, home"><Logo /></a>
-          <nav class="ds-nav__links" aria-label="Main">
+          <nav class="ds-nav__links" id="main-nav" aria-label="Main">
             {nav.map(([label, href]) => <a class="ds-navlink" href={href} aria-current={current === href ? 'page' : undefined}>{label}</a>)}
           </nav>
           <div class="ds-nav__tools">
+            <button class="ds-iconbtn menu-btn" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+            </button>
             <button class="ds-iconbtn" id="mode-toggle" aria-label="Switch between light and dark">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" /></svg>
             </button>
-            <a class="ds-btn ds-btn--primary ds-btn--sm" href="mailto:amberbockel+website@gmail.com">Say hello</a>
+            <a class="ds-btn ds-btn--primary ds-btn--sm head-cta" href="mailto:amberbockel+website@gmail.com">Say hello</a>
           </div>
         </div>
       </div>
@@ -94,6 +98,55 @@ const year = new Date().getFullYear();
           r.setAttribute('data-system', b.getAttribute('data-system-id')); save('ab-system', b.getAttribute('data-system-id')); paint();
         });
         paint();
+
+        /* Header: clear over the hero, solid once the page scrolls. */
+        var head = document.querySelector('.site-head');
+        function stick() { head.classList.toggle('is-stuck', window.scrollY > 12); }
+        stick(); window.addEventListener('scroll', stick, { passive: true });
+        var menu = document.getElementById('menu-toggle');
+        menu.addEventListener('click', function () { var open = head.classList.toggle('is-open'); menu.setAttribute('aria-expanded', String(open)); });
+
+        /* Reveal on scroll. Content is visible by default; this only adds the entrance. */
+        var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var items = document.querySelectorAll('[data-reveal]');
+        function countUp(el) {
+          var m = /^(\d+)(.*)$/.exec(el.getAttribute('data-count')); if (!m || calm) return;
+          var to = +m[1], suffix = m[2], t0 = performance.now();
+          (function step(now) { var k = Math.min(1, (now - t0) / 1100), e = 1 - Math.pow(1 - k, 3); el.textContent = Math.round(to * e) + suffix; if (k < 1) requestAnimationFrame(step); })(t0);
+        }
+        if (!('IntersectionObserver' in window) || calm) { for (var i = 0; i < items.length; i++) items[i].classList.add('is-in'); }
+        else {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              if (!en.isIntersecting) return;
+              en.target.classList.add('is-in'); io.unobserve(en.target);
+              var c = en.target.querySelectorAll('[data-count]'); for (var j = 0; j < c.length; j++) countUp(c[j]);
+            });
+          }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+          for (var k = 0; k < items.length; k++) io.observe(items[k]);
+        }
+
+        /* Tabs */
+        document.querySelectorAll('[data-tabs]').forEach(function (root) {
+          var tabs = root.querySelectorAll('[role="tab"]'), panels = root.querySelectorAll('[role="tabpanel"]');
+          function show(n) { for (var i = 0; i < tabs.length; i++) { var on = i === n; tabs[i].setAttribute('aria-selected', String(on)); tabs[i].tabIndex = on ? 0 : -1; panels[i].hidden = !on; } }
+          tabs.forEach(function (t, i) {
+            t.addEventListener('click', function () { show(i); });
+            t.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { var n = (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length; show(n); tabs[n].focus(); } });
+          });
+        });
+
+        /* Testimonial carousel */
+        document.querySelectorAll('[data-carousel]').forEach(function (root) {
+          var slides = root.querySelectorAll('[data-slide]'), dots = root.querySelectorAll('[data-dot]'), at = 0, timer;
+          function go(n) { at = (n + slides.length) % slides.length; for (var i = 0; i < slides.length; i++) { slides[i].setAttribute('aria-hidden', String(i !== at)); dots[i].setAttribute('aria-current', String(i === at)); } }
+          function auto() { clearInterval(timer); if (!calm) timer = setInterval(function () { go(at + 1); }, 7000); }
+          root.querySelector('[data-next]').addEventListener('click', function () { go(at + 1); auto(); });
+          root.querySelector('[data-prev]').addEventListener('click', function () { go(at - 1); auto(); });
+          dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); auto(); }); });
+          root.addEventListener('mouseenter', function () { clearInterval(timer); }); root.addEventListener('mouseleave', auto);
+          auto();
+        });
       })();
     </script>
   </body>

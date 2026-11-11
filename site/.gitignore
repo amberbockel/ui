@@ -2,3 +2,9 @@ node_modules
 dist
 .astro
 .DS_Store
+preview
+# Fetched by scripts/fetch-images.sh and `npm run posts`, not committed yet
+public/images/*
+!public/images/strategy.mp4
+!public/images/strategy-poster.png
+public/blog

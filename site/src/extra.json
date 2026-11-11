@@ -1,0 +1,120 @@
+{
+ "stats": [
+  {
+   "value": "20+",
+   "label": "Design Leadership"
+  },
+  {
+   "value": "10+",
+   "label": "Years in Big Tech"
+  },
+  {
+   "value": "200k",
+   "label": "Mentorship minutes"
+  },
+  {
+   "value": "45+",
+   "label": "Speaking Engagements"
+  },
+  {
+   "value": "280+",
+   "label": "Mentee's Served"
+  },
+  {
+   "value": "1000s",
+   "label": "of Projects & Counting"
+  }
+ ],
+ "tabs": [
+  {
+   "name": "AI/UX Strategy",
+   "heading": "AI & UX Strategy",
+   "paras": [
+    "Whether your team is experimenting with GenAI or integrating ML into mature products, I help bridge design and data. Together, we align insights, ethics, and execution so innovation remains both responsible and real."
+   ],
+   "bullets": [
+    "AI design playbooks & system mapping",
+    "Trust & transparency frameworks",
+    "Responsible AI guidelines & thought leadership",
+    "UX metrics for adoption and velocity"
+   ],
+   "link": null
+  },
+  {
+   "name": "Design Leadership",
+   "heading": "Design Leadership",
+   "paras": [
+    "A look at the systems, decisions, and product spaces I’ve shaped across AI, developer experience, and emerging technologies.",
+    "How I lead teams through complexity and bring clarity to intelligent systems."
+   ],
+   "bullets": [],
+   "link": {
+    "label": "Explore my work",
+    "href": "/work/"
+   }
+  },
+  {
+   "name": "Mentorship & Speaking",
+   "heading": "Mentorship & Speaking",
+   "paras": [
+    "I mentor designers who want to grow with clarity — not noise. Whether you’re early in your career or stepping into leadership, my focus is helping you understand how to think, how to decide, and how to navigate the realities of designing in an AI-shaped world.",
+    "This isn’t checkbox coaching. It’s direction, discernment, and honest conversation shaped by two decades in design and more than 200,000 mentorship minutes with designers from every background."
+   ],
+   "bullets": [],
+   "link": {
+    "label": "Mentorship on ADP List",
+    "href": "https://adplist.org/mentors/amber-heinbockel"
+   }
+  }
+ ],
+ "quotes": [
+  {
+   "text": "Amber identified a high-impact project that perfectly matched my skills, setting the stage for my immediate and future success with the team. Her proactive approach not only preserved my position but also demonstrated her exceptional commitment to her team's professional growth.",
+   "author": "Nico Gao",
+   "role": "Senior Interaction Designer at Google"
+  },
+  {
+   "text": "Amber's one of the most driven, passionate, and talented colleagues I've had the pleasure of working with at Google. As a product design leader, she expertly bridges business and user needs, and knows how to bring other leaders together to build consensus.",
+   "author": "Roman Nurik",
+   "role": "Sr. Staff Product Design Engineer, Google"
+  },
+  {
+   "text": "Amber's contributions set the standard on our team, making her an exemplary leader. I could only wish to work with her again in the future and I would highly recommend her!",
+   "author": "Andrea Chirasello",
+   "role": "VP of Sales, The Futurum Group"
+  }
+ ],
+ "wearBullets": [
+  "Faster, Hands-Free Interactions",
+  "Context-Aware Responses",
+  "Glanceable Intelligence",
+  "A More Human Voice"
+ ],
+ "chips": [
+  "Design Leadership",
+  "Mentorship",
+  "Advising"
+ ],
+ "logos": [
+  [
+   "Area 120",
+   "4K4lz2nWttjw6zNpGzHoxR8jQ.png"
+  ],
+  [
+   "Android",
+   "mbT1V3BYQ6Yk9Q0VAAgItc0ekog.png"
+  ],
+  [
+   "Google",
+   "NMqSEZDXhH4iF2askD8WXETdhDk.png"
+  ],
+  [
+   "Twitter",
+   "st75lZ3qy96STCHuFPQE57FEKmY.png"
+  ],
+  [
+   "Firebase",
+   "IsvEa5AOyrbtOEKbMmbWydQ0.png"
+  ]
+ ]
+}

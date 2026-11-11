@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Cta from '../components/Cta.astro';
+import { sec, meta } from '../lib.js';
+
+const hero = sec('mentor', 'Clarity for designers');
+const why = sec('mentor', 'Mentorship matters');
+const [lede, note] = hero.paras;
+---
+<Layout {...meta('mentor')} current="/mentor/">
+  <section class="hero hero--plain">
+    <div class="wrap stack center">
+      <p class="eyebrow eyebrow--accent" data-rise style="--i:0">{hero.eyebrow}</p>
+      <h1 class="ds-display h1" data-rise style="--i:1">{hero.heading}</h1>
+      <p class="lede" data-rise style="--i:2">{lede}</p>
+      <div class="row" data-rise style="--i:3"><a class="ds-btn ds-btn--primary" href={hero.links[0].href}>Book time on ADP List</a></div>
+      {note && <p class="note" data-rise style="--i:4">{note}</p>}
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap narrow stack" data-reveal>
+      <h2 class="ds-display h2">{why.heading}</h2>
+      <div class="prose prose--lg">{why.paras.map((p) => <p>{p}</p>)}</div>
+    </div>
+  </section>
+
+  <Testimonials />
+  <Cta />
+</Layout>

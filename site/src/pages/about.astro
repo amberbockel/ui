@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Testimonials from '../components/Testimonials.astro';
+import { sec, meta, img } from '../lib.js';
+import extra from '../extra.json';
+
+const hero = sec('about', 'Design leader');
+const story = sec('about', 'My Story');
+const focus = sec('about', 'My focus');
+const how = sec('about', 'Helping teams');
+const statLabels = extra.stats.map((s) => s.label);
+const focusItems = focus.paras.filter((p) => !statLabels.includes(p));
+const storyParas = story.paras.filter((p) => p.split(' ').length > 12);
+---
+<Layout {...meta('about')} current="/about/">
+  <section class="hero hero--plain">
+    <div class="wrap stack center">
+      <p class="eyebrow eyebrow--accent" data-rise style="--i:0">About</p>
+      <h1 class="ds-display h1" data-rise style="--i:1">{hero.heading}</h1>
+    </div>
+  </section>
+
+  <section class="section section--flush">
+    <div class="wrap split">
+      <div class="stack" data-reveal>
+        <h2 class="ds-display h2">{story.heading}</h2>
+        <div class="prose">{storyParas.map((p) => <p>{p}</p>)}</div>
+        <div>{story.links.map((l) => <a class="ds-btn ds-btn--primary" href={l.href}>{l.label}</a>)}</div>
+      </div>
+      <figure class="portrait-card" data-reveal style="--d:.1s">
+        <div class="portrait-card__img"><img src={img('K2KjrgOpfr0SvJhTISmS2sTs2bw.jpg')} alt="Portrait of Amber Heinbockel" loading="lazy" /></div>
+        <figcaption><b>Amber Heinbockel</b><small>Head of Design, ACE UX - Google</small></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="wrap split split--top">
+      <div class="stack" data-reveal>
+        <h2 class="ds-display h2">{focus.heading}</h2>
+        <ul class="bullets">{focusItems.map((f) => <li>{f}</li>)}</ul>
+      </div>
+      <div class="stat-grid" data-reveal style="--d:.1s">
+        {extra.stats.map((s) => <div class="stat"><b class="ds-display" data-count={s.value}>{s.value}</b><span>{s.label}</span></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap stack" style="gap:36px">
+      <div class="stack" style="gap:14px" data-reveal>
+        <p class="eyebrow eyebrow--accent">{how.eyebrow}</p>
+        <h2 class="ds-display h2" style="max-width:20ch">{how.heading}</h2>
+        <p class="lede">{how.paras[0]}</p>
+      </div>
+      <div class="tabs" data-tabs data-reveal>
+        <div class="tabs__list" role="tablist">
+          {extra.tabs.map((t, i) => <button role="tab" id={`tab-${i}`} aria-controls={`panel-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>{t.name}</button>)}
+        </div>
+        <div class="tabs__body split">
+          <div>
+            {extra.tabs.map((t, i) => (
+              <div class="tabs__panel stack" role="tabpanel" id={`panel-${i}`} aria-labelledby={`tab-${i}`} hidden={i !== 0}>
+                <h3 class="ds-display h3">{t.heading}</h3>
+                <div class="prose">{t.paras.map((p) => <p>{p}</p>)}</div>
+                {t.bullets.length > 0 && <ul class="pairs">{t.bullets.map((b) => <li>{b}</li>)}</ul>}
+                {t.link && <div><a class="arrow-link" href={t.link.href}>{t.link.label}<span aria-hidden="true">→</span></a></div>}
+              </div>
+            ))}
+          </div>
+          <div class="tabs__media">
+            <video autoplay muted loop playsinline poster={img('strategy-poster.png')} aria-label="Illustration of a friendly robot arranging charts"><source src={img('strategy.mp4')} type="video/mp4" /></video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+</Layout>
