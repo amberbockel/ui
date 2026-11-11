@@ -24,7 +24,7 @@ const fmt = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { year
     <div class="stage__in">
       <h1 class="stage__type ds-display" aria-label="Human plus AI. I help organizations design how humans and AI make decisions together.">
         <span class="stage__word" data-word style="--i:0" aria-hidden="true">Human</span>
-        <span class="stage__word stage__word--b" data-word style="--i:1" aria-hidden="true">+ AI</span>
+        <span class="stage__line" aria-hidden="true"><span class="stage__plus">+</span><span class="stage__word stage__word--b" data-word style="--i:1">AI</span></span>
       </h1>
       <div class="stage__figure" data-figure>
         {THEMES.map((t) => <img class="stage__photo" data-for={t.id} src={img(t.intro.photo)} alt={t.intro.alt} width="559" height="852" loading={t.id === config.system ? 'eager' : 'lazy'} />)}
