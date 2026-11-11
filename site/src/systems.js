@@ -3,6 +3,8 @@
 export const THEMES = [
   {
     id: 'sunrise',
+    // Intro photo for the home page. Swap in this system's own shot after the photoshoot.
+    intro: { photo: 'SffeKsuKsBqX5cZA1PTpsRbJe0.png', alt: 'Amber Heinbockel, smiling, holding a laptop' },
     name: 'Sunrise',
     tagline: 'Glass, gradients and a serif with opinions. The original, shipping on npm as the amberbockel-ui React package.',
     status: 'v0.1.0',
@@ -27,6 +29,8 @@ export const THEMES = [
   },
   {
     id: 'sierra',
+    // Intro photo for the home page. Swap in this system's own shot after the photoshoot.
+    intro: { photo: 'SffeKsuKsBqX5cZA1PTpsRbJe0.png', alt: 'Amber Heinbockel, smiling, holding a laptop' },
     name: 'Sierra',
     tagline: 'Sage neutrals, one loud lime and tight grotesque type. Friendly without turning cute.',
     status: 'Preview',
@@ -49,6 +53,8 @@ export const THEMES = [
   },
   {
     id: 'unicorns',
+    // Intro photo for the home page. Swap in this system's own shot after the photoshoot.
+    intro: { photo: 'SffeKsuKsBqX5cZA1PTpsRbJe0.png', alt: 'Amber Heinbockel, smiling, holding a laptop' },
     name: 'Unicorns',
     tagline: 'Bubblegum pink, butter cream and aubergine in a puffy, rounded face, with sticker shadows. Loud on purpose.',
     status: 'Preview',
@@ -71,6 +77,8 @@ export const THEMES = [
   },
   {
     id: 'ember',
+    // Intro photo for the home page. Swap in this system's own shot after the photoshoot.
+    intro: { photo: 'SffeKsuKsBqX5cZA1PTpsRbJe0.png', alt: 'Amber Heinbockel, smiling, holding a laptop' },
     name: 'Ember',
     tagline: 'Near-black, oversized type and almost no chrome. One ember-orange accent does the talking.',
     status: 'Preview',

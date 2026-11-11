@@ -5,6 +5,8 @@ import SystemCards from '../components/SystemCards.astro';
 import { sec, meta, img } from '../lib.js';
 import extra from '../extra.json';
 import posts from '../posts.json';
+import { THEMES } from '../systems.js';
+import config from '../site.config.js';
 
 const hero = sec('home', 'I help organizations');
 const intro = sec('home', 'A design leader');
@@ -18,13 +20,22 @@ const latest = posts.slice(0, 3);
 const fmt = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 ---
 <Layout {...meta('home')} current="/" overlay>
-  <section class="hero hero--aurora">
-    <div class="wrap stack center hero__in">
-      <h1 class="ds-display h1" data-rise style="--i:0">I help organizations design how humans and AI make decisions <em>together</em>.</h1>
-      <p class="lede" data-rise style="--i:1">{hero.paras[0]}</p>
-      <div class="hero__portrait glass" data-rise style="--i:2">
-        <img src={img('SffeKsuKsBqX5cZA1PTpsRbJe0.png')} alt="Amber Heinbockel, smiling, holding a laptop" width="559" height="852" />
+  <section class="hero hero--aurora stage" data-stage>
+    <div class="stage__in">
+      <h1 class="stage__type ds-display" aria-label="Human plus AI. I help organizations design how humans and AI make decisions together.">
+        <span class="stage__word" data-word style="--i:0" aria-hidden="true">Human</span>
+        <span class="stage__word stage__word--b" data-word style="--i:1" aria-hidden="true">+ AI</span>
+      </h1>
+      <div class="stage__figure" data-figure>
+        {THEMES.map((t) => <img class="stage__photo" data-for={t.id} src={img(t.intro.photo)} alt={t.intro.alt} width="559" height="852" loading={t.id === config.system ? 'eager' : 'lazy'} />)}
       </div>
+      <p class="stage__note stage__note--a" data-rise style="--i:4">I help organizations design how <b>humans and AI</b></p>
+      <p class="stage__note stage__note--b" data-rise style="--i:5">…make decisions <b>together.</b></p>
+      <a class="stage__badge" href="/about/" aria-label="About Amber" data-rise style="--i:6">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="ring" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0" /></defs>
+          <text><textPath href="#ring" textLength="282">DESIGN LEADER · MENTOR · ARTIST ·</textPath></text></svg>
+        <span class="ds-display">AB</span>
+      </a>
     </div>
   </section>
 
