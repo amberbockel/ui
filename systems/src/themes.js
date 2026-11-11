@@ -73,10 +73,10 @@ const THEMES = [
   {
     id: 'unicorns',
     name: 'Unicorns',
-    tagline: 'Bubblegum pink, butter cream and aubergine in tall condensed type, with sticker shadows. Loud on purpose.',
+    tagline: 'Bubblegum pink, butter cream and aubergine in a puffy, rounded face, with sticker shadows. Loud on purpose.',
     status: 'Preview',
-    fonts: { display: '"Sofia Sans Extra Condensed", "Arial Narrow", sans-serif', body: '"Sofia Sans Condensed", "Arial Narrow", sans-serif' },
-    shape: { rCard: '32px', rCtl: '13px', rBtn: '8px', rImg: '0px', rProd: '32px', displayWeight: '700', displayLs: '0.005em', displayLh: '1', displayScale: '1.5', bodySize: '17px', cardBorder: 'transparent', labelCase: 'lowercase', labelLs: '0.01em' },
+    fonts: { display: '"DynaPuff", "Fredoka", system-ui, sans-serif', body: '"Fredoka", system-ui, sans-serif' },
+    shape: { rCard: '32px', rCtl: '13px', rBtn: '8px', rImg: '0px', rProd: '32px', displayWeight: '600', displayLs: '-0.01em', displayLh: '1.08', displayScale: '1', bodySize: '16px', cardBorder: 'transparent', labelCase: 'lowercase', labelLs: '0.01em' },
     light: {
       bg: '#ff9ee4', surface: '#f2edc7', surface2: '#ffffff8c', fg: '#2b1619', muted: '#2b1619bf', border: '#2b161940',
       primary: '#2b1619', onPrimary: '#ffb5f0', btn2Bg: '#a8bfff', btn2Border: 'transparent', btnShadow: '3px 3px 0 #bd4f9e',

@@ -7,7 +7,7 @@ Organisms, Hooks. It is deployed with the demo site at `/ui/systems/`.
 | --- | --- | --- |
 | Sunrise | This React package, `amberbockel-ui` | Released |
 | Sierra | Sage, lime and tight grotesque type | Preview |
-| Unicorns | Pink, cream and aubergine in condensed type | Preview |
+| Unicorns | Pink, cream and aubergine in a puffy, rounded face | Preview |
 | Ember | Dark-first, oversized type, one orange accent | Preview |
 
 Sierra, Unicorns and Ember are CSS only. They use their own `--ds-*` tokens and a small shared component
