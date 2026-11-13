@@ -30,8 +30,6 @@ const fmt = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { year
       <div class="stage__figure" data-figure>
         {THEMES.map((t) => <img class="stage__photo" data-for={t.id} src={img(t.intro.photo)} alt={t.intro.alt} width="559" height="852" loading={t.id === config.system ? 'eager' : 'lazy'} />)}
       </div>
-      <p class="stage__note stage__note--a" data-rise style="--i:4">I help organizations design how <b>humans and AI</b></p>
-      <p class="stage__note stage__note--b" data-rise style="--i:5">…make decisions <b>together.</b></p>
     </div>
   </section>
 
