@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Cta from '../components/Cta.astro';
 import SystemCards from '../components/SystemCards.astro';
+import Monogram from '../components/Monogram.astro';
 import { sec, meta, img } from '../lib.js';
 import extra from '../extra.json';
 import posts from '../posts.json';
@@ -36,9 +37,9 @@ const fmt = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { year
 
   <section class="section section--flush cover">
     <a class="stage__badge" href="/about/" aria-label="About Amber">
-        <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="ring" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0" /></defs>
+        <svg class="badge-ring" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="ring" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0" /></defs>
           <text><textPath href="#ring" textLength="282">DESIGN LEADER · MENTOR · ARTIST ·</textPath></text></svg>
-        <span class="ds-display">AB</span>
+        <Monogram />
       </a>
     <div class="wrap stack center cover__in" data-reveal>
       <h2 class="cover__statement ds-display">I help <span class="hi">organizations</span> design how <span class="hi hi--b">humans</span> and <span class="hi">AI</span> make <span class="hi hi--b">decisions</span> <u>together</u>.</h2>
