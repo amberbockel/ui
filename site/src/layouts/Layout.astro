@@ -159,7 +159,7 @@ const currentName = THEMES.find((t) => t.id === config.system).name;
             var tick = false;
             window.addEventListener('scroll', function () {
               if (tick) return; tick = true;
-              requestAnimationFrame(function () { stage.style.setProperty('--sy', Math.min(window.scrollY, 1000)); tick = false; });
+              requestAnimationFrame(function () { stage.style.setProperty('--sp', Math.min(1, window.scrollY / (window.innerHeight * .5)).toFixed(3)); tick = false; });
             }, { passive: true });
           }
         }

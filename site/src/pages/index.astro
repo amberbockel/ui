@@ -40,11 +40,16 @@ const fmt = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { year
           <text><textPath href="#ring" textLength="282">DESIGN LEADER · MENTOR · ARTIST ·</textPath></text></svg>
         <span class="ds-display">AB</span>
       </a>
-    <div class="wrap stack" style="gap:18px" data-reveal>
-      <p class="eyebrow eyebrow--accent">{intro.eyebrow}</p>
-      <h2 class="ds-display h2">{intro.heading}</h2>
-      <p class="lede">{intro.paras[0]}</p>
+    <div class="wrap stack center cover__in" data-reveal>
+      <h2 class="cover__statement ds-display">I help <span class="hi">organizations</span> design how <span class="hi hi--b">humans</span> and <span class="hi">AI</span> make <span class="hi hi--b">decisions</span> <u>together</u>.</h2>
+      <p class="cover__text">{intro.heading} {intro.paras[0]}</p>
+      <p class="cover__text">{hero.paras[0]}</p>
+      <a class="cover__btn" href="/work/">See my work</a>
     </div>
+  </section>
+
+  <section class="section section--flush">
+    <div class="wrap center" data-reveal><p class="eyebrow">Where I’ve led design</p></div>
     <div class="marquee" aria-label="Places Amber has worked" data-reveal>
       <div class="marquee__track">
         {[0, 1, 2].map((r) => extra.logos.map(([name, file]) => <img src={img(file)} alt={r === 0 ? name : ''} aria-hidden={r === 0 ? undefined : 'true'} loading="lazy" />))}
