@@ -110,6 +110,7 @@ const currentName = THEMES.find((t) => t.id === config.system).name;
         document.addEventListener('click', function (e) {
           var b = e.target.closest('[data-system-id]'); if (!b) return;
           r.setAttribute('data-system', b.getAttribute('data-system-id')); save('ab-system', b.getAttribute('data-system-id')); paint(); closeSys();
+          if (window.fitStage) { window.fitStage(); if (document.fonts && document.fonts.ready) document.fonts.ready.then(window.fitStage); setTimeout(window.fitStage, 600); }
         });
         var sysBtn = document.getElementById('sys-toggle'), sysList = document.getElementById('sys-list');
         function closeSys() { if (sysList) { sysList.hidden = true; sysBtn.setAttribute('aria-expanded', 'false'); } }
@@ -138,14 +139,29 @@ const currentName = THEMES.find((t) => t.id === config.system).name;
         document.getElementById('main-nav').addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
 
-        /* Home stage: the big words drift slower than the page as it scrolls. */
+        /* Home stage: the words are sized to fill the width, the hero stays pinned,
+           and the next section slides up over the photo. */
         var stage = document.querySelector('[data-stage]');
-        if (stage && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          var words = stage.querySelectorAll('[data-word]'), fig = stage.querySelector('[data-figure]'), tick = false;
-          window.addEventListener('scroll', function () {
-            if (tick) return; tick = true;
-            requestAnimationFrame(function () { var y = Math.min(window.scrollY, 900); stage.style.setProperty('--sy', y + 'px'); tick = false; });
-          }, { passive: true });
+        if (stage) {
+          var type = stage.querySelector('.stage__type'), first = stage.querySelector('[data-word]');
+          var fit = function () {
+            type.style.fontSize = '';
+            var cs = getComputedStyle(type), room = type.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+            var range = document.createRange(); range.selectNodeContents(first);
+            var size = parseFloat(cs.fontSize) * room / range.getBoundingClientRect().width;
+            type.style.fontSize = Math.min(size, window.innerHeight * .4) + 'px';
+            stage.style.setProperty('--pin', Math.min(0, window.innerHeight - stage.offsetHeight) + 'px');
+          };
+          window.fitStage = fit; fit();
+          if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+          window.addEventListener('resize', fit);
+          if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            var tick = false;
+            window.addEventListener('scroll', function () {
+              if (tick) return; tick = true;
+              requestAnimationFrame(function () { stage.style.setProperty('--sy', Math.min(window.scrollY, 1000)); tick = false; });
+            }, { passive: true });
+          }
         }
 
         /* Reveal on scroll. Content is visible by default; this only adds the entrance. */
